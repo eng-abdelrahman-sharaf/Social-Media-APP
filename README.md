@@ -6,6 +6,15 @@
 - Follow SOLID Principles
 - Make sure no repetition occured
 - check you followed the json format
+
+## To learn
+- basic git commands commit, add , pull, push, checkout, branch
+- how to make a pull request
+- how to review a pull request
+- SOLID principles
+- different diagrams
+
+
 ## Important Notes
 - Create branches for tasks (e.g., feature-login, feature-profile-update).
 - After ending the feature make a pull request
@@ -13,7 +22,7 @@
 - Submit pull requests for review before merging changes.
 - Each pull request should be reviewed by at least one team member.
 
-## USER JSON FORMAT
+## User JSON format
 ```json
 {
 "userID": "user123",
@@ -31,7 +40,7 @@
 ```
 
 
-## Content (whose children are Post or Story) JSON FORMAT
+## Content (whose children are Post or Story) JSON format
 
 ```json
 {
