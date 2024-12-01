@@ -13,25 +13,26 @@
 - Submit pull requests for review before merging changes.
 - Each pull request should be reviewed by at least one team member.
 
-  ## USER JSON FORMAT
-  ```json
-  {
-  "userID": "user123",
-  "friendsIDs": ["user456", "user789", "user101"],
-  "postsIDs": ["post001", "post002"],
-  "BIO": "Just another tech enthusiast exploring the world!",
-  "hashedPassword": "5f4dcc3b5aa765d61d8327deb882cf99", 
-  "status": "Active",
-  "email": "user123@example.com",
-  "dateOfBirth": "1990-05-15",
-  "profilePhotoPath": "/images/profile123.jpg",
-  "coverPhotoPath": "/images/cover123.jpg",
-  "storiesIDs": ["story001", "story002"]
+## USER JSON FORMAT
+```json
+{
+"userID": "user123",
+"friendsIDs": ["user456", "user789", "user101"],
+"postsIDs": ["post001", "post002"],
+"BIO": "Just another tech enthusiast exploring the world!",
+"hashedPassword": "5f4dcc3b5aa765d61d8327deb882cf99", 
+"status": "Active",
+"email": "user123@example.com",
+"dateOfBirth": "1990-05-15",
+"profilePhotoPath": "/images/profile123.jpg",
+"coverPhotoPath": "/images/cover123.jpg",
+"storiesIDs": ["story001", "story002"]
 }
 ```
 
 
-  ## Content (whose children are Post or Story) JSON FORMAT
+## Content (whose children are Post or Story) JSON FORMAT
+
 ```json
 {
   "contentID": "story001",
