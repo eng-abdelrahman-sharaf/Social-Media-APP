@@ -49,7 +49,7 @@
   "content": {
     "text": "Had a great day coding with friends! #TechLife",
     "imagePaths": ["/images/story001_1.jpg", "/images/story001_2.jpg"],
-    "timestamp": "2024-12-01T10:30:00Z"
-  }
+  },
+  "timestamp": "2024-12-01T10:30:00Z"
 }
 ```
