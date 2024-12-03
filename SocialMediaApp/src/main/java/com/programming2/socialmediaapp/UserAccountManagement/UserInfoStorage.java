@@ -10,16 +10,16 @@ public class UserInfoStorage {
         JsonStorageHandler<UserInfo> jsonHandler = new JsonStorageHandler<>(UserInfo.class);
 
         // Create sample users
-        UserInfo user1 = new UserInfo("user123", "hashedPassword1", "user123@example.com", "1990-05-15");
-        UserInfo user2 = new UserInfo("user456", "hashedPassword2", "user456@example.com", "1992-07-20");
-
-        // Add users to the role
-        userRole.addUser(user1);
-        userRole.addUser(user2);
+//        UserInfo user1 = new UserInfo("user123", "hashedPassword1", "user123@example.com", "1990-05-15");
+//        UserInfo user2 = new UserInfo("user456", "hashedPassword2", "user456@example.com", "1992-07-20");
+//
+//        // Add users to the role
+//        userRole.addUser(user1);
+//        userRole.addUser(user2);
         
         //Save and load the user list
         String filePath = "userList.json";
-        userRole.saveList(jsonHandler, filePath);
+//        userRole.saveList(jsonHandler, filePath);
         //System.out.println("saved succ" + userRole.getUserInfoList());
 
         userRole.loadList(jsonHandler, filePath);
@@ -28,6 +28,17 @@ public class UserInfoStorage {
     for (UserInfo user : userRole.getUserInfoList()) {
         System.out.println(user);
   }
+    
+    String searchId = "user12d3";
+    UserInfo foundUser = userRole.findUserById(userRole.getUserInfoList(), searchId);
+        
+        if (foundUser != null) {
+            System.out.println("Found user: " + foundUser);
+        } else {
+            System.out.println("User not found with ID: " + searchId);
+        }
+    
+    
     }
 
 }

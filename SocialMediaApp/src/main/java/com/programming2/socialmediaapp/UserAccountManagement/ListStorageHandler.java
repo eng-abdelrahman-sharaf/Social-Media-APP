@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//this is interface uses to save and load List<obj> 
+//you can find the imp in file name : JsonStorageHandler 
 package com.programming2.socialmediaapp.UserAccountManagement;
 
 import java.io.IOException;

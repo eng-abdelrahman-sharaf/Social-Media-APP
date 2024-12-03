@@ -7,16 +7,15 @@ package com.programming2.socialmediaapp.UserAccountManagement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRole {
+public class UserRole implements UserManager {
 
     private List<UserInfo> userInfoList;
 
-    
     public UserRole() {
         this.userInfoList = new ArrayList<>();
     }
 
-   
+    @Override
     public void addUser(UserInfo user) {
         if (user != null) {
             userInfoList.add(user);
@@ -24,6 +23,11 @@ public class UserRole {
         } else {
             System.out.println("Cannot add a null user.");
         }
+    }
+
+    @Override
+    public List<UserInfo> getUserInfoList() {
+        return new ArrayList<>(userInfoList); // Return a copy to maintain encapsulation
     }
 
     
@@ -46,8 +50,13 @@ public class UserRole {
         }
     }
 
-    
-    public List<UserInfo> getUserInfoList() {
-        return userInfoList;
+    public UserInfo findUserById(List<UserInfo> userList, String userId) {
+    for (UserInfo user : userList) {
+        if (user.getUserID().equals(userId)) {
+            return user; // Return the reference to the matching UserInfo object
+        }
     }
+    return null; // Return null if no user is found with the given ID
+}
+   
 }
