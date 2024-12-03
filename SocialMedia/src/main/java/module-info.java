@@ -6,9 +6,9 @@ module com.example.socialmedia {
 
     opens com.MediaApp to javafx.fxml;
     exports com.MediaApp;
-    exports com.MediaApp.Model;
-    opens com.MediaApp.Model to javafx.fxml;
-    exports com.MediaApp.controllers;
-    opens com.MediaApp.controllers to javafx.fxml;
+    exports com.MediaApp.ContentManagment;
+    opens com.MediaApp.ContentManagment to javafx.fxml;
+    exports com.MediaApp.NewsFeed;
+    opens com.MediaApp.NewsFeed to javafx.fxml;
 
 }
