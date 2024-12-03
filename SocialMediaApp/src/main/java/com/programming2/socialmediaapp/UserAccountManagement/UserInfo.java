@@ -26,8 +26,10 @@ public class UserInfo {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         
+        
+        
     }
-    // Constructor 2 using when read from json file
+    // Constructor 2 using when read from json file .
     public UserInfo(String userID, List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
                 String bio, String hashedPassword, String status, String email, String dateOfBirth,
                 String profilePhotoPath, String coverPhotoPath, List<String> storiesIDs) {
