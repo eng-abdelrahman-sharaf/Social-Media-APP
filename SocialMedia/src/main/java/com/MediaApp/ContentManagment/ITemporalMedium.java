@@ -1,8 +1,8 @@
-package com.MediaApp.Model;
+package com.MediaApp.ContentManagment;
 
 import java.time.Instant;
 
-public interface ITemporalMedium extends IMedium {
+public interface TemporalMedium {
     Instant getExpirationTime();
     void setExpirationTime(Instant expirationTime);
 }

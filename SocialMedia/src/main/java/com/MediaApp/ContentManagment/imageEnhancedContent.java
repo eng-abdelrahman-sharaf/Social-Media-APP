@@ -1,8 +1,8 @@
-package com.MediaApp.ContentManagment;
+package com.MediaApp.Model;
 
 import java.util.ArrayList;
 
-public class imageEnhancedContent implements Content {
+public class imageEnhancedContent implements IContent {
     String text;
     ArrayList<String> images;
 

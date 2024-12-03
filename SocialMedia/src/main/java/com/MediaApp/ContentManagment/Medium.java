@@ -1,21 +1,55 @@
-package com.MediaApp.ContentManagment;/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package com.MediaApp.Model;
 
 import java.time.Instant;
 
-/**
- *
- * @author ADMIN
- */
-public interface Medium {
-    String getID();
-    String getAuthorID();
-    Content getContent();
-    Instant getTimeStamp();
-    void setID(String ID);
-    void setAuthorID(String AuthorID);
-    void setTimeStamp(Instant timeStamp);
-    void setContent(Content content);
+public class Medium implements IMedium{
+    String ID;
+    String AuthorID;
+    IContent content;
+    Instant timestamp;
+    public Medium(String ID, String AuthorID, IContent content, Instant timestamp) {
+        setID(ID);
+        setAuthorID(AuthorID);
+        setContent(content);
+        setTimeStamp(timestamp);
+    }
+
+    @Override
+    public String getID() {
+        return ID;
+    }
+
+    @Override
+    public String getAuthorID() {
+        return AuthorID;
+    }
+
+    public IContent getContent() {
+        return content;
+    }
+
+    @Override
+    public Instant getTimeStamp() {
+        return timestamp;
+    }
+
+    @Override
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    @Override
+    public void setAuthorID(String AuthorID) {
+        this.AuthorID = AuthorID;
+    }
+
+    @Override
+    public void setTimeStamp(Instant timeStamp) {
+        this.timestamp = timeStamp;
+    }
+
+    @Override
+    public void setContent(IContent content) {
+        this.content = content;
+    }
 }
