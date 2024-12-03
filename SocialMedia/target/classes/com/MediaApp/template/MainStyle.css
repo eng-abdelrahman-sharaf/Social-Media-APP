@@ -1,0 +1,14 @@
+.Vbox{
+    -fx-border-width: 2; /* Specifies the thickness of the border */
+    -fx-border-radius: 20; /* Rounds the corners of the border */
+    -fx-background-color: white; /* Background color of the VBox */
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.5, 0, 0);
+}
+.Button{
+    -fx-background-color: white;
+}
+.Button:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 8, 0.5, 0, 2);
+    -fx-translate-y: 2; /* Simulates a slight push-down effect */
+}
