@@ -10,9 +10,10 @@ import java.util.List;
 public class UserRole implements UserManager {
 
     private List<UserInfo> userInfoList;
-
+    private UserFinder userFinder;
     public UserRole() {
         this.userInfoList = new ArrayList<>();
+        this.userFinder = new UserFinderImpl(userInfoList);
     }
 
     @Override
@@ -29,7 +30,10 @@ public class UserRole implements UserManager {
     public List<UserInfo> getUserInfoList() {
         return new ArrayList<>(userInfoList); // Return a copy to maintain encapsulation
     }
-
+    
+    public UserFinder getUserFinder() {
+        return userFinder; // Provide access to the UserFinder
+    }
     
     public void saveList(ListStorageHandler<UserInfo> storageHandler, String filePath) {
         try {
@@ -57,6 +61,23 @@ public class UserRole implements UserManager {
         }
     }
     return null; 
+}
+    public UserInfo findUserByUserName(List<UserInfo> userList, String userName) {
+    for (UserInfo user : userList) {
+        if (user.getUserName().equalsIgnoreCase(userName)) { // Case-insensitive comparison
+            return user; 
+        }
+    }
+    return null; // Return null if no user is found with the given username
+}
+
+public UserInfo findUserByEmail(List<UserInfo> userList, String email) {
+    for (UserInfo user : userList) {
+        if (user.getEmail().equalsIgnoreCase(email)) { // Case-insensitive comparison
+            return user; 
+        }
+    }
+    return null; // Return null if no user is found with the given email
 }
    
 }

@@ -29,6 +29,17 @@ public class UserInfoStorage {
 //        System.out.println(user);
 //  }
 //    
+
+        UserInfo foundUserById = userRole.getUserFinder().findUserById("user123");
+        System.out.println(foundUserById != null ? "Found user by ID: " + foundUserById : "User not found by ID.");
+
+        UserInfo foundUserByUserName = userRole.getUserFinder().findUserByUserName("Ali");
+        System.out.println(foundUserByUserName != null ? "Found user by username: " + foundUserByUserName : "User not found by username.");
+
+        UserInfo foundUserByEmail = userRole.getUserFinder().findUserByEmail("user456@example.com");
+        System.out.println(foundUserByEmail != null ? "Found user by email: " + foundUserByEmail : "User not found by email.");
+
+        
 //    String searchId = "user123";
 //    UserInfo foundUser = userRole.findUserById(userRole.getUserInfoList(), searchId);
 //        
