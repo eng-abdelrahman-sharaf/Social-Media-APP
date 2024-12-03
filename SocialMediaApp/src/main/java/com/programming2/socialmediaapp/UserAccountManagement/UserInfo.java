@@ -6,9 +6,10 @@ import java.util.List;
 
 public class UserInfo {
     private String userID;
-    private List<String> friendsIDs;
-    private List<String> blockedAccountsIDs;
-    private List<String> postsIDs;
+    private String userName;
+    private List<String> friendsIDs= new ArrayList<>();
+    private List<String> blockedAccountsIDs= new ArrayList<>();
+    private List<String> postsIDs= new ArrayList<>();
     private String bio;
     private String hashedPassword;
     private String status;
@@ -16,12 +17,12 @@ public class UserInfo {
     private String dateOfBirth;
     private String profilePhotoPath;
     private String coverPhotoPath;
-    private List<String> storiesIDs;
+    private List<String> storiesIDs= new ArrayList<>();
 
     // Constructor 1 using when signup
-    public UserInfo(String userID, String hashedPassword, String email, String dateOfBirth) {
+    public UserInfo(String userID,String userName,String hashedPassword, String email, String dateOfBirth) {
         this.userID = userID;
-        
+        this.userName = userName;
         this.hashedPassword = hashedPassword;
         
         this.email = email;
@@ -30,14 +31,15 @@ public class UserInfo {
         
         
     }
-    // Constructor 2 using when read from json file .
-    public UserInfo(String userID, List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
+    // Constructor 2 
+    public UserInfo(String userID,String userName,List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
                 String bio, String hashedPassword, String status, String email, String dateOfBirth,
                 String profilePhotoPath, String coverPhotoPath, List<String> storiesIDs) {
         this.userID = userID;
-        this.friendsIDs = friendsIDs;
-        this.blockedAccountsIDs = blockedAccountsIDs;
-        this.postsIDs = postsIDs;
+        this.userName = userName;
+        this.friendsIDs = friendsIDs != null ? friendsIDs : new ArrayList<>();
+        this.blockedAccountsIDs = blockedAccountsIDs != null ? blockedAccountsIDs : new ArrayList<>();
+        this.postsIDs = postsIDs != null ? postsIDs : new ArrayList<>();
         this.bio = bio;
         this.hashedPassword = hashedPassword;
         this.status = status;
@@ -45,7 +47,7 @@ public class UserInfo {
         this.dateOfBirth = dateOfBirth;
         this.profilePhotoPath = profilePhotoPath;
         this.coverPhotoPath = coverPhotoPath;
-        this.storiesIDs = storiesIDs;
+        this.storiesIDs = storiesIDs != null ? storiesIDs : new ArrayList<>();
     }
     // Default constructor JSON used when load
     public UserInfo() {
@@ -60,9 +62,16 @@ public class UserInfo {
     public void setUserID(String userID) {
         this.userID = userID;
     }
+    
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public List<String> getFriendsIDs() {
-        return new ArrayList<>(friendsIDs);
+        return  new ArrayList<>(friendsIDs);
     }
 
     public void setFriendsIDs(List<String> friendsIDs) {
@@ -70,7 +79,7 @@ public class UserInfo {
     }
 
     public List<String> getBlockedAccountsIDs() {
-        return new ArrayList<>(blockedAccountsIDs);
+        return  new ArrayList<>(blockedAccountsIDs);
     }
 
     public void setBlockedAccountsIDs(List<String> blockedAccountsIDs) {
@@ -78,7 +87,7 @@ public class UserInfo {
     }
 
     public List<String> getPostsIDs() {
-        return new ArrayList<>(postsIDs);
+        return  new ArrayList<>(postsIDs);
     }
 
     public void setPostsIDs(List<String> postsIDs) {
@@ -142,7 +151,7 @@ public class UserInfo {
     }
 
     public List<String> getStoriesIDs() {
-        return new ArrayList<>(storiesIDs);
+        return  new ArrayList<>(storiesIDs);
     }
 
     public void setStoriesIDs(List<String> storiesIDs) {
@@ -154,6 +163,7 @@ public class UserInfo {
     public String toString() {
         return "\n[" +
                 "userID: '" + userID + '\'' +
+                ",userName: '" + userName + '\'' +
                 ", friendsIDs=" + friendsIDs +
                 ", blockedAccountsIDs=" + blockedAccountsIDs +
                 ", postsIDs=" + postsIDs +"\n"+
