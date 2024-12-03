@@ -50,7 +50,7 @@ public class MainController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
 
-        ContentPane.setAlignment(Pos.CENTER);
+//        ContentPane.setAlignment(Pos.CENTER);
 
     }
 
