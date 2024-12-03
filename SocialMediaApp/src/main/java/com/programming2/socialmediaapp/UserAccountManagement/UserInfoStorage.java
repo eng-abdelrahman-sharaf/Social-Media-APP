@@ -1,9 +1,11 @@
 package com.programming2.socialmediaapp.UserAccountManagement;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserInfoStorage {
@@ -26,29 +28,57 @@ public class UserInfoStorage {
         //can write like this UserInfo user = objectMapper.readValue(new File(filePath), UserInfo.class); then return user
         return objectMapper.readValue(new File(filePath), UserInfo.class);
     }
+    public static void saveUserListToFile(List<UserInfo> userList, String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValue(new File(filePath), userList);
+    }
+
+    // Load an ArrayList of UserInfo objects from a JSON file
+    public static List<UserInfo> loadUserListFromFile(String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(new File(filePath), new TypeReference<List<UserInfo>>() {});
+    }
+    
 
     public static void main(String[] args) {
         // Example usage:
-        try {
-            // Create a UserInfo object
-            UserInfo userInfo = new UserInfo("user123", "5f4dcc3b5aa765d61d8327deb882cf99", "user123@example.com", "1990-05-15");
-            userInfo.setFriendsIDs(List.of("user456", "user789", "user101"));
-            userInfo.setBlockedAccountsIDs(List.of("post001", "post002"));
-            userInfo.setPostsIDs(List.of("post001", "post002"));
-            userInfo.setBio("Just another tech enthusiast exploring the world!");
-            userInfo.setStatus("Active");
-            userInfo.setProfilePhotoPath("/images/profile123.jpg");
-            userInfo.setCoverPhotoPath("/images/cover123.jpg");
-            userInfo.setStoriesIDs(List.of("story001", "story002"));
+         try {
+            // Create sample UserInfo objects
+            UserInfo user1 = new UserInfo("user123", "5f4dcc3b5aa765d61d8327deb882cf99", "user123@example.com", "1990-05-15");
+            user1.setFriendsIDs(List.of("user456", "user789", "user101"));
+            user1.setBlockedAccountsIDs(List.of("post001", "post002"));
+            user1.setPostsIDs(List.of("post001", "post002"));
+            user1.setBio("Just another tech enthusiast exploring the world!");
+            user1.setStatus("Active");
+            user1.setProfilePhotoPath("/images/profile123.jpg");
+            user1.setCoverPhotoPath("/images/cover123.jpg");
+            user1.setStoriesIDs(List.of("story001", "story002"));
 
-            // Save the UserInfo object to a file
-            saveUserInfoToFile(userInfo, "user123_info.json");
+            UserInfo user2 = new UserInfo("user456", "e99a18c428cb38d5f260853678922e03", "user456@example.com", "1992-08-25");
+            user2.setFriendsIDs(List.of("user123", "user789"));
+            user2.setBlockedAccountsIDs(List.of("post003"));
+            user2.setPostsIDs(List.of("post003", "post004"));
+            user2.setBio("A curious mind and a coding enthusiast!");
+            user2.setStatus("Active");
+            user2.setProfilePhotoPath("/images/profile456.jpg");
+            user2.setCoverPhotoPath("/images/cover456.jpg");
+            user2.setStoriesIDs(List.of("story003"));
 
-            // Load the UserInfo object from the file
-            UserInfo loadedUserInfo = loadUserInfoFromFile("user123_info.json");
+            // Create a list of UserInfo objects
+            List<UserInfo> userList = new ArrayList<>();
+            userList.add(user1);
+            userList.add(user2);
 
-            // Display the loaded user info
-            System.out.println(loadedUserInfo);
+            // Save the user list to a file
+            saveUserListToFile(userList, "user_list.json");
+
+            // Load the user list from the file
+            List<UserInfo> loadedUserList = loadUserListFromFile("user_list.json");
+
+            // Display the loaded user list
+            for (UserInfo user : loadedUserList) {
+                System.out.println(user);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
