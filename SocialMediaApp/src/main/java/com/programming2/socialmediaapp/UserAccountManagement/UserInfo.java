@@ -1,6 +1,7 @@
 
 package com.programming2.socialmediaapp.UserAccountManagement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserInfo {
@@ -61,7 +62,7 @@ public class UserInfo {
     }
 
     public List<String> getFriendsIDs() {
-        return friendsIDs;
+        return new ArrayList<>(friendsIDs);
     }
 
     public void setFriendsIDs(List<String> friendsIDs) {
@@ -69,7 +70,7 @@ public class UserInfo {
     }
 
     public List<String> getBlockedAccountsIDs() {
-        return blockedAccountsIDs;
+        return new ArrayList<>(blockedAccountsIDs);
     }
 
     public void setBlockedAccountsIDs(List<String> blockedAccountsIDs) {
@@ -77,7 +78,7 @@ public class UserInfo {
     }
 
     public List<String> getPostsIDs() {
-        return postsIDs;
+        return new ArrayList<>(postsIDs);
     }
 
     public void setPostsIDs(List<String> postsIDs) {
@@ -141,7 +142,7 @@ public class UserInfo {
     }
 
     public List<String> getStoriesIDs() {
-        return storiesIDs;
+        return new ArrayList<>(storiesIDs);
     }
 
     public void setStoriesIDs(List<String> storiesIDs) {

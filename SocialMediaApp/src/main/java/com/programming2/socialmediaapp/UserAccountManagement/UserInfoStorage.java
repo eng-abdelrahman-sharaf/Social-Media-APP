@@ -29,7 +29,7 @@ public class UserInfoStorage {
         System.out.println(user);
   }
     
-    String searchId = "user12d3";
+    String searchId = "user123";
     UserInfo foundUser = userRole.findUserById(userRole.getUserInfoList(), searchId);
         
         if (foundUser != null) {

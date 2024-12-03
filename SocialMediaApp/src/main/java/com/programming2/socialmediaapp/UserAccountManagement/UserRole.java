@@ -53,10 +53,10 @@ public class UserRole implements UserManager {
     public UserInfo findUserById(List<UserInfo> userList, String userId) {
     for (UserInfo user : userList) {
         if (user.getUserID().equals(userId)) {
-            return user; // Return the reference to the matching UserInfo object
+            return user; 
         }
     }
-    return null; // Return null if no user is found with the given ID
+    return null; 
 }
    
 }
