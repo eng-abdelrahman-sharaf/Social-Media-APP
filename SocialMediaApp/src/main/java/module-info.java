@@ -6,4 +6,6 @@ module com.programming2.socialmediaapp {
 
     opens com.programming2.socialmediaapp to javafx.fxml;
     exports com.programming2.socialmediaapp;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
 }
