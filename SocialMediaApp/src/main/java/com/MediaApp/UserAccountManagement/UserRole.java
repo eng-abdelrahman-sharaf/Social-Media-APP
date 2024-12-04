@@ -4,6 +4,7 @@
  */
 package com.MediaApp.UserAccountManagement;
 
+//import com.MediaApp.DataHandlers.ListStorageHandler;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,20 +28,21 @@ public class UserRole {
     }
 
     
-    public void saveList(ListStorageHandler<UserInfo> storageHandler, String filePath) {
+     public void saveList(JsonStorageHandler<UserInfo> storageHandler) {
         try {
-            storageHandler.saveList(userInfoList, filePath);
-            System.out.println("User list saved to: " + filePath);
+            storageHandler.saveList(userInfoList);
+            System.out.println("User list saved to file.");
         } catch (Exception e) {
             System.err.println("Failed to save user list: " + e.getMessage());
         }
     }
 
     
-    public void loadList(ListStorageHandler<UserInfo> storageHandler, String filePath) {
+    // Loads the user list using the provided storage handler
+    public void loadList(JsonStorageHandler<UserInfo> storageHandler) {
         try {
-            userInfoList = storageHandler.loadList(filePath);
-            System.out.println("User list loaded from: " + filePath);
+            userInfoList = storageHandler.loadList();
+            System.out.println("User list loaded from file.");
         } catch (Exception e) {
             System.err.println("Failed to load user list: " + e.getMessage());
         }

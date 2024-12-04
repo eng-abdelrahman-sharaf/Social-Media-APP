@@ -1,34 +1,36 @@
 package com.MediaApp.UserAccountManagement;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInfoStorage {
 
-    public static void main(String[] args) {
-        String filePath = "userList.json";
+    public static void main(String[] args) throws IOException {
         // Create instances of UserRole and JSON storage handler
+//        UserRole userRole = new UserRole();
+        String filePath = "user_data.json";
+        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
         UserRole userRole = new UserRole();
-        JsonStorageHandler<UserInfo> jsonHandler = new JsonStorageHandler<>(UserInfo.class,filePath);
 
-        // Create sample users
         UserInfo user1 = new UserInfo("user123", "hashedPassword1", "user123@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("user456", "hashedPassword2", "user456@example.com", "1992-07-20");
-
+//
         // Add users to the role
-        userRole.addUser(user1);
-        userRole.addUser(user2);
-        
+//        userRole.addUser(user1);
+//        userRole.addUser(user2);
         //Save and load the user list
-        
-        userRole.saveList(jsonHandler, filePath);
-        //System.out.println("saved succ" + userRole.getUserInfoList());
+//        userRole.saveList(storageHandler);
+//        System.out.println("saved succ" + userRole.getUserInfoList());
 
-        userRole.loadList(jsonHandler, filePath);
-        //  System.out.println(userRole.getUserInfoList());
+        userRole.loadList(storageHandler);
+          System.out.println(userRole.getUserInfoList());
         // Print loaded user info
-    for (UserInfo user : userRole.getUserInfoList()) {
-        System.out.println(user);
-  }
+        
+        
+//    for (UserInfo user : userRole.getUserInfoList()) {
+//        System.out.println(user);
+//  }
     }
 
 }
