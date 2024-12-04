@@ -16,19 +16,7 @@ public class JsonStorageHandler<T> implements  ListStorageHandler<T> {
         this.type = type;
     }
 
-    // IndividualStorageHandler implementation
-//    @Override
-//    public void save(T data, String filePath) throws IOException {
-//         ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.writeValue(new File(filePath), data);
-//    }
-//
-//    @Override
-//    public T load(String filePath) throws IOException {
-//         ObjectMapper objectMapper = new ObjectMapper();
-//        return objectMapper.readValue(new File(filePath), type);
-//    }
-
+   
     // ListStorageHandler implementation
     @Override
     public void saveList(List<T> dataList, String filePath) throws IOException {
