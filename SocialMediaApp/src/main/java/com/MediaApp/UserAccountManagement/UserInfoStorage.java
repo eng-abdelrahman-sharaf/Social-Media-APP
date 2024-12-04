@@ -1,4 +1,4 @@
-package com.programming2.socialmediaapp.UserAccountManagement;
+package com.MediaApp.UserAccountManagement;
 
 import java.io.IOException;
 
@@ -38,7 +38,7 @@ public class UserInfoStorage {
      //we don't need to use this class any more 
       // this class was replaced by JsonStorageHandler  
 //
-//package com.programming2.socialmediaapp.UserAccountManagement;
+//package com.MediaApp.UserAccountManagement;
 //
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.fasterxml.jackson.core.type.TypeReference;
@@ -127,7 +127,7 @@ public class UserInfoStorage {
 
 
     // this class was to test the interfaces before add User role 
-//package com.programming2.socialmediaapp.UserAccountManagement;
+//package com.MediaApp.UserAccountManagement;
 //
 //import java.io.IOException;
 //import java.util.ArrayList;

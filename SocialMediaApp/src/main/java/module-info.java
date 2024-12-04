@@ -1,10 +1,16 @@
-module com.programming2.socialmediaapp {
+module com.example.socialmedia {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.base;
-    requires javafx.graphics;
+    requires java.desktop;
 
-    opens com.programming2.socialmediaapp to javafx.fxml;
-    exports com.programming2.socialmediaapp;
+
+    opens com.MediaApp to javafx.fxml;
+    exports com.MediaApp;
+    exports com.MediaApp.ContentManagement;
+    opens com.MediaApp.ContentManagement to javafx.fxml;
+    exports com.MediaApp.NewsFeed;
+    opens com.MediaApp.NewsFeed to javafx.fxml;
+    requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+
 }

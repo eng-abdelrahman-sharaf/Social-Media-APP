@@ -1,4 +1,4 @@
-package com.programming2.socialmediaapp.UserAccountManagement;
+package com.MediaApp.UserAccountManagement;
 
 import java.io.IOException;
 

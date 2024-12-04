@@ -1,14 +1,13 @@
-package com.programming2.socialmediaapp.contentCreation;
+package com.MediaApp.ContentManagement;
 
 import java.time.Instant;
 
-public class Post implements PermanentMedium{
-
+public class Medium implements IMedium{
     String ID;
     String AuthorID;
-    Content content;
+    IContent content;
     Instant timestamp;
-    public Post(String ID, String AuthorID, Content content, Instant timestamp) {
+    public Medium(String ID, String AuthorID, IContent content, Instant timestamp) {
         setID(ID);
         setAuthorID(AuthorID);
         setContent(content);
@@ -25,8 +24,7 @@ public class Post implements PermanentMedium{
         return AuthorID;
     }
 
-    @Override
-    public Content getContent() {
+    public IContent getContent() {
         return content;
     }
 
@@ -51,7 +49,7 @@ public class Post implements PermanentMedium{
     }
 
     @Override
-    public void setContent(Content content) {
+    public void setContent(IContent content) {
         this.content = content;
     }
 }

@@ -1,6 +1,5 @@
-package com.programming2.socialmediaapp.UserAccountManagement;
+package com.MediaApp.UserAccountManagement;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
