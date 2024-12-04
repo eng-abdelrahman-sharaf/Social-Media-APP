@@ -4,10 +4,20 @@
  */
 package com.MediaApp.ContentManagement;
 
+import java.time.Instant;
+
 /**
  *
  * @author ADMIN
  */
 public class Test {
+    public static void main(){
+        Story s = new Story("", "", null, Instant.MIN);        
+        System.out.println("story:"+s);
+        Post p = new Post("", "", null, Instant.MIN);
+        System.out.println("post:"+p);
+        
+    }
+
     
 }

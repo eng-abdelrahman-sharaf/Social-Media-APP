@@ -4,11 +4,14 @@
  */
 package com.MediaApp;
 
+import com.MediaApp.ContentManagement.Test;
+
 /**
  *
  * @author ADMIN
  */
 public class Main {
     public static void main(String[] args){
+        Test.main();
     }
 }
