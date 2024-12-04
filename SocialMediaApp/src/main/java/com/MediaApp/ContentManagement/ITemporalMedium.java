@@ -1,8 +1,8 @@
-package com.programming2.socialmediaapp.contentCreation;
+package com.MediaApp.ContentManagement;
 
 import java.time.Instant;
 
-public interface TemporalMedium {
+public interface ITemporalMedium {
     Instant getExpirationTime();
     void setExpirationTime(Instant expirationTime);
 }

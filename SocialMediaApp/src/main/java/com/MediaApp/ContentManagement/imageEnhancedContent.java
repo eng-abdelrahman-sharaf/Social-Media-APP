@@ -1,8 +1,8 @@
-package com.programming2.socialmediaapp.contentCreation;
+package com.MediaApp.ContentManagement;
 
 import java.util.ArrayList;
 
-public class imageEnhancedContent implements Content {
+public class imageEnhancedContent implements IContent {
     String text;
     ArrayList<String> images;
 
