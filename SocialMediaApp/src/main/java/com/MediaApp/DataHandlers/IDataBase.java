@@ -4,7 +4,6 @@
  */
 package com.MediaApp.DataHandlers;
 
-import com.MediaApp.ContentManagement.IDataObject;
 import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
 /**
