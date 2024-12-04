@@ -5,9 +5,10 @@ import java.io.IOException;
 public class UserInfoStorage {
 
     public static void main(String[] args) {
+        String filePath = "userList.json";
         // Create instances of UserRole and JSON storage handler
         UserRole userRole = new UserRole();
-        JsonStorageHandler<UserInfo> jsonHandler = new JsonStorageHandler<>(UserInfo.class);
+        JsonStorageHandler<UserInfo> jsonHandler = new JsonStorageHandler<>(UserInfo.class,filePath);
 
         // Create sample users
         UserInfo user1 = new UserInfo("user123", "hashedPassword1", "user123@example.com", "1990-05-15");
@@ -18,7 +19,7 @@ public class UserInfoStorage {
         userRole.addUser(user2);
         
         //Save and load the user list
-        String filePath = "userList.json";
+        
         userRole.saveList(jsonHandler, filePath);
         //System.out.println("saved succ" + userRole.getUserInfoList());
 
