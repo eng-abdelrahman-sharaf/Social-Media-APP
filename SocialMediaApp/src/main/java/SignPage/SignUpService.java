@@ -8,6 +8,6 @@ package com.SignPage;
  *
  * @author abdah
  */
-public interface LoginService {
-    boolean login(String usernameOrEmail, String password);
+public interface SignUpService {
+    String signUp(String userName, String email, String dateOfBirth, String password, String confirmPassword);
 }

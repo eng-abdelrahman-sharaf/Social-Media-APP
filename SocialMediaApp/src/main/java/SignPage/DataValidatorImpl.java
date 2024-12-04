@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package SignPage;
+package com.SignPage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,19 +23,20 @@ public class DataValidatorImpl implements DataValidator {
 
     @Override
     public boolean isValidEmail(String email) {
-        String emailRegex = "^[\\w-\\.]+@[\\w-\\.]+\\.[a-z]{5,}$";
+        String emailRegex = "^[\\w-\\.]+@[\\w-\\.]+\\.[a-z]{2,}$";
         return email != null && Pattern.matches(emailRegex, email);
     }
 
     @Override
     public boolean isValidDate(String dateStr) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate date = LocalDate.parse(dateStr, formatter);
-            return !date.isBefore(LocalDate.now());
-        } catch (DateTimeParseException e) {
-            return false;
-        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(dateStr, formatter);
+        // Check if the date is not in the future
+        return date.isBefore(LocalDate.now()) || date.isEqual(LocalDate.now()); 
+    } catch (DateTimeParseException e) {
+        return false;
+    }
     }
 
     @Override
