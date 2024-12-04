@@ -5,13 +5,15 @@
 package com.MediaApp.DataHandlers;
 
 import com.MediaApp.ContentManagement.IDataObject;
+import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
 /**
  *
  * @author ADMIN
  */
 public interface IDataBase {
+    public IDataBase getInstance(ListStorageHandler<IDataObject> loader );
+    public void save(IDataObject[] data);
     public IDataObject[] getData();
-    public IDataBase getInstance(IDataLoader loader);
     public void refresh();
 }
