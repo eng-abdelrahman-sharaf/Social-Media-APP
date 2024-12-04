@@ -13,8 +13,8 @@ public class UserInfoStorage {
         JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
         UserRole userRole = new UserRole();
 
-        UserInfo user1 = new UserInfo("user123", "hashedPassword1", "user123@example.com", "1990-05-15");
-        UserInfo user2 = new UserInfo("user456", "hashedPassword2", "user456@example.com", "1992-07-20");
+        UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
+        UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
 //
         // Add users to the role
 //        userRole.addUser(user1);

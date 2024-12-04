@@ -8,7 +8,8 @@ package com.MediaApp.UserAccountManagement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRole {
+public class UserRole implements UserManager {
+
 
     private List<UserInfo> userInfoList;
 
@@ -17,7 +18,7 @@ public class UserRole {
         this.userInfoList = new ArrayList<>();
     }
 
-   
+   @Override
     public void addUser(UserInfo user) {
         if (user != null) {
             userInfoList.add(user);
@@ -27,6 +28,11 @@ public class UserRole {
         }
     }
 
+    @Override
+    public List<UserInfo> getUserInfoList() {
+        return new ArrayList<>(userInfoList); // Return a copy to maintain encapsulation
+    }
+    
     
      public void saveList(JsonStorageHandler<UserInfo> storageHandler) {
         try {
@@ -48,8 +54,5 @@ public class UserRole {
         }
     }
 
-    
-    public List<UserInfo> getUserInfoList() {
-        return userInfoList;
-    }
+   
 }
