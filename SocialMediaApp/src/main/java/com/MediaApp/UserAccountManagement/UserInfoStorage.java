@@ -1,5 +1,7 @@
 package com.MediaApp.UserAccountManagement;
 
+import SignPage.LoginService;
+import SignPage.LoginServiceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +15,29 @@ public class UserInfoStorage {
         JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
         UserRole userRole = new UserRole();
 
+        
+        
         UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
 //
         // Add users to the role
-//        userRole.addUser(user1);
-//        userRole.addUser(user2);
+        userRole.addUser(user1);
+        userRole.addUser(user2);
         //Save and load the user list
-//        userRole.saveList(storageHandler);
+        userRole.saveList(storageHandler);
 //        System.out.println("saved succ" + userRole.getUserInfoList());
 
         userRole.loadList(storageHandler);
           System.out.println(userRole.getUserInfoList());
         // Print loaded user info
+        
+        UserFinder userFinder = new UserFinderImpl(userRole.getUserInfoList());
+        LoginService loginService = new LoginServiceImpl(userFinder); 
+        boolean iss= loginService.login("john_doe", "password123");
+        System.out.println(iss);
+        System.out.println(loginService.login("john_doe", "password123"));
+        System.out.println(loginService.login("Ali", "hashedPassword1"));
+        System.out.println(loginService.login("user456@example.com", "hashedPassword2"));
         
         
 //    for (UserInfo user : userRole.getUserInfoList()) {

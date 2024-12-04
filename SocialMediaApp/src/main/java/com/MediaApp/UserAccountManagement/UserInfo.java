@@ -57,10 +57,7 @@ public class UserInfo implements IDataObject {
     }
 
     // Getters and Setters
-    @Override
-    public String getUser() {
-        return userID;
-    }
+    
     public String getUserID() {
         return userID;
     }
@@ -162,6 +159,10 @@ public class UserInfo implements IDataObject {
 
     public void setStoriesIDs(List<String> storiesIDs) {
         this.storiesIDs = storiesIDs;
+    }
+    @Override
+    public String getUser() {
+        return userID;
     }
 
     // display user information
