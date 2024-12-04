@@ -6,28 +6,28 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class JsonStorageHandler<T> implements IndividualStorageHandler<T>, ListStorageHandler<T> {
+public class JsonStorageHandler<T> implements  ListStorageHandler<T> {
 
     
     private final Class<T> type;
-
-    public JsonStorageHandler(Class<T> type) {
-        
+    private String filePath;
+    public JsonStorageHandler(Class<T> type,String filePath) {
+        this.filePath=this.filePath;
         this.type = type;
     }
 
     // IndividualStorageHandler implementation
-    @Override
-    public void save(T data, String filePath) throws IOException {
-         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File(filePath), data);
-    }
-
-    @Override
-    public T load(String filePath) throws IOException {
-         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(new File(filePath), type);
-    }
+//    @Override
+//    public void save(T data, String filePath) throws IOException {
+//         ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.writeValue(new File(filePath), data);
+//    }
+//
+//    @Override
+//    public T load(String filePath) throws IOException {
+//         ObjectMapper objectMapper = new ObjectMapper();
+//        return objectMapper.readValue(new File(filePath), type);
+//    }
 
     // ListStorageHandler implementation
     @Override
