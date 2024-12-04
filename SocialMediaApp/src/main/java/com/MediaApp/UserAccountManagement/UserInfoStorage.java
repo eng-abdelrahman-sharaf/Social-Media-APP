@@ -28,7 +28,7 @@ public class UserInfoStorage {
         userRole.addUser(user1);
         userRole.addUser(user2);
         //Save and load the user list
-//        userRole.saveList(storageHandler);
+        userRole.saveList(storageHandler);
 //        System.out.println("saved succ" + userRole.getUserInfoList());
 
 //        userRole.loadList(storageHandler);
@@ -50,7 +50,7 @@ public class UserInfoStorage {
         String result2 = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "StrongPass1");
         // Console Output: "Success: User signed up successfully!"
         System.out.println(result2);  // Output: "True, User signed up successfully!"
-
+        System.out.println(userRole.getUserInfoList());
 //    for (UserInfo user : userRole.getUserInfoList()) {
 //        System.out.println(user);
 //  }
