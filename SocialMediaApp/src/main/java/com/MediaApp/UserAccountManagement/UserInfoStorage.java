@@ -31,9 +31,9 @@ public class UserInfoStorage {
 //        userRole.saveList(storageHandler);
 //        System.out.println("saved succ" + userRole.getUserInfoList());
 
-        userRole.loadList(storageHandler);
-          System.out.println(userRole.getUserInfoList());
-//         Print loaded user info
+//        userRole.loadList(storageHandler);
+//          System.out.println(userRole.getUserInfoList());
+        // Print loaded user info
         
 //        UserFinder userFinder = new UserFinderImpl(userRole.getUserInfoList());
 //        LoginService loginService = new LoginServiceImpl(userFinder); 
