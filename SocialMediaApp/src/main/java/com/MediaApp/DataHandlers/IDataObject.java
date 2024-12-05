@@ -8,7 +8,12 @@ package com.MediaApp.DataHandlers;
  *
  * @author ADMIN
  */
-public interface IDataObject {
-    String  getUser();
+public interface IDataObject extends Cloneable{
+    public String getID();
+
+    public void setID(String ID);
+    
+    // clone the object deeply insure that you clone the references [mutable attributes] like arrays , lists  , ...
+    public IDataObject clone();
 }
 
