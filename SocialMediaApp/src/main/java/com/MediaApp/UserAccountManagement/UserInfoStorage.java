@@ -1,11 +1,10 @@
 package com.MediaApp.UserAccountManagement;
 
-import com.SignPage.DataValidator;
-import com.SignPage.DataValidatorImpl;
-import com.SignPage.LoginService;
-import com.SignPage.SignUpService;
-import com.SignPage.SignUpServiceImpl;
-import com.SignPage.LoginServiceImpl;
+
+import com.MediaApp.SignPage.DataValidator;
+import com.MediaApp.SignPage.DataValidatorImpl;
+import com.MediaApp.SignPage.SignUpService;
+import com.MediaApp.SignPage.SignUpServiceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +22,14 @@ public class UserInfoStorage {
         
         UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
-//
+        
+//        System.out.println(user1 instanceof UserInfo);
         // Add users to the role
         userRole.addUser(user1);
         userRole.addUser(user2);
         //Save and load the user list
         userRole.saveList(storageHandler);
-//        System.out.println("saved succ" + userRole.getUserInfoList());
+        //System.out.println("saved succ" + userRole.getUserInfoList());
 
 //        userRole.loadList(storageHandler);
 //          System.out.println(userRole.getUserInfoList());
@@ -50,7 +50,7 @@ public class UserInfoStorage {
         String result2 = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "StrongPass1");
         // Console Output: "Success: User signed up successfully!"
         System.out.println(result2);  // Output: "True, User signed up successfully!"
-        System.out.println(userRole.getUserInfoList());
+//        System.out.println(userRole.getUserInfoList());
 //    for (UserInfo user : userRole.getUserInfoList()) {
 //        System.out.println(user);
 //  }

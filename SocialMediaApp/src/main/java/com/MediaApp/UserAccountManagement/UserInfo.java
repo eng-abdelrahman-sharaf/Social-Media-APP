@@ -20,6 +20,7 @@ public class UserInfo implements IDataObject {
     private String profilePhotoPath;
     private String coverPhotoPath;
     private List<String> storiesIDs= new ArrayList<>();
+    private List<String> friendsREquest= new ArrayList<>();
 
     // Constructor 1 using when signup
     public UserInfo(String userID,String userName,String hashedPassword, String email, String dateOfBirth) {
@@ -34,23 +35,23 @@ public class UserInfo implements IDataObject {
         
     }
     // Constructor 2 
-    public UserInfo(String userID,String userName,List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
-                String bio, String hashedPassword, String status, String email, String dateOfBirth,
-                String profilePhotoPath, String coverPhotoPath, List<String> storiesIDs) {
-        this.userID = userID;
-        this.userName = userName;
-        this.friendsIDs = friendsIDs != null ? friendsIDs : new ArrayList<>();
-        this.blockedAccountsIDs = blockedAccountsIDs != null ? blockedAccountsIDs : new ArrayList<>();
-        this.postsIDs = postsIDs != null ? postsIDs : new ArrayList<>();
-        this.bio = bio;
-        this.hashedPassword = hashedPassword;
-        this.status = status;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.profilePhotoPath = profilePhotoPath;
-        this.coverPhotoPath = coverPhotoPath;
-        this.storiesIDs = storiesIDs != null ? storiesIDs : new ArrayList<>();
-    }
+//    public UserInfo(String userID,String userName,List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
+//                String bio, String hashedPassword, String status, String email, String dateOfBirth,
+//                String profilePhotoPath, String coverPhotoPath, List<String> storiesIDs) {
+//        this.userID = userID;
+//        this.userName = userName;
+//        this.friendsIDs = friendsIDs != null ? friendsIDs : new ArrayList<>();
+//        this.blockedAccountsIDs = blockedAccountsIDs != null ? blockedAccountsIDs : new ArrayList<>();
+//        this.postsIDs = postsIDs != null ? postsIDs : new ArrayList<>();
+//        this.bio = bio;
+//        this.hashedPassword = hashedPassword;
+//        this.status = status;
+//        this.email = email;
+//        this.dateOfBirth = dateOfBirth;
+//        this.profilePhotoPath = profilePhotoPath;
+//        this.coverPhotoPath = coverPhotoPath;
+//        this.storiesIDs = storiesIDs != null ? storiesIDs : new ArrayList<>();
+//    }
     // Default constructor JSON used when load
     public UserInfo() {
         
@@ -160,10 +161,26 @@ public class UserInfo implements IDataObject {
     public void setStoriesIDs(List<String> storiesIDs) {
         this.storiesIDs = storiesIDs;
     }
+    public List<String> getFriendsREquest() {
+        return new ArrayList<>(friendsREquest);
+    }
+    public void addFrinedRequestId(String id ){
+        friendsREquest.add(id);
+        
+    }
+    public void removeFirndREuest(String id ){
+        friendsREquest.remove(id);
+        
+    }
+    public void setFriendsREquest(List<String> friendsREquest) {
+        this.friendsREquest = friendsREquest;
+    }
+    
     @Override
     public String getUser() {
         return userID;
     }
+   
 
     // display user information
     @Override
@@ -182,6 +199,7 @@ public class UserInfo implements IDataObject {
                 ", profilePhotoPath='" + profilePhotoPath + '\'' +
                 ", coverPhotoPath='" + coverPhotoPath + '\'' +
                 ", storiesIDs=" + storiesIDs +
+                ", friendsREquest=" + friendsREquest +
                 '}';
     }
 }

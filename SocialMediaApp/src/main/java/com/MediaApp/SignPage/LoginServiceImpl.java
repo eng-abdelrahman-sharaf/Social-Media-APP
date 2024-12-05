@@ -1,5 +1,5 @@
 
-package com.SignPage;
+package com.MediaApp.SignPage;
 
 import com.MediaApp.UserAccountManagement.UserFinder;
 import com.MediaApp.UserAccountManagement.UserInfo;
