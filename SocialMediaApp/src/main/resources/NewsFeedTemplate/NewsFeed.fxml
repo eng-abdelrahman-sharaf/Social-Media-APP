@@ -49,13 +49,13 @@
          <content>
             <VBox fx:id="ContentPane" prefHeight="645.0" prefWidth="475.0">
                <children>
-                  <ScrollPane prefHeight="85.0" prefWidth="508.0">
+                  <ScrollPane prefHeight="188.0" prefWidth="475.0">
                      <content>
-                        <HBox prefHeight="70.0" prefWidth="506.0">
+                        <HBox fx:id="StoriesDisplay" prefHeight="169.0" prefWidth="625.0" spacing="20.0">
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
+                              <VBox prefHeight="130.0" prefWidth="96.0" styleClass="Vbox" />
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox layoutX="410.0" layoutY="10.0" prefHeight="70.0" prefWidth="96.0" styleClass="Vbox" />
@@ -63,16 +63,16 @@
                         </HBox>
                      </content>
                   </ScrollPane>
-                  <ScrollPane prefHeight="85.0" prefWidth="508.0">
+                  <ScrollPane fx:id="FriendSuggestionsDisplay" prefHeight="60.0" prefWidth="475.0">
                      <content>
-                        <HBox prefHeight="70.0" prefWidth="503.0">
+                        <HBox prefHeight="43.0" prefWidth="667.0" spacing="10.0">
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
                               <VBox layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
+                              <VBox layoutX="410.0" layoutY="10.0" prefHeight="43.0" prefWidth="92.0" styleClass="Vbox" />
                            </children>
                         </HBox>
                      </content>
