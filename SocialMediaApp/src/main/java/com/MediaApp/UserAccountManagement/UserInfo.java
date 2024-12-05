@@ -202,5 +202,24 @@ public class UserInfo implements IDataObject {
                 ", friendsREquest=" + friendsREquest +
                 '}';
     }
+
+    public void addFriendRequest(String userID) {
+        friendsREquest.add(userID);
+    }
+    public void removeFriendRequest(String userID) {
+        friendsREquest.remove(userID);
+    }
+    public void addFriend(String userID) {
+        friendsIDs.add(userID);
+    }
+    public void removeFriend(String userID) {
+        friendsIDs.remove(userID);
+    }
+    public void addBlockedAccount(String userID) {
+        blockedAccountsIDs.add(userID);
+    }
+    public void removeBlockedAccount(String userID) {
+        blockedAccountsIDs.remove(userID);
+    }
 }
 

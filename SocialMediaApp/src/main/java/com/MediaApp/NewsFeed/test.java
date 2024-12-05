@@ -4,10 +4,28 @@
  */
 package com.MediaApp.NewsFeed;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  *
  * @author ADMIN
  */
-public class test {
+public class test extends Application {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("NewsFeed.fxml"));
+    @Override
+   public void start(Stage stage){
+        try{
+            stage.setScene(loader.load());
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void main(String[] args){
+        launch(args);
+    }
     
 }

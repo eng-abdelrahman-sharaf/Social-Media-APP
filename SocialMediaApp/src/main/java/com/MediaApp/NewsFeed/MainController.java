@@ -7,6 +7,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
+import java.util.Objects;
+
 public class MainController {
     @FXML
     private ImageView logo;
@@ -38,7 +40,7 @@ public class MainController {
         setButtonIcon(ProfileButton, "/com/Icons/user.png");
         setButtonIcon(ViewRequestsButton, "/com/Icons/add-friend.png");
 
-        logo.setImage(new Image(getClass().getResource("/com/Icons/Logo.png").toExternalForm()));
+        logo.setImage(new Image(Objects.requireNonNull(getClass().getResource("/com/Icons/Logo.png")).toExternalForm()));
         logo.setFitHeight(60);
         logo.setFitWidth(60);
 
@@ -49,7 +51,7 @@ public class MainController {
     }
 
     private void setButtonIcon(Button button, String imagePath) {
-        ImageView icon = new ImageView(new Image(getClass().getResource(imagePath).toExternalForm()));
+        ImageView icon = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(imagePath)).toExternalForm()));
         icon.setFitHeight(20);
         icon.setFitWidth(20);
         button.setGraphic(icon);
