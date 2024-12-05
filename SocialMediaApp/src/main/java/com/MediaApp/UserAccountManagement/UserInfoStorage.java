@@ -1,34 +1,59 @@
 package com.MediaApp.UserAccountManagement;
 
+
+import com.MediaApp.SignPage.DataValidator;
+import com.MediaApp.SignPage.DataValidatorImpl;
+import com.MediaApp.SignPage.SignUpService;
+import com.MediaApp.SignPage.SignUpServiceImpl;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInfoStorage {
 
-    public static void main(String[] args) {
-        String filePath = "userList.json";
+    public static void main(String[] args) throws IOException {
         // Create instances of UserRole and JSON storage handler
+//        UserRole userRole = new UserRole();
+        String filePath = "user_data.json";
+        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
         UserRole userRole = new UserRole();
-        JsonStorageHandler<UserInfo> jsonHandler = new JsonStorageHandler<>(UserInfo.class,filePath);
-
-        // Create sample users
-        UserInfo user1 = new UserInfo("user123", "hashedPassword1", "user123@example.com", "1990-05-15");
-        UserInfo user2 = new UserInfo("user456", "hashedPassword2", "user456@example.com", "1992-07-20");
-
+        DataValidator dataValidator = new DataValidatorImpl();
+        
+        
+        UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
+        UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
+        
+//        System.out.println(user1 instanceof UserInfo);
         // Add users to the role
         userRole.addUser(user1);
         userRole.addUser(user2);
-        
         //Save and load the user list
-        
-        userRole.saveList(jsonHandler, filePath);
+        userRole.saveList(storageHandler);
         //System.out.println("saved succ" + userRole.getUserInfoList());
 
-        userRole.loadList(jsonHandler, filePath);
-        //  System.out.println(userRole.getUserInfoList());
+//        userRole.loadList(storageHandler);
+//          System.out.println(userRole.getUserInfoList());
         // Print loaded user info
-    for (UserInfo user : userRole.getUserInfoList()) {
-        System.out.println(user);
-  }
+        
+        UserFinder userFinder = new UserFinderImpl(userRole.getUserInfoList());
+//        LoginService loginService = new LoginServiceImpl(userFinder); 
+//        boolean iss= loginService.login("john_doe", "password123");
+//        System.out.println(iss);
+//        System.out.println(loginService.login("john_doe", "password123"));
+//        System.out.println(loginService.login("Ali", "hashedPassword1"));
+//        System.out.println(loginService.login("user456@example.com", "hashedPassword2"));
+//        
+       SignUpService signUpService = new SignUpServiceImpl(userFinder, dataValidator, userRole.getUserInfoList());
+//       String result = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "WeakPass2");
+//        System.out.println(result); 
+        
+        String result2 = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "StrongPass1");
+        // Console Output: "Success: User signed up successfully!"
+        System.out.println(result2);  // Output: "True, User signed up successfully!"
+//        System.out.println(userRole.getUserInfoList());
+//    for (UserInfo user : userRole.getUserInfoList()) {
+//        System.out.println(user);
+//  }
     }
 
 }

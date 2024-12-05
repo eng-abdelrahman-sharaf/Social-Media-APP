@@ -1,13 +1,17 @@
 
 package com.MediaApp.UserAccountManagement;
 
+
+import com.MediaApp.DataHandlers.IDataObject;
+import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfo {
+public class UserInfo implements IDataObject {
     private String userID;
-    private List<String> friendsIDs;
-    private List<String> blockedAccountsIDs;
-    private List<String> postsIDs;
+    private String userName;
+    private List<String> friendsIDs= new ArrayList<>();
+    private List<String> blockedAccountsIDs= new ArrayList<>();
+    private List<String> postsIDs= new ArrayList<>();
     private String bio;
     private String hashedPassword;
     private String status;
@@ -15,12 +19,13 @@ public class UserInfo {
     private String dateOfBirth;
     private String profilePhotoPath;
     private String coverPhotoPath;
-    private List<String> storiesIDs;
+    private List<String> storiesIDs= new ArrayList<>();
+    private List<String> friendsREquest= new ArrayList<>();
 
     // Constructor 1 using when signup
-    public UserInfo(String userID, String hashedPassword, String email, String dateOfBirth) {
+    public UserInfo(String userID,String userName,String hashedPassword, String email, String dateOfBirth) {
         this.userID = userID;
-        
+        this.userName = userName;
         this.hashedPassword = hashedPassword;
         
         this.email = email;
@@ -29,29 +34,31 @@ public class UserInfo {
         
         
     }
-    // Constructor 2 using when read from json file .
-    public UserInfo(String userID, List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
-                String bio, String hashedPassword, String status, String email, String dateOfBirth,
-                String profilePhotoPath, String coverPhotoPath, List<String> storiesIDs) {
-        this.userID = userID;
-        this.friendsIDs = friendsIDs;
-        this.blockedAccountsIDs = blockedAccountsIDs;
-        this.postsIDs = postsIDs;
-        this.bio = bio;
-        this.hashedPassword = hashedPassword;
-        this.status = status;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.profilePhotoPath = profilePhotoPath;
-        this.coverPhotoPath = coverPhotoPath;
-        this.storiesIDs = storiesIDs;
-    }
+    // Constructor 2 
+//    public UserInfo(String userID,String userName,List<String> friendsIDs, List<String> blockedAccountsIDs, List<String> postsIDs,
+//                String bio, String hashedPassword, String status, String email, String dateOfBirth,
+//                String profilePhotoPath, String coverPhotoPath, List<String> storiesIDs) {
+//        this.userID = userID;
+//        this.userName = userName;
+//        this.friendsIDs = friendsIDs != null ? friendsIDs : new ArrayList<>();
+//        this.blockedAccountsIDs = blockedAccountsIDs != null ? blockedAccountsIDs : new ArrayList<>();
+//        this.postsIDs = postsIDs != null ? postsIDs : new ArrayList<>();
+//        this.bio = bio;
+//        this.hashedPassword = hashedPassword;
+//        this.status = status;
+//        this.email = email;
+//        this.dateOfBirth = dateOfBirth;
+//        this.profilePhotoPath = profilePhotoPath;
+//        this.coverPhotoPath = coverPhotoPath;
+//        this.storiesIDs = storiesIDs != null ? storiesIDs : new ArrayList<>();
+//    }
     // Default constructor JSON used when load
     public UserInfo() {
         
     }
 
     // Getters and Setters
+    
     public String getUserID() {
         return userID;
     }
@@ -59,9 +66,16 @@ public class UserInfo {
     public void setUserID(String userID) {
         this.userID = userID;
     }
+    
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public List<String> getFriendsIDs() {
-        return friendsIDs;
+        return  new ArrayList<>(friendsIDs);
     }
 
     public void setFriendsIDs(List<String> friendsIDs) {
@@ -69,7 +83,7 @@ public class UserInfo {
     }
 
     public List<String> getBlockedAccountsIDs() {
-        return blockedAccountsIDs;
+        return  new ArrayList<>(blockedAccountsIDs);
     }
 
     public void setBlockedAccountsIDs(List<String> blockedAccountsIDs) {
@@ -77,7 +91,7 @@ public class UserInfo {
     }
 
     public List<String> getPostsIDs() {
-        return postsIDs;
+        return  new ArrayList<>(postsIDs);
     }
 
     public void setPostsIDs(List<String> postsIDs) {
@@ -141,18 +155,39 @@ public class UserInfo {
     }
 
     public List<String> getStoriesIDs() {
-        return storiesIDs;
+        return  new ArrayList<>(storiesIDs);
     }
 
     public void setStoriesIDs(List<String> storiesIDs) {
         this.storiesIDs = storiesIDs;
     }
+    public List<String> getFriendsREquest() {
+        return new ArrayList<>(friendsREquest);
+    }
+    public void addFrinedRequestId(String id ){
+        friendsREquest.add(id);
+        
+    }
+    public void removeFirndREuest(String id ){
+        friendsREquest.remove(id);
+        
+    }
+    public void setFriendsREquest(List<String> friendsREquest) {
+        this.friendsREquest = friendsREquest;
+    }
+    
+    @Override
+    public String getUser() {
+        return userID;
+    }
+   
 
     // display user information
     @Override
     public String toString() {
         return "\n[" +
                 "userID: '" + userID + '\'' +
+                ",userName: '" + userName + '\'' +
                 ", friendsIDs=" + friendsIDs +
                 ", blockedAccountsIDs=" + blockedAccountsIDs +
                 ", postsIDs=" + postsIDs +"\n"+
@@ -164,8 +199,8 @@ public class UserInfo {
                 ", profilePhotoPath='" + profilePhotoPath + '\'' +
                 ", coverPhotoPath='" + coverPhotoPath + '\'' +
                 ", storiesIDs=" + storiesIDs +
+                ", friendsREquest=" + friendsREquest +
                 '}';
     }
 }
-
 

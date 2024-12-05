@@ -4,11 +4,14 @@
  */
 package com.MediaApp.UserAccountManagement;
 
-import java.io.IOException;
+import com.MediaApp.DataHandlers.IDataObject;
 import java.util.List;
 
-public interface ListStorageHandler<T> {
-    void saveList(List<T> dataList, String filePath) throws IOException;
+/**
+ *
+ * @author abdah
+ */
+public interface IFindObjById {
+    IDataObject findObjById(String id, List<IDataObject> list);
 
-    List<T> loadList(String filePath) throws IOException;
 }
