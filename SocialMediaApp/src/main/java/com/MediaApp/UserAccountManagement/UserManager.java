@@ -2,16 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.MediaApp;
+package com.MediaApp.UserAccountManagement;
 
-import com.MediaApp.ContentManagement.Test;
 
-/**
- *
- * @author ADMIN
- */
-public class Main {
-    public static void main(String[] args){
-        Test.main();
-    }
+import java.util.List;
+
+interface UserManager {
+    void addUser(UserInfo user);
+    List<UserInfo> getUserInfoList();
 }
