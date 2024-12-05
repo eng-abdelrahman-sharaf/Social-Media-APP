@@ -177,8 +177,35 @@ public class UserInfo implements IDataObject {
     }
     
     @Override
-    public String getUser() {
+    public String getID() {
         return userID;
+    }
+     @Override
+    public void setID(String ID) {
+        
+    }
+    
+    @Override
+    public IDataObject  clone() {
+        UserInfo cloned = new UserInfo();
+        cloned.setUserID(this.userID);
+        cloned.setUserName(this.userName);
+        cloned.setHashedPassword(this.hashedPassword);
+        cloned.setEmail(this.email);
+        cloned.setDateOfBirth(this.dateOfBirth);
+        cloned.setBio(this.bio);
+        cloned.setStatus(this.status);
+        cloned.setProfilePhotoPath(this.profilePhotoPath);
+        cloned.setCoverPhotoPath(this.coverPhotoPath);
+        
+        // Deep clone mutable attributes
+        cloned.setFriendsIDs(new ArrayList<>(this.friendsIDs));
+        cloned.setBlockedAccountsIDs(new ArrayList<>(this.blockedAccountsIDs));
+        cloned.setPostsIDs(new ArrayList<>(this.postsIDs));
+        cloned.setStoriesIDs(new ArrayList<>(this.storiesIDs));
+        cloned.setFriendsREquest(new ArrayList<>(this.friendsREquest));
+        
+        return cloned;
     }
    
 
@@ -202,5 +229,7 @@ public class UserInfo implements IDataObject {
                 ", friendsREquest=" + friendsREquest +
                 '}';
     }
+
+   
 }
 

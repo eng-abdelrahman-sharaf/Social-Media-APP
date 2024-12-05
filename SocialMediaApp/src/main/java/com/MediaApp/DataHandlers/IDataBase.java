@@ -6,10 +6,7 @@ package com.MediaApp.DataHandlers;
 
 import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
-/**
- *
- * @author ADMIN
- */
+
 
 //CRUD => Create Read Update Delete
 public interface IDataBase {

@@ -29,13 +29,13 @@ public class UserInfoStorage {
         userRole.addUser(user2);
         //Save and load the user list
         userRole.saveList(storageHandler);
-        //System.out.println("saved succ" + userRole.getUserInfoList());
+        System.out.println("saved succ" + userRole.getUserInfoList());
 
 //        userRole.loadList(storageHandler);
 //          System.out.println(userRole.getUserInfoList());
         // Print loaded user info
         
-        UserFinder userFinder = new UserFinderImpl(userRole.getUserInfoList());
+//        UserFinder userFinder = new UserFinderImpl(userRole.getUserInfoList());
 //        LoginService loginService = new LoginServiceImpl(userFinder); 
 //        boolean iss= loginService.login("john_doe", "password123");
 //        System.out.println(iss);
@@ -43,13 +43,13 @@ public class UserInfoStorage {
 //        System.out.println(loginService.login("Ali", "hashedPassword1"));
 //        System.out.println(loginService.login("user456@example.com", "hashedPassword2"));
 //        
-       SignUpService signUpService = new SignUpServiceImpl(userFinder, dataValidator, userRole.getUserInfoList());
+//       SignUpService signUpService = new SignUpServiceImpl(userFinder, dataValidator, userRole.getUserInfoList());
 //       String result = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "WeakPass2");
 //        System.out.println(result); 
         
-        String result2 = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "StrongPass1");
+//        String result2 = signUpService.signUp("john_doe", "john@example.com", "1995-05-15", "StrongPass1", "StrongPass1");
         // Console Output: "Success: User signed up successfully!"
-        System.out.println(result2);  // Output: "True, User signed up successfully!"
+//        System.out.println(result2);  // Output: "True, User signed up successfully!"
 //        System.out.println(userRole.getUserInfoList());
 //    for (UserInfo user : userRole.getUserInfoList()) {
 //        System.out.println(user);
