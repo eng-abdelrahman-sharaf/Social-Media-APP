@@ -1,6 +1,7 @@
 package com.MediaApp.UserAccountManagement;
 
 
+import com.MediaApp.DataHandlers.DataObject;
 import com.MediaApp.DataHandlers.IDataObject;
 import com.MediaApp.DataHandlers.JsonMapStorageHandler;
 import com.MediaApp.DataHandlers.MapStorageHandler;
@@ -10,6 +11,7 @@ import com.MediaApp.SignPage.SignUpService;
 import com.MediaApp.SignPage.SignUpServiceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,12 +24,12 @@ public class UserInfoStorage {
         String filePath = "user_data_Map.json";
         
         // Create a storage handler for the HashMap
-        MapStorageHandler<String, IDataObject> storageHandler = new JsonMapStorageHandler<>(String.class, IDataObject.class, filePath);
+        MapStorageHandler<String, UserInfo> storageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
         
         // Get the singleton instance of UserRoleDataBase
         UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
         
-        // Create some user objects
+//         Create some user objects
         UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
         UserInfo user3 = new UserInfo("user789", "Amr", "hashedPassword3", "amr@example.com", "1992-04-20");
@@ -36,8 +38,12 @@ public class UserInfoStorage {
         userRoleDataBase.addObject(user1);
         userRoleDataBase.addObject(user2);
         userRoleDataBase.addObject(user3);
-        
-       // init the file for the first time runnig the prog only
+//        
+//            IDataObject[] users = userRoleDataBase.getData();
+//            System.out.println(Arrays.toString(users));
+
+
+//       // init the file for the first time runnig the prog only
         userRoleDataBase.save();
         // Read a user object
 //        IDataObject retrievedUser = userRoleDataBase.readObject("user123");
@@ -55,8 +61,8 @@ public class UserInfoStorage {
 //        // Delete a user object
 //        userRoleDataBase.deleteObject("user456");
 //        System.out.println("After Deletion, All Users: " + userRoleDataBase.getData());
-//        
-//        // Reload the data to ensure it reflects the current state
+        
+        // Reload the data to ensure it reflects the current state
 //        userRoleDataBase.reload();
 //        System.out.println("Reloaded Users: " + userRoleDataBase.getData());
     }

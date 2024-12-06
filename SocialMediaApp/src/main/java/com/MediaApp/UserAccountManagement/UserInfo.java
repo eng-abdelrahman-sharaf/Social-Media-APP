@@ -2,6 +2,7 @@
 package com.MediaApp.UserAccountManagement;
 
 
+import com.MediaApp.DataHandlers.DataObject;
 import com.MediaApp.DataHandlers.IDataObject;
 import java.util.ArrayList;
 import java.util.List;
@@ -186,7 +187,7 @@ public class UserInfo implements IDataObject {
     }
     
     @Override
-    public IDataObject  clone() {
+    public UserInfo  clone() {
         UserInfo cloned = new UserInfo();
         cloned.setUserID(this.userID);
         cloned.setUserName(this.userName);

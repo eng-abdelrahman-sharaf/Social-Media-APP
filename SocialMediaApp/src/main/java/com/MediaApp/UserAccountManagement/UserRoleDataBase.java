@@ -3,6 +3,7 @@ package com.MediaApp.UserAccountManagement;
 
 
 
+import com.MediaApp.DataHandlers.DataObject;
 import com.MediaApp.DataHandlers.IDataBase;
 import com.MediaApp.DataHandlers.IDataObject;
 import com.MediaApp.DataHandlers.MapStorageHandler;
@@ -16,17 +17,17 @@ import java.util.List;
 public class UserRoleDataBase implements IDataBase {
 
     private static UserRoleDataBase instance;
-    private HashMap<String, IDataObject> dataMap;
-    private MapStorageHandler<String, IDataObject> storageHandler;
+    private HashMap<String, UserInfo> dataMap;
+    private MapStorageHandler<String, UserInfo> storageHandler;
 
-    private UserRoleDataBase(MapStorageHandler<String, IDataObject> handler) {
+    private UserRoleDataBase(MapStorageHandler<String, UserInfo> handler) {
         this.storageHandler = handler;
         this.dataMap = new HashMap<>();
         reload(); // Initial load
     }
 
     // Singleton pattern
-    public static UserRoleDataBase getInstance(MapStorageHandler<String, IDataObject> handler) {
+    public static UserRoleDataBase getInstance(MapStorageHandler<String, UserInfo> handler) {
         if (instance == null) {
             instance = new UserRoleDataBase(handler);
         }
@@ -64,7 +65,7 @@ public class UserRoleDataBase implements IDataBase {
     @Override
     public void addObject(IDataObject object) {
         reload(); // Refresh data
-        dataMap.put(object.getID(), object.clone()); // Store a clone
+        dataMap.put(object.getID(), (UserInfo) object.clone()); // Store a clone
         save(); // Save changes
     }
 
@@ -78,7 +79,7 @@ public class UserRoleDataBase implements IDataBase {
     @Override
     public void update(String ID, IDataObject object) {
         reload(); // Refresh data
-        dataMap.put(ID, object.clone()); // Update with a clone
+        dataMap.put(ID, (UserInfo) object.clone()); // Update with a clone
         save(); // Save changes
     }
 
