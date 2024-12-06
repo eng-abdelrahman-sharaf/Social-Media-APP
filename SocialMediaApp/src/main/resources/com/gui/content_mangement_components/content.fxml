@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 <fx:root type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <VBox fx:id="container" centerShape="false" fillWidth="false" maxWidth="-Infinity" prefHeight="234.0" prefWidth="246.0" spacing="10.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox fx:id="container" centerShape="false" fillWidth="false" maxWidth="Infinity" prefHeight="234.0" prefWidth="246.0" spacing="10.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
       <children>
          <ImageView fx:id="avatar" fitHeight="40.0" fitWidth="40.0">
             <image>
@@ -20,11 +20,6 @@
                <Font name="Corbel" size="13.0" />
             </font>
          </Text>
-         <ImageView fx:id="image" fitHeight="300.0" fitWidth="359.0" pickOnBounds="true">
-            <image>
-               <Image url="@cover.jpg" />
-            </image>
-         </ImageView>
       </children>
       <padding>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

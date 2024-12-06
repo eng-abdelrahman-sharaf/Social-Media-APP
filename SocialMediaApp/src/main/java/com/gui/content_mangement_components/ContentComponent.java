@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ContentComponent extends VBox {
     private double containerWidth = 250;
@@ -22,8 +23,9 @@ public class ContentComponent extends VBox {
     @FXML
     private VBox container;
 
-    @FXML
-    private ImageView image;
+    private ArrayList<ImageView> images;
+
+    private String[] links;
 
     @FXML
     private Text text;
@@ -34,6 +36,7 @@ public class ContentComponent extends VBox {
         FXMLLoader loader = new FXMLLoader(ContentComponent.class.getResource("content.fxml"));
         loader.setRoot(this);
         loader.setController(this);
+        this.images = new ArrayList<>();
         try {
             loader.load();
         } catch (IOException e) {
@@ -45,15 +48,25 @@ public class ContentComponent extends VBox {
         this.Medium = medium;
         this.text.setText(medium.getContent().getText());
 
-        try{
-            this.image.setImage(new Image("/fka.gkp"));
-        }catch (IllegalArgumentException e){
-            this.image.setFitHeight(0);
-            this.image.setFitWidth(0);
-            this.image.setImage(null);
+        // the link will be like /com/gui/content_mangement_components/cover.jpg
+        this.links = medium.getContent().getAttachments();
+        for(int i = 0 ;i <links.length ; i++){
+            try{
+                images.add(i, new ImageView());
+                System.out.println(i);
+                container.getChildren().add(images.get(i));
+                images.get(i).setImage(new Image(links[i]));
+                System.out.println("images loaded successfully");
+            }catch (IllegalArgumentException e){
+                images.get(i).setFitHeight(0);
+                images.get(i).setFitWidth(0);
+                images.get(i).setImage(null);
+            }
+            catch (IndexOutOfBoundsException e){
+                System.out.println("index out of bounds");
+            }
         }
-
-
+        setContainerWidth(containerWidth);
     }
 
     public IMedium getMedium() {
@@ -69,14 +82,18 @@ public class ContentComponent extends VBox {
         text.setWrappingWidth(innerWidth);
         avatar.setFitWidth(40);
         avatar.setFitHeight(40);
-        try {
-            double imageWidth = image.getImage().getWidth();
-            double imageHeight = image.getImage().getHeight();
-            double ratio = imageHeight / imageWidth;
-            image.setFitWidth(innerWidth);
-            image.setFitHeight(innerWidth * ratio);
-        }catch (NullPointerException e){
-            
+        for(int i = 0 ; i < images.size() ; i++){
+
+            try {
+                double imageWidth = images.get(i).getImage().getWidth();
+                double imageHeight = images.get(i).getImage().getHeight();
+                double ratio = imageHeight / imageWidth;
+                images.get(i).setFitWidth(innerWidth);
+                images.get(i).setFitHeight(innerWidth);
+                images.get(i).setFitHeight(innerWidth * ratio);
+            }catch (NullPointerException e){
+
+            }
         }
     }
 
