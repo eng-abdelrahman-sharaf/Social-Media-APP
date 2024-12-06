@@ -1,5 +1,7 @@
 package com.MediaApp.ContentManagement;
 
+import com.MediaApp.DataHandlers.IDataObject;
+
 import java.time.Instant;
 
 public class Medium implements IMedium{
@@ -36,6 +38,15 @@ public class Medium implements IMedium{
     @Override
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    @Override
+    public Medium clone() {
+        try {
+            return (Medium) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("not cloneable");
+        }
     }
 
     @Override
