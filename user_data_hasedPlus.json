@@ -1,0 +1,53 @@
+{
+  "user456" : {
+    "userID" : "user456",
+    "userName" : "Omar",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ ],
+    "bio" : null,
+    "hashedPassword" : "hashedPassword2",
+    "status" : null,
+    "email" : "user456@example.com",
+    "dateOfBirth" : "1992-07-20",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ ],
+    "id" : "user456"
+  },
+  "user123" : {
+    "userID" : "user123",
+    "userName" : "Ali",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ ],
+    "bio" : null,
+    "hashedPassword" : "hashedPassword1",
+    "status" : null,
+    "email" : "user123@example.com",
+    "dateOfBirth" : "1990-05-15",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ ],
+    "id" : "user123"
+  },
+  "user6" : {
+    "userID" : "user6",
+    "userName" : "Amr",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ ],
+    "bio" : null,
+    "hashedPassword" : "hashedPassword4",
+    "status" : null,
+    "email" : "user42356@example.com",
+    "dateOfBirth" : "1992-04-20",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ ],
+    "id" : "user6"
+  }
+}
