@@ -1,5 +1,6 @@
 package com.MediaApp.NewsFeed;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
@@ -69,4 +70,23 @@ public class MainController {
 //        }
 //    }
 //
+
+    @FXML
+    private void ProfileButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void ViewRequestButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void RefreshButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void LogoutButtonAction(ActionEvent event) {
+        
+    }
+    
+    
 }
