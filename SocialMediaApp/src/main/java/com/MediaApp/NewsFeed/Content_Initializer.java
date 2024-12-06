@@ -3,6 +3,7 @@ package com.MediaApp.NewsFeed;
 import com.MediaApp.ContentManagement.Content;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.ContentManagement.Story;
+import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -62,17 +63,27 @@ public class Content_Initializer {
 
         String caption = Caption.getText();
         if (!caption.isEmpty()) {
-            Content content = new Content(caption);
+            Content content = new Content();
+            content.setText(caption);
             UUID postId = UUID.randomUUID();
             if(type.equalsIgnoreCase("post")) {
-                Post newPost = new Post(postId.toString(), currentUser.getID(), content, Instant.now());
+                Post newPost = new Post();
+                newPost.setID(postId.toString());
+                newPost.setAuthorID(currentUser.getID());
+                newPost.setContent(content);
+                newPost.setTimeStamp(String.valueOf(Instant.now()));
                 List<String> ps = currentUser.getPostsIDs();
                 ps.add(postId.toString());
                 currentUser.setPostsIDs(ps);
+                PostDataBase.getInstance(null).addObject(newPost);
                 System.out.println("post created");
             }
             else{
-                Story newStory = new Story(postId.toString(), currentUser.getID(), content, Instant.now());
+                Story newStory = new Story();
+                newStory.setID(postId.toString());
+                newStory.setAuthorID(currentUser.getID());
+                newStory.setContent(content);
+                newStory.setTimeStamp(String.valueOf(Instant.now()));
                 System.out.println("Story created");
                 List<String> ss = currentUser.getStoriesIDs();
                 ss.add(postId.toString());
@@ -82,7 +93,7 @@ public class Content_Initializer {
             System.out.println("Post created with caption: " + caption);
 
             if (selectedImage != null) {
-                content.addAttachment(selectedImage);
+                content.setAttachments(new String[]{selectedImage});
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

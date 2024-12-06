@@ -1,6 +1,23 @@
 {
-  "user456" : {
-    "userID" : "user456",
+  "gogo" : {
+    "userID" : "gogo",
+    "userName" : "Amr",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ ],
+    "bio" : null,
+    "hashedPassword" : "hashedPassword3",
+    "status" : null,
+    "email" : "amr@example.com",
+    "dateOfBirth" : "1992-04-20",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ ],
+    "id" : "gogo"
+  },
+  "magdi" : {
+    "userID" : "magdi",
     "userName" : "Omar",
     "friendsIDs" : [ ],
     "blockedAccountsIDs" : [ ],
@@ -8,16 +25,16 @@
     "bio" : null,
     "hashedPassword" : "hashedPassword2",
     "status" : null,
-    "email" : "user456@example.com",
+    "email" : "omar@example.com",
     "dateOfBirth" : "1992-07-20",
     "profilePhotoPath" : null,
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
     "friendsREquest" : [ ],
-    "id" : "user456"
+    "id" : "magdi"
   },
-  "user123" : {
-    "userID" : "user123",
+  "ali" : {
+    "userID" : "ali",
     "userName" : "Ali",
     "friendsIDs" : [ ],
     "blockedAccountsIDs" : [ ],
@@ -25,29 +42,12 @@
     "bio" : null,
     "hashedPassword" : "hashedPassword1",
     "status" : null,
-    "email" : "user123@example.com",
+    "email" : "ali@example.com",
     "dateOfBirth" : "1990-05-15",
     "profilePhotoPath" : null,
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
     "friendsREquest" : [ ],
-    "id" : "user123"
-  },
-  "user6" : {
-    "userID" : "user6",
-    "userName" : "Amr",
-    "friendsIDs" : [ ],
-    "blockedAccountsIDs" : [ ],
-    "postsIDs" : [ ],
-    "bio" : null,
-    "hashedPassword" : "hashedPassword4",
-    "status" : null,
-    "email" : "user42356@example.com",
-    "dateOfBirth" : "1992-04-20",
-    "profilePhotoPath" : null,
-    "coverPhotoPath" : null,
-    "storiesIDs" : [ ],
-    "friendsREquest" : [ ],
-    "id" : "user6"
+    "id" : "ali"
   }
 }

@@ -7,7 +7,7 @@ import com.MediaApp.DataHandlers.JsonMapStorageHandler;
 import com.MediaApp.DataHandlers.MapStorageHandler;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
-import com.MediaApp.SignPage.SignUpService;
+import com.MediaApp.SignPage.SignUpService;     
 import com.MediaApp.SignPage.SignUpServiceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ public class UserInfoStorage {
 
     public static void main(String[] args) throws IOException {
       
-//              
-        
-        String filePath = "user_data_Map.json";
+//
+
+        String filePath = "user.json";
         
         // Create a storage handler for the HashMap
         MapStorageHandler<String, UserInfo> storageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
@@ -30,14 +30,15 @@ public class UserInfoStorage {
         UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
         
 //         Create some user objects
-        UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
-        UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
-        UserInfo user3 = new UserInfo("user789", "Amr", "hashedPassword3", "amr@example.com", "1992-04-20");
+        UserInfo user1 = new UserInfo("ali", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
+        UserInfo user2 = new UserInfo("magdi", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
+        UserInfo user3 = new UserInfo("gogo", "Amr", "hashedPassword3", "amr@example.com", "1992-04-20");
 
         // Add users to the database
         userRoleDataBase.addObject(user1);
         userRoleDataBase.addObject(user2);
         userRoleDataBase.addObject(user3);
+
 //        
 //            IDataObject[] users = userRoleDataBase.getData();
 //            System.out.println(Arrays.toString(users));

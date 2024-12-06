@@ -3,6 +3,7 @@ package com.MediaApp.NewsFeed;
 import com.MediaApp.ContentManagement.Content;
 import com.MediaApp.ContentManagement.IContent;
 import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.Main;
 import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,8 @@ public class test extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewsFeedTemplate/NewsFeed.fxml"));
             Scene scene = new Scene(loader.load());
 
+            Main.dataLoading();
+
             // Get the controller from the FXMLloader
             MainController controller = loader.getController();
             UserInfo bora3y = new UserInfo("BORA3Y", "BOR3Y", "lakssd", "BORA3Y@example.com", "01/01/1990");
@@ -33,8 +36,14 @@ public class test extends Application {
             // Pass the list of users to the controller's load method
 
             List<Post> posts = new ArrayList<>();
-            IContent content = new Content("sdljfdlkana");
-            posts.add(new Post("asi", "asd", content,Instant.now()));
+            Content content = new Content();
+            content.setText("Hello World");
+            Post post = new Post();
+            post.setID("asi");
+            post.setAuthorID("asd");
+            post.setContent(content);
+            post.setTimeStamp(String.valueOf(Instant.now()));
+            posts.add(post);
             controller.load(users.get(0),users,users, posts);
             // Set the scene and show the stage
             stage.setScene(scene);

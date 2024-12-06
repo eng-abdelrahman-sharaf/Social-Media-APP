@@ -1,8 +1,11 @@
 package com.MediaApp.NewsFeed;
 
 import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.DataHandlers.PostDataBase;
+import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.List;
 
@@ -142,7 +146,16 @@ public class MainController {
 
     @FXML
     private void RefreshButtonAction(ActionEvent event) {
-
+        PostDataBase.getInstance(null).reload();
+        UserRoleDataBase userdb = UserRoleDataBase.getInstance(null);
+        userdb.reload();
+        StoryDataBase.getInstance(null).reload();
+        ArrayList<UserInfo> users = new ArrayList<>();
+        for(String userid : Owner.getFriendsIDs()){
+            users.add((UserInfo)userdb.readObject(userid));
+        }
+        System.out.println(users);
+        load(this.Owner , users , users , null);
     }
 
 
