@@ -6,10 +6,7 @@ package com.MediaApp.DataHandlers;
 
 import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
-/**
- *
- * @author ADMIN
- */
+
 
 //CRUD => Create Read Update Delete
 public interface IDataBase {
@@ -42,6 +39,7 @@ public interface IDataBase {
 
     
     // Reload the database to get the latest data
+    // it is used when the refresh button is clicked
     public void reload();
     
     // Save the database to keep the data
