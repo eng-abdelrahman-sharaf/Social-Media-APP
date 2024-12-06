@@ -14,7 +14,9 @@ import java.util.HashMap;
  * @author abdah
  */
 
-public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
+//public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
+public class JsonMapStorageHandler<K, V extends IDataObject> implements MapStorageHandler<K, V> {  
+
     private final String filePath;
     private final Class<K> keyType;
     private final Class<V> valueType;
