@@ -4,10 +4,9 @@ module com.example.socialmedia {
     requires java.desktop;
 
 
-    opens com.MediaApp to javafx.fxml;
-    exports com.MediaApp;
-    exports com.MediaApp.ContentManagement;
-    opens com.MediaApp.ContentManagement to javafx.fxml;
+    exports com.MediaApp.ContentManagement to javafx.fxml;
+    opens com.MediaApp.ContentManagement;
+
     exports com.MediaApp.NewsFeed;
     opens com.MediaApp.NewsFeed to javafx.fxml;
     requires com.fasterxml.jackson.core;
@@ -17,4 +16,6 @@ module com.example.socialmedia {
     exports SuggestedUsers;
     opens SuggestedUsers to javafx.fxml;
 
+    exports com.gui.content_mangement_components to javafx.fxml;
+    opens com.gui.content_mangement_components;
 }
