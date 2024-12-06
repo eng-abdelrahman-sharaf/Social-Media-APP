@@ -1,12 +1,17 @@
 package com.MediaApp.UserAccountManagement;
 
+
+import com.MediaApp.DataHandlers.DataObject;
+import com.MediaApp.DataHandlers.IDataObject;
 import com.MediaApp.DataHandlers.JsonMapStorageHandler;
+import com.MediaApp.DataHandlers.MapStorageHandler;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
 import com.MediaApp.SignPage.SignUpService;
 import com.MediaApp.SignPage.SignUpServiceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,35 +19,54 @@ public class UserInfoStorage {
 
     public static void main(String[] args) throws IOException {
       
-                
-        String filePath = "user_data_hasedPlus.json";
-        JsonMapStorageHandler<String, UserInfo> MapStorageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
-
+//              
         
-        HashMap<String, UserInfo> userMap = new HashMap<>();
+        String filePath = "user_data_Map.json";
+        
+        // Create a storage handler for the HashMap
+        MapStorageHandler<String, UserInfo> storageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
+        
+        // Get the singleton instance of UserRoleDataBase
+        UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
+        
+//         Create some user objects
+        UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
+        UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
+        UserInfo user3 = new UserInfo("user789", "Amr", "hashedPassword3", "amr@example.com", "1992-04-20");
 
-        // Example UserInfo objects to add to the map
-        UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
-        UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "user456@example.com", "1992-07-20");
-        UserInfo user3 = new UserInfo("user6", "Amr", "hashedPassword4", "user42356@example.com", "1992-04-20");
-
-        // Add users to the map using their userID as the key
-        userMap.put(user1.getUserID(), user1);
-        userMap.put(user2.getUserID(), user2);
-        userMap.put(user3.getUserID(), user3);
-
-        // Save the map of users using JsonMapStorageHandler
-        MapStorageHandler.saveMap(userMap);
-        System.out.println("Saved successfully! User map: " + userMap);
-
-        // Load the map of users back from the JSON file
-        HashMap<String, UserInfo> loadedUserMap = MapStorageHandler.loadMap();
-        System.out.println("Loaded successfully! User map: " + loadedUserMap);
-
-
-
+        // Add users to the database
+        userRoleDataBase.addObject(user1);
+        userRoleDataBase.addObject(user2);
+        userRoleDataBase.addObject(user3);
+//        
+//            IDataObject[] users = userRoleDataBase.getData();
+//            System.out.println(Arrays.toString(users));
 
 
+//       // init the file for the first time runnig the prog only
+        userRoleDataBase.save();
+        // Read a user object
+//        IDataObject retrievedUser = userRoleDataBase.readObject("user123");
+//        System.out.println("Retrieved User: " + retrievedUser);
+
+        // Update a user object
+//        UserInfo updatedUser = new UserInfo("user123", "Ali Updated", "newHashedPassword", "ali.updated@example.com", "1990-05-15");
+//        userRoleDataBase.update("user123", updatedUser);
+//        System.out.println("Updated User: " + userRoleDataBase.readObject("user123"));
+//
+//        // Get all users
+//        IDataObject[] allUsers = userRoleDataBase.getData();
+//        System.out.println("All Users: " + allUsers);
+//
+//        // Delete a user object
+//        userRoleDataBase.deleteObject("user456");
+//        System.out.println("After Deletion, All Users: " + userRoleDataBase.getData());
+        
+        // Reload the data to ensure it reflects the current state
+//        userRoleDataBase.reload();
+//        System.out.println("Reloaded Users: " + userRoleDataBase.getData());
+    }
+}
 
 
 
@@ -60,16 +84,51 @@ public class UserInfoStorage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//        String filePath = "user_data_hasedPlus.json";
+//        JsonMapStorageHandler<String, UserInfo> MapStorageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
+//
+//        
+//        HashMap<String, UserInfo> userMap = new HashMap<>();
+//
+//        // Example UserInfo objects to add to the map
+//        UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
+//        UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "user456@example.com", "1992-07-20");
+//        UserInfo user3 = new UserInfo("user6", "Amr", "hashedPassword4", "user42356@example.com", "1992-04-20");
+//
+//        // Add users to the map using their userID as the key
+//        userMap.put(user1.getUserID(), user1);
+//        userMap.put(user2.getUserID(), user2);
+//        userMap.put(user3.getUserID(), user3);
+//
+//        // Save the map of users using JsonMapStorageHandler
+//        MapStorageHandler.saveMap(userMap);
+//        System.out.println("Saved successfully! User map: " + userMap);
+//
+//        // Load the map of users back from the JSON file
+//        HashMap<String, UserInfo> loadedUserMap = MapStorageHandler.loadMap();
+//        System.out.println("Loaded successfully! User map: " + loadedUserMap);
 
 
 
 // Create instances of UserRole and JSON storage handler
 //        UserRole userRole = new UserRole();
-        String filePath2 = "user_data_hased.json";
+//        String filePath2 = "user_data_hased.json";
 //        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath2);
 //        UserRole userRole = new UserRole();
-        DataValidator dataValidator = new DataValidatorImpl();
-        
+//        DataValidator dataValidator = new DataValidatorImpl();
+//        
         
 //        UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
 //        UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
@@ -117,9 +176,9 @@ public class UserInfoStorage {
 //    for (UserInfo user : userRole.getUserInfoList()) {
 //        System.out.println(user);
 //  }
-    }
+//    }
 
-}
+//}
 
 
 
