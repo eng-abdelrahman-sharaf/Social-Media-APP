@@ -26,7 +26,6 @@ public class ContentContainerComponent extends  VBox{
 
 
     public ContentContainerComponent() {
-        JOptionPane.showMessageDialog(null,ContentContainerComponent.class.getResource("contentContainer.fxml"));
         FXMLLoader loader = new FXMLLoader(ContentContainerComponent.class.getResource("contentContainer.fxml"));
         loader.setRoot(this);
         loader.setController(this);

@@ -66,8 +66,8 @@ public class UserInfoStorage {
 // Create instances of UserRole and JSON storage handler
 //        UserRole userRole = new UserRole();
         String filePath2 = "user_data_hased.json";
-        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath2);
-        UserRole userRole = new UserRole();
+//        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath2);
+//        UserRole userRole = new UserRole();
         DataValidator dataValidator = new DataValidatorImpl();
         
         

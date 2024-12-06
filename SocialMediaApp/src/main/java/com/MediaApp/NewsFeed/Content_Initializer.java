@@ -1,7 +1,6 @@
 package com.MediaApp.NewsFeed;
 
 import com.MediaApp.ContentManagement.Content;
-import com.MediaApp.ContentManagement.IContent;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.ContentManagement.Story;
 import com.MediaApp.UserAccountManagement.UserInfo;
@@ -9,14 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Consumer;
 
 public class Content_Initializer {
 

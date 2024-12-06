@@ -1,10 +1,8 @@
 package com.MediaApp.NewsFeed;
 
-import com.MediaApp.ContentManagement.IMedium;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.UserInfo;
-import com.gui.content_mangement_components.ContentContainerComponent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,7 +19,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.Instant;
 import java.util.Objects;
 import java.util.List;
 

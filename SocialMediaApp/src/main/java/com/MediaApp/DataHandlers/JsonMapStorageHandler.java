@@ -14,7 +14,9 @@ import java.util.HashMap;
  * @author abdah
  */
 
-public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
+//public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
+public class JsonMapStorageHandler<K, V extends IDataObject> implements MapStorageHandler<K, V> {  
+
     private final String filePath;
     private final Class<K> keyType;
     private final Class<V> valueType;
@@ -33,9 +35,14 @@ public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
 
     @Override
     public HashMap<K, V> loadMap() throws IOException {
+         File file = new File(filePath);
+        if (!file.exists()) {
+            return new HashMap<>(); // Return an empty HashMap if the file doesn't exist
+        }
+
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(
-            new File(filePath),
+            file,
             objectMapper.getTypeFactory().constructMapType(HashMap.class, keyType, valueType)
         );
     }

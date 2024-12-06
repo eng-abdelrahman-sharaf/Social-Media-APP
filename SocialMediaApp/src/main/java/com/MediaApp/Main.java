@@ -6,6 +6,8 @@ package com.MediaApp;
 
 //import com.MediaApp.GUI.App;
 
+import com.MediaApp.DataHandlers.DataObject;
+
 /**
  *
  * @author ADMIN
@@ -15,5 +17,6 @@ public class Main {
 //        Test.main();
 //        ProfileApp.main(args);
 //          App.main(args);
+        DataObject obj = new DataObject();
     }
 }
