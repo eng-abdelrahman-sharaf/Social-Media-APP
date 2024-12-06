@@ -5,6 +5,7 @@ package com.MediaApp.UserAccountManagement;
 
 import com.MediaApp.DataHandlers.IDataBase;
 import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.DataHandlers.MapStorageHandler;
 import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
 import java.io.IOException;
@@ -16,16 +17,16 @@ public class UserRoleDataBase implements IDataBase {
 
     private static UserRoleDataBase instance;
     private HashMap<String, IDataObject> dataMap;
-    private ListStorageHandler<IDataObject> storageHandler;
+    private MapStorageHandler<String, IDataObject> storageHandler;
 
-    private UserRoleDataBase(ListStorageHandler<IDataObject> handler) {
+    private UserRoleDataBase(MapStorageHandler<String, IDataObject> handler) {
         this.storageHandler = handler;
         this.dataMap = new HashMap<>();
         reload(); // Initial load
     }
 
     // Singleton pattern
-    public static UserRoleDataBase getInstance(ListStorageHandler<IDataObject> handler) {
+    public static UserRoleDataBase getInstance(MapStorageHandler<String, IDataObject> handler) {
         if (instance == null) {
             instance = new UserRoleDataBase(handler);
         }
@@ -43,7 +44,21 @@ public class UserRoleDataBase implements IDataBase {
     public IDataObject[] getData() {
         return dataMap.values().stream()
                 .map(IDataObject::clone)
-                .toArray(IDataObject[]::new); // Return cloned objects
+                .toArray(IDataObject[]::new); // Return cloned objects in Array
+        // if you want Return hashMap use the following code 
+        
+        // Create a new HashMap to store cloned objects
+//        HashMap<String, IDataObject> clonedDataMap = new HashMap<>();
+//
+//        // Populate the cloned map with cloned objects
+//        for (Map.Entry<String, IDataObject> entry : dataMap.entrySet()) {
+//            clonedDataMap.put(entry.getKey(), entry.getValue().clone());
+//        }
+//
+//        return clonedDataMap; // Return the HashMap of cloned objects
+
+        
+        
     }
 
     @Override
@@ -70,11 +85,7 @@ public class UserRoleDataBase implements IDataBase {
     @Override
     public void reload() {
         try {
-            List<IDataObject> loadedData = storageHandler.loadList();
-            dataMap.clear(); // Clear current data
-            for (IDataObject obj : loadedData) {
-                dataMap.put(obj.getID(), obj); // Add loaded objects to map
-            }
+            dataMap = storageHandler.loadMap(); // Load the HashMap from storage
         } catch (IOException e) {
             e.printStackTrace(); // Handle exception
         }
@@ -83,7 +94,7 @@ public class UserRoleDataBase implements IDataBase {
     @Override
     public void save() {
         try {
-            storageHandler.saveList(new ArrayList<>(dataMap.values())); // Save map values
+            storageHandler.saveMap(dataMap); // Save the HashMap
         } catch (IOException e) {
             e.printStackTrace(); // Handle exception
         }
