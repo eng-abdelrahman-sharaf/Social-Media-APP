@@ -14,27 +14,39 @@ public class UserInfoStorage {
     public static void main(String[] args) throws IOException {
         // Create instances of UserRole and JSON storage handler
 //        UserRole userRole = new UserRole();
-        String filePath = "user_data.json";
+        String filePath = "user_data_hased.json";
         JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
         UserRole userRole = new UserRole();
         DataValidator dataValidator = new DataValidatorImpl();
         
         
-        UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
-        UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
-        
-//        System.out.println(user1 instanceof UserInfo);
-        // Add users to the role
+//        UserInfo user1 = new UserInfo("user123","Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
+//        UserInfo user2 = new UserInfo("user456","omar", "hashedPassword2", "user456@example.com", "1992-07-20");
+//        UserInfo user3 = new UserInfo("user6","amr", "hashedPassword4", "user42356@example.com", "1992-04-20");
+//        
+////        System.out.println(user1 instanceof UserInfo);
+//        // Add users to the role
 //        userRole.addUser(user1);
 //        userRole.addUser(user2);
-//        //Save and load the user list
+//        userRole.addUser(user3);
+        
+        //Save and load the user list
 //        userRole.saveList(storageHandler);
 //        System.out.println("saved succ" + userRole.getUserInfoList());
 
-//        userRole.loadList(storageHandler);
-//          System.out.println(userRole.getUserInfoList());
-        // Print loaded user info
+        userRole.loadList(storageHandler);
+          System.out.println(userRole.getUserInfoList());
+//       //  Print loaded user info
         
+//        storageHandler.saveList(userRole.getUserInfoList());
+//        System.out.println("Saved successfully: " + userRole.getUserInfoList());
+
+        // Load the user list
+//        userRole.loadList(storageHandler);
+//        System.out.println("Loaded users: " + userRole.getUserInfoList());
+//    }
+
+
 //        UserFinder userFinder = new UserFinderImpl(userRole.getUserInfoList());
 //        LoginService loginService = new LoginServiceImpl(userFinder); 
 //        boolean iss= loginService.login("john_doe", "password123");
