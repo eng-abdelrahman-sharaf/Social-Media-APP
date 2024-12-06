@@ -6,6 +6,7 @@
 package com.MediaApp.UserAccountManagement;
 
 import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.DataHandlers.ListStorageHandler;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

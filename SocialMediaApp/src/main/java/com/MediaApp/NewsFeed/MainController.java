@@ -35,12 +35,12 @@ public class MainController {
     private VBox ContentPane;
 
     public void initialize() {
-        setButtonIcon(RefreshButton, "/com/Icons/refresh-button.png");
-        setButtonIcon(LogoutButton, "/com/Icons/check-out.png");
-        setButtonIcon(ProfileButton, "/com/Icons/user.png");
-        setButtonIcon(ViewRequestsButton, "/com/Icons/add-friend.png");
+        setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
+        setButtonIcon(LogoutButton, "/Icons/check-out.png");
+        setButtonIcon(ProfileButton, "/Icons/user.png");
+        setButtonIcon(ViewRequestsButton, "/Icons/add-friend.png");
 
-        logo.setImage(new Image(Objects.requireNonNull(getClass().getResource("/com/Icons/Logo.png")).toExternalForm()));
+        logo.setImage(new Image(Objects.requireNonNull(getClass().getResource("/Icons/Logo.png")).toExternalForm()));
         logo.setFitHeight(60);
         logo.setFitWidth(60);
 

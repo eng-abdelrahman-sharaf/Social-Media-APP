@@ -7,7 +7,7 @@
             userInfoList = storageHandler.loadList();
 
 */
-package com.MediaApp.UserAccountManagement;
+package com.MediaApp.DataHandlers;
 
 import java.io.IOException;
 import java.util.List;
