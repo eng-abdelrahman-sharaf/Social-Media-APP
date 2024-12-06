@@ -16,6 +16,23 @@
     "friendsREquest" : [ ],
     "id" : "gogo"
   },
+  "nogea" : {
+    "userID" : "nogea",
+    "userName" : "Ali",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ ],
+    "bio" : null,
+    "hashedPassword" : "hashedPassword1",
+    "status" : null,
+    "email" : "ali@example.com",
+    "dateOfBirth" : "1990-05-15",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ ],
+    "id" : "nogea"
+  },
   "magdi" : {
     "userID" : "magdi",
     "userName" : "Omar",

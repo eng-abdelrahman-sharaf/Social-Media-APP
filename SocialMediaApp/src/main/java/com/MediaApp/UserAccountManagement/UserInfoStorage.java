@@ -30,7 +30,7 @@ public class UserInfoStorage {
         UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
         
 //         Create some user objects
-        UserInfo user1 = new UserInfo("ali", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
+        UserInfo user1 = new UserInfo("nogea", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("magdi", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
         UserInfo user3 = new UserInfo("gogo", "Amr", "hashedPassword3", "amr@example.com", "1992-04-20");
 

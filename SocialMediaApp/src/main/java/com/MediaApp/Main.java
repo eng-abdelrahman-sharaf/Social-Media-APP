@@ -12,6 +12,8 @@ import com.MediaApp.DataHandlers.*;
 import com.MediaApp.UserAccountManagement.UserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 
+import com.MediaApp.NewsFeed.test;
+
 /**
  *
  * @author ADMIN
@@ -20,7 +22,7 @@ public class Main {
     public static void dataLoading(){
         String postFilePath = "post.json";
         String storyFilePath = "story.json";
-        String userFilePath = "/user.json";
+        String userFilePath = "user.json";
         // Create a storage handler for the HashMap
         MapStorageHandler<String, Post> postHandler = new JsonMapStorageHandler<>(String.class, Post.class, postFilePath);
         MapStorageHandler<String, Story> storyHandler = new JsonMapStorageHandler<>(String.class, Story.class, storyFilePath);
@@ -28,9 +30,13 @@ public class Main {
         // Get the singleton instance of UserRoleDataBase
         PostDataBase.getInstance(postHandler);
         StoryDataBase.getInstance(storyHandler);
-        UserInfo user = new UserInfo();
-        user.setBio("bio");
-        UserRoleDataBase.getInstance(userHandler).addObject(user);
+//        UserInfo user = new UserInfo();
+//        user.setBio("bio");
+        UserRoleDataBase.getInstance(userHandler);
 
+    }
+
+    public static void main(String[] args) {
+        test.main(null);
     }
 }
