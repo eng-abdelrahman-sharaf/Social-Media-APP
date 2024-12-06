@@ -6,7 +6,7 @@ public class Content implements IContent {
     String text;
     ArrayList<String> images;
 
-    Content(String text) {
+    public Content(String text) {
         images = new ArrayList<>();
         setText(text);
     }
