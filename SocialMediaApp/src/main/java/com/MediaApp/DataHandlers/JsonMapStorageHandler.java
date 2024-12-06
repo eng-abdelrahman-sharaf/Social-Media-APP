@@ -35,9 +35,14 @@ public class JsonMapStorageHandler<K, V extends IDataObject> implements MapStora
 
     @Override
     public HashMap<K, V> loadMap() throws IOException {
+         File file = new File(filePath);
+        if (!file.exists()) {
+            return new HashMap<>(); // Return an empty HashMap if the file doesn't exist
+        }
+
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(
-            new File(filePath),
+            file,
             objectMapper.getTypeFactory().constructMapType(HashMap.class, keyType, valueType)
         );
     }
