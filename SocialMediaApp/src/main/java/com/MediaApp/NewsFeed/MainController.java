@@ -1,6 +1,9 @@
 package com.MediaApp.NewsFeed;
 
+import SuggestedUsers.UserNodeController;
+import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.fxml.FXML;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -8,8 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
 import java.util.Objects;
+import java.util.List;
 
 public class MainController {
+
     @FXML
     private ImageView logo;
 
@@ -34,7 +39,17 @@ public class MainController {
     @FXML
     private VBox ContentPane;
 
-    public void initialize() {
+    @FXML
+    private Button PostButton;
+
+    @FXML
+    private HBox SuggestedFriendsPane;
+
+    @FXML
+    private VBox FriendsStatusPane;
+
+    public void load(List<UserInfo> Suggestedusers, List<UserInfo> Friends /* posts*/) {
+        // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
         setButtonIcon(LogoutButton, "/Icons/check-out.png");
         setButtonIcon(ProfileButton, "/Icons/user.png");
@@ -47,7 +62,8 @@ public class MainController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
 
-
+        createSuggestedUsers(Suggestedusers);
+        createFriendStatus(Friends);
     }
 
     private void setButtonIcon(Button button, String imagePath) {
@@ -57,18 +73,28 @@ public class MainController {
         button.setGraphic(icon);
     }
 
+    // this method takes a list of UserInfo objects as a parameter and adds them to the SuggestedFriendsPane
+    public void createSuggestedUsers(List<UserInfo> users) {
+        for (UserInfo user : users) {
+            if (user.getProfilePhotoPath() == null) {
+                user.setProfilePhotoPath("/Icons/user.png");
+            }
+            UserNodeController controller = new UserNodeController();
+            SuggestedFriendsPane.getChildren().add(controller.createUserNode(user));
+        }
+    }
 
-//    public void addPost(Post post) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/MediaApp/template/ImagePost.fxml"));
-//            AnchorPane postNode = loader.load();
-//
-//            ImagePostController controller = loader.getController();
-//            controller.setPost(post);
-//            ContentPane.getChildren().add(postNode);
-//        } catch (IOException e) {
-//            System.err.println("Error loading the post: " + e.getMessage());
-//        }
-//    }
-//
+    public void createFriendStatus(List<UserInfo> users) {
+        for (UserInfo user : users) {
+            if (user.getProfilePhotoPath() == null) {
+                user.setProfilePhotoPath("/Icons/user.png");
+            }
+
+            if (user.getStatus() != null ){
+                UserNodeController controller = new UserNodeController();
+                FriendsStatusPane.getChildren().add(controller.createUserNode(user));
+            }
+
+        }
+    }
 }
