@@ -1,24 +1,44 @@
 package com.MediaApp.UserAccountManagement;
 
 
+import com.MediaApp.DataHandlers.JsonMapStorageHandler;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
 import com.MediaApp.SignPage.SignUpService;
 import com.MediaApp.SignPage.SignUpServiceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class UserInfoStorage {
 
     public static void main(String[] args) throws IOException {
       
+                
+        String filePath = "user_data_hasedPlus.json";
+        JsonMapStorageHandler<String, UserInfo> MapStorageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
+
         
+        HashMap<String, UserInfo> userMap = new HashMap<>();
 
+        // Example UserInfo objects to add to the map
+        UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "user123@example.com", "1990-05-15");
+        UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "user456@example.com", "1992-07-20");
+        UserInfo user3 = new UserInfo("user6", "Amr", "hashedPassword4", "user42356@example.com", "1992-04-20");
 
+        // Add users to the map using their userID as the key
+        userMap.put(user1.getUserID(), user1);
+        userMap.put(user2.getUserID(), user2);
+        userMap.put(user3.getUserID(), user3);
 
+        // Save the map of users using JsonMapStorageHandler
+        MapStorageHandler.saveMap(userMap);
+        System.out.println("Saved successfully! User map: " + userMap);
 
-
+        // Load the map of users back from the JSON file
+        HashMap<String, UserInfo> loadedUserMap = MapStorageHandler.loadMap();
+        System.out.println("Loaded successfully! User map: " + loadedUserMap);
 
 
 
@@ -46,8 +66,8 @@ public class UserInfoStorage {
 
 // Create instances of UserRole and JSON storage handler
 //        UserRole userRole = new UserRole();
-        String filePath = "user_data_hased.json";
-        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
+        String filePath2 = "user_data_hased.json";
+        JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath2);
         UserRole userRole = new UserRole();
         DataValidator dataValidator = new DataValidatorImpl();
         
@@ -63,8 +83,8 @@ public class UserInfoStorage {
 //        userRole.addUser(user3);
         
         //Save and load the user list
-        userRole.saveList(storageHandler);
-        System.out.println("saved succ" + userRole.getUserInfoList());
+//        userRole.saveList(storageHandler);
+//        System.out.println("saved succ" + userRole.getUserInfoList());
 
 //        userRole.loadList(storageHandler);
 //          System.out.println(userRole.getUserInfoList());
