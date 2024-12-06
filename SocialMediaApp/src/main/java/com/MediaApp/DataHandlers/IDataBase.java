@@ -11,7 +11,7 @@ import com.MediaApp.UserAccountManagement.ListStorageHandler;
 //CRUD => Create Read Update Delete
 public interface IDataBase {
     // to apply singleton (only one instance of the class)
-    public IDataBase getInstance(ListStorageHandler<IDataObject> handler);
+//    public IDataBase getInstance(ListStorageHandler<IDataObject> handler);
     
     // Read action [read object from the database]
     // Return the object if found, otherwise return null
