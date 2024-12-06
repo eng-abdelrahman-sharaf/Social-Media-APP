@@ -24,13 +24,12 @@ public class TestController extends Pane {
 //        Testing Container for posts and stories
         try {
             System.out.println(container);
-            IContent content = new Content("apwldp[wkfoawmjopamnfomwaopfmaw[f[pawkmf[wpamfwap[mfp[awmf[pawlkfdp[aw [kwa[p kw[pfak [pkwap[f lkwap[ kp[wkaf [pk[p k [pkawp[ k[pdwakp[ fkw[ap");
-            content.addAttachment("/com/gui/content_mangement_components/cover.jpg");
-            content.addAttachment("/com/gui/content_mangement_components/cover.jpg");
-            content.addAttachment("/com/gui/content_mangement_components/cover.jpg");
+            IContent content = new Content();
+            content.setText("apwldp[wkfoawmjopamnfomwaopfmaw[f[pawkmf[wpamfwap[mfp[awmf[pawlkfdp[aw [kwa[p kw[pfak [pkwap[f lkwap[ kp[wkaf [pk[p k [pkawp[ k[pdwakp[ fkw[ap");
+            content.setAttachments(new String[]{"/com/gui/content_mangement_components/cover.jpg","/com/gui/content_mangement_components/cover.jpg","/com/gui/content_mangement_components/cover.jpg"});
             Medium[] mediums= {
-                    new Post("4613646" , "4f6a68w" , content , Instant.now()),
-                    new Story("4684" , "46984" , content , Instant.now()),
+//                    new Post("4613646" , "4f6a68w" , content , String.valueOf(Instant.now())),
+//                    new Story("4684" , "46984" , content , String.valueOf(Instant.now())),
             };
             container.setItems(mediums);
             container.setContainerWidth(200);

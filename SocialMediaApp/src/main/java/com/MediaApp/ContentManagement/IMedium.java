@@ -10,9 +10,9 @@ import java.time.Instant;
  */
 public interface IMedium extends IDataObject {
     String getAuthorID();
-    IContent getContent();
-    Instant getTimeStamp();
+    Content getContent();
+    String getTimeStamp();
     void setAuthorID(String AuthorID);
-    void setTimeStamp(Instant timeStamp);
-    void setContent(IContent content);
+    void setTimeStamp(String timeStamp);
+    void setContent(Content content);
 }

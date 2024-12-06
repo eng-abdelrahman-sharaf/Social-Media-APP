@@ -1,14 +1,15 @@
 package com.MediaApp.ContentManagement;
 
+import java.time.Duration;
 import java.time.Instant;
 
 public class StoryFactory implements IMediumFactory {
     String ID;
     String AuthorID;
-    IContent content;
-    Instant timestamp;
+    Content content;
+    String timestamp;
 
-    public StoryFactory(String ID, String AuthorID, IContent content, Instant timestamp) {
+    public StoryFactory(String ID, String AuthorID, Content content, String timestamp) {
         this.ID = ID;
         this.AuthorID = AuthorID;
         this.content = content;
@@ -17,6 +18,12 @@ public class StoryFactory implements IMediumFactory {
 
     @Override
     public Story createMedium() {
-        return new Story(ID, AuthorID, content, timestamp);
+        Story story = new Story();
+        story.setID(ID);
+        story.setAuthorID(AuthorID);
+        story.setContent(content);
+        story.setTimeStamp(timestamp);
+        story.setExpirationTime( String.valueOf( Instant.parse(timestamp).plus( Duration.ofDays(1) ) ) );
+        return story;
     }
 }
