@@ -12,6 +12,7 @@ module com.example.socialmedia {
     opens com.MediaApp.NewsFeed to javafx.fxml;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires java.base;
     exports com.MediaApp.ProfileManagement to javafx.fxml;
     opens com.MediaApp.ProfileManagement;
 
