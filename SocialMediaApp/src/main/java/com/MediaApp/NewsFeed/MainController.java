@@ -1,19 +1,27 @@
 package com.MediaApp.NewsFeed;
 
-import SuggestedUsers.UserNodeController;
+import com.MediaApp.ContentManagement.IMedium;
+import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.UserInfo;
+import com.gui.content_mangement_components.ContentContainerComponent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.IOException;
+import java.time.Instant;
 import java.util.Objects;
 import java.util.List;
 
@@ -44,20 +52,31 @@ public class MainController {
     private VBox ContentPane;
 
     @FXML
-    private Button PostButton;
-
-    @FXML
     private HBox SuggestedFriendsPane;
 
     @FXML
     private VBox FriendsStatusPane;
 
-    public void load(List<UserInfo> Suggestedusers, List<UserInfo> Friends /* posts*/) {
+    @FXML
+    private Button CreatePostButton;
+
+    @FXML
+    private Button CreateStoryButton;
+
+    private UserInfo Owner;
+    public void initialize() {
+        CreatePostButton.setOnAction(event -> CreatePost());
+        CreateStoryButton.setOnAction(event -> CreateStory());
+    }
+
+    public void load(UserInfo owner,List<UserInfo> Suggestedusers, List<UserInfo> Friends,List<Post> posts /* posts*/) {
+        this.Owner = owner;
         // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
         setButtonIcon(LogoutButton, "/Icons/check-out.png");
         setButtonIcon(ProfileButton, "/Icons/user.png");
         setButtonIcon(ViewRequestsButton, "/Icons/add-friend.png");
+        setButtonIcon(CreatePostButton, "/Icons/more.png");
 
         logo.setImage(new Image(Objects.requireNonNull(getClass().getResource("/Icons/Logo.png")).toExternalForm()));
         logo.setFitHeight(60);
@@ -68,7 +87,9 @@ public class MainController {
 
         createSuggestedUsers(Suggestedusers);
         createFriendStatus(Friends);
+        FillPostsPane(posts);
     }
+
 
     private void setButtonIcon(Button button, String imagePath) {
         ImageView icon = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(imagePath)).toExternalForm()));
@@ -87,6 +108,7 @@ public class MainController {
             SuggestedFriendsPane.getChildren().add(controller.createUserNode(user));
         }
     }
+
 
     public void createFriendStatus(List<UserInfo> users) {
         for (UserInfo user : users) {
@@ -107,5 +129,42 @@ public class MainController {
             }
 
         }
+    }
+
+    private void openCreatePostPopup(String type) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewsFeedTemplate/InitializePost.fxml"));
+            Parent createPostRoot = loader.load();
+
+            // Get the controller for the create post panel
+            Content_Initializer createPostController = loader.getController();
+            createPostController.settter(this.Owner,type);
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Create Post");
+
+            Scene scene = new Scene(createPostRoot);
+            popupStage.setScene(scene);
+            popupStage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void FillPostsPane(List<Post> posts) {
+
+    }
+
+
+
+    public void CreatePost() {
+        openCreatePostPopup("post");
+    }
+
+    public void CreateStory() {
+        openCreatePostPopup("story");
     }
 }

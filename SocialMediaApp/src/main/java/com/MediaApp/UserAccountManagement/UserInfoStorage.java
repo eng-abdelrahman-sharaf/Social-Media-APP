@@ -1,6 +1,5 @@
 package com.MediaApp.UserAccountManagement;
 
-
 import com.MediaApp.DataHandlers.JsonMapStorageHandler;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;

@@ -1,11 +1,15 @@
 package com.MediaApp.NewsFeed;
 
+import com.MediaApp.ContentManagement.Content;
+import com.MediaApp.ContentManagement.IContent;
+import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,7 +31,11 @@ public class test extends Application {
             users.add(new UserInfo("hasnaa", "hasnaa", "alicebrown123", "HASNAA@example.com", "20/03/1992"));
 
             // Pass the list of users to the controller's load method
-            controller.load(users,users);
+
+            List<Post> posts = new ArrayList<>();
+            IContent content = new Content("sdljfdlkana");
+            posts.add(new Post("asi", "asd", content,Instant.now()));
+            controller.load(users.get(0),users,users, posts);
             // Set the scene and show the stage
             stage.setScene(scene);
             stage.show();

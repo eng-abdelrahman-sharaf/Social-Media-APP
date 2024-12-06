@@ -3,4 +3,4 @@
 <?import javafx.scene.control.Button?>
 
 
-<Button fx:id="suggestedUser" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="Button" stylesheets="@../NewsFeedTemplate/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SuggestedUsers.UserNodeController" />
+<Button fx:id="suggestedUser" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="Button" stylesheets="@../NewsFeedTemplate/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.SuggestedUsers.UserNodeController" />

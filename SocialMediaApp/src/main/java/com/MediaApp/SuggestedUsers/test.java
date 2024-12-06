@@ -1,8 +1,7 @@
-package SuggestedUsers;
+package com.MediaApp.SuggestedUsers;
 
 import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;

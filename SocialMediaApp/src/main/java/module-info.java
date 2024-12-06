@@ -13,8 +13,8 @@ module com.example.socialmedia {
     requires com.fasterxml.jackson.databind;
     exports com.MediaApp.ProfileManagement to javafx.fxml;
     opens com.MediaApp.ProfileManagement;
-    exports SuggestedUsers;
-    opens SuggestedUsers to javafx.fxml;
+    exports com.MediaApp.SuggestedUsers;
+    opens com.MediaApp.SuggestedUsers to javafx.fxml;
 
     exports com.gui.content_mangement_components to javafx.fxml;
     opens com.gui.content_mangement_components;

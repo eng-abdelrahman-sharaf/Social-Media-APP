@@ -1,4 +1,4 @@
-package SuggestedUsers;
+package com.MediaApp.SuggestedUsers;
 
 import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.fxml.FXML;
