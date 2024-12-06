@@ -3,6 +3,7 @@ package com.MediaApp.NewsFeed;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.UserInfo;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -127,6 +128,29 @@ public class MainController {
 
         }
     }
+
+    @FXML
+    private void ProfileButtonAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void ViewRequestButtonAction(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    private void RefreshButtonAction(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    private void LogoutButtonAction(ActionEvent event) {
+
+    }
+
 
     private void openCreatePostPopup(String type) {
         try {
