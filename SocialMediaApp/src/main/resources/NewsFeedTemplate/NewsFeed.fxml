@@ -32,6 +32,8 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="CreatePostButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Post" />
+            <Button fx:id="CreateStoryButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Story" />
             <ImageView fx:id="logo" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="10.0" left="30.0" right="28.0" top="150.0" />
@@ -42,39 +44,30 @@
       </VBox>
    </left>
    <right>
-      <VBox prefHeight="531.0" prefWidth="121.0" styleClass="Vbox" BorderPane.alignment="CENTER" />
+      <VBox fx:id="FriendsStatusPane" prefHeight="531.0" prefWidth="121.0" styleClass="Vbox" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+         <children>
+            <Label prefHeight="17.0" prefWidth="121.0" text="       Active Friends" textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
+         </children></VBox>
    </right>
    <center>
       <ScrollPane fx:id="scrollPane" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="ContentPane" prefHeight="645.0" prefWidth="475.0">
                <children>
-                  <ScrollPane prefHeight="85.0" prefWidth="508.0">
+                  <ScrollPane prefHeight="20.0" prefWidth="475.0" />
+                  <ScrollPane fx:id="FriendSuggestionsDisplay" prefHeight="47.0" prefWidth="475.0">
                      <content>
-                        <HBox prefHeight="70.0" prefWidth="506.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox layoutX="410.0" layoutY="10.0" prefHeight="70.0" prefWidth="96.0" styleClass="Vbox" />
-                           </children>
-                        </HBox>
-                     </content>
-                  </ScrollPane>
-                  <ScrollPane prefHeight="85.0" prefWidth="508.0">
-                     <content>
-                        <HBox prefHeight="70.0" prefWidth="503.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                              <VBox layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="Vbox" />
-                           </children>
-                        </HBox>
+                        <HBox fx:id="SuggestedFriendsPane" prefHeight="31.0" prefWidth="667.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
                </children>
