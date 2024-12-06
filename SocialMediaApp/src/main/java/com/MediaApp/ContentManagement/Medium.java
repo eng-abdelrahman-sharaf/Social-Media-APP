@@ -7,13 +7,9 @@ import java.time.Instant;
 public class Medium implements IMedium{
     String ID;
     String AuthorID;
-    IContent content;
-    Instant timestamp;
-    public Medium(String ID, String AuthorID, IContent content, Instant timestamp) {
-        setID(ID);
-        setAuthorID(AuthorID);
-        setContent(content);
-        setTimeStamp(timestamp);
+    Content content;
+    String timestamp;
+    public Medium() {
     }
 
     @Override
@@ -26,12 +22,12 @@ public class Medium implements IMedium{
         return AuthorID;
     }
 
-    public IContent getContent() {
+    public Content getContent() {
         return content;
     }
 
     @Override
-    public Instant getTimeStamp() {
+    public String getTimeStamp() {
         return timestamp;
     }
 
@@ -55,12 +51,12 @@ public class Medium implements IMedium{
     }
 
     @Override
-    public void setTimeStamp(Instant timeStamp) {
+    public void setTimeStamp(String timeStamp) {
         this.timestamp = timeStamp;
     }
 
     @Override
-    public void setContent(IContent content) {
+    public void setContent(Content content) {
         this.content = content;
     }
 }

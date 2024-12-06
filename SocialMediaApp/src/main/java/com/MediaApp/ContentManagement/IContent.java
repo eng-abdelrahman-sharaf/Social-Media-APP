@@ -8,5 +8,5 @@ public interface IContent {
     String getText();
     String [] getAttachments();
     void setText(String text);
-    void addAttachment(String filename);
+    void setAttachments(String[] attachments);
 }

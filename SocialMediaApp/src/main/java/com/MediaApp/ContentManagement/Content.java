@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 public class Content implements IContent {
     String text;
-    ArrayList<String> images;
+    String[] attachments;
 
-    public Content(String text) {
-        images = new ArrayList<>();
-        setText(text);
+    public Content() {
     }
 
     @Override
@@ -18,7 +16,11 @@ public class Content implements IContent {
 
     @Override
     public String[] getAttachments() {
-        return images.toArray(String[]::new);
+        return attachments;
+    }
+
+    public void setAttachments(String[] attachments) {
+        this.attachments = attachments;
     }
 
     @Override
@@ -26,8 +28,4 @@ public class Content implements IContent {
         this.text = text;
     }
 
-    @Override
-    public void addAttachment(String filename) {
-        images.add(filename);
-    }
 }

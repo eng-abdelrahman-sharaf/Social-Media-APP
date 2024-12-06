@@ -3,8 +3,7 @@ module com.example.socialmedia {
     requires javafx.fxml;
     requires java.desktop;
 
-
-    exports com.MediaApp.ContentManagement to javafx.fxml;
+    exports com.MediaApp.ContentManagement to javafx.fxml, com.fasterxml.jackson.databind;
     opens com.MediaApp.ContentManagement;
 
     exports com.MediaApp.NewsFeed;

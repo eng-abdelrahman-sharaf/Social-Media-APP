@@ -6,10 +6,10 @@ public class PostFactory implements IMediumFactory{
 
     String ID;
     String AuthorID;
-    IContent content;
-    Instant timestamp;
+    Content content;
+    String timestamp;
 
-    public PostFactory(String ID, String AuthorID, IContent content, Instant timestamp) {
+    public PostFactory(String ID, String AuthorID, Content content, String timestamp) {
         this.ID = ID;
         this.AuthorID = AuthorID;
         this.content = content;
@@ -18,7 +18,12 @@ public class PostFactory implements IMediumFactory{
 
     @Override
     public Post createMedium() {
-        return new Post(ID, AuthorID, content, timestamp);
+        Post post = new Post();
+        post.setID(ID);
+        post.setAuthorID(AuthorID);
+        post.setContent(content);
+        post.setTimeStamp(timestamp);
+        return post;
     }
 
 }
