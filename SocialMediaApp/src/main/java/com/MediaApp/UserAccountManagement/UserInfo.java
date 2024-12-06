@@ -183,7 +183,7 @@ public class UserInfo implements IDataObject {
     }
      @Override
     public void setID(String ID) {
-        
+        this.userID =ID;
     }
     
     @Override
