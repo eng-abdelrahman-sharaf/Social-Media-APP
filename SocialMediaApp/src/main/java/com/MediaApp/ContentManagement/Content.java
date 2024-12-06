@@ -2,11 +2,11 @@ package com.MediaApp.ContentManagement;
 
 import java.util.ArrayList;
 
-public class imageEnhancedContent implements IContent {
+public class Content implements IContent {
     String text;
     ArrayList<String> images;
 
-    imageEnhancedContent(String text) {
+    public Content(String text) {
         images = new ArrayList<>();
         setText(text);
     }
