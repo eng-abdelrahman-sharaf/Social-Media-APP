@@ -13,7 +13,7 @@ import java.util.HashMap;
  *
  * @author abdah
  */
-df
+
 public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
     private final String filePath;
     private final Class<K> keyType;
