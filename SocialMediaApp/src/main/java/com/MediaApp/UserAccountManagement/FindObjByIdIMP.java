@@ -16,7 +16,7 @@ public class FindObjByIdIMP implements IFindObjById {
  @Override
     public IDataObject findObjById(String id, List<IDataObject> list) {
         for (IDataObject obj : list) {
-            if (obj.getUser().equalsIgnoreCase(id)) {
+            if (obj.getID().equalsIgnoreCase(id)) {
                 return obj; // Return the found object
             }
         }
