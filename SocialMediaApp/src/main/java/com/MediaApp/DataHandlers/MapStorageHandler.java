@@ -4,10 +4,15 @@
  */
 package com.MediaApp.DataHandlers;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 /**
  *
  * @author abdah
  */
-public class MapStorageHandler {
-    
+public interface MapStorageHandler<K, V> {
+    void saveMap(HashMap<K, V> dataMap) throws IOException;
+
+    HashMap<K, V> loadMap() throws IOException;
 }

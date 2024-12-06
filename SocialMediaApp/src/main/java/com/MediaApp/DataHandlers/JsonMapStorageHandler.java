@@ -4,10 +4,38 @@
  */
 package com.MediaApp.DataHandlers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+
 /**
  *
  * @author abdah
  */
-public class JsonMapStorageHandler {
-    
+public class JsonMapStorageHandler<K, V> implements MapStorageHandler<K, V> {
+    private final String filePath;
+    private final Class<K> keyType;
+    private final Class<V> valueType;
+
+    public JsonMapStorageHandler(Class<K> keyType, Class<V> valueType, String filePath) {
+        this.keyType = keyType;
+        this.valueType = valueType;
+        this.filePath = filePath;
+    }
+
+    @Override
+    public void saveMap(HashMap<K, V> dataMap) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(filePath), dataMap);
+    }
+
+    @Override
+    public HashMap<K, V> loadMap() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(
+            new File(filePath),
+            objectMapper.getTypeFactory().constructMapType(HashMap.class, keyType, valueType)
+        );
+    }
 }

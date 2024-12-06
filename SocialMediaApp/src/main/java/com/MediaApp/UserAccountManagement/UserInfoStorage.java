@@ -12,7 +12,39 @@ import java.util.List;
 public class UserInfoStorage {
 
     public static void main(String[] args) throws IOException {
-        // Create instances of UserRole and JSON storage handler
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Create instances of UserRole and JSON storage handler
 //        UserRole userRole = new UserRole();
         String filePath = "user_data_hased.json";
         JsonStorageHandler<UserInfo> storageHandler = new JsonStorageHandler<>(UserInfo.class, filePath);
