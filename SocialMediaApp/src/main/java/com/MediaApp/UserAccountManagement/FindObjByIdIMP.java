@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// this class no is no needed any more replaced by UserRole
+
 package com.MediaApp.UserAccountManagement;
 
 import com.MediaApp.DataHandlers.IDataObject;
 import java.util.List;
 
-/**
- *
- * @author abdah
- */
+// The code take id as paramter and return tge obj or null if not exissssst 
 public class FindObjByIdIMP implements IFindObjById {
     
  @Override

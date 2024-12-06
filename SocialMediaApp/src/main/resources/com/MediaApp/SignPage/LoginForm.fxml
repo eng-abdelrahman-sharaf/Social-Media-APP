@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.SignPage.LoginFormController">
+    <children>
+        <VBox alignment="CENTER" spacing="15" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <Label text="Login" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <TextField fx:id="usernameField" promptText="Username" prefWidth="200" />
+            <PasswordField fx:id="passwordField" promptText="Password" prefWidth="200" />
+            <Button fx:id="loginButton" text="Login" prefWidth="200" onAction="#handleLogin" />
+            <Hyperlink fx:id="resetPasswordLink" text="Forgot Password?" onAction="#goToResetPassword" />
+            <Hyperlink fx:id="signupLink" text="Don't have an account? Sign up here" onAction="#goToSignup" />
+        </VBox>
+    </children>
+</AnchorPane>
