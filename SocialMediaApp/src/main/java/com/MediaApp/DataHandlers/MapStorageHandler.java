@@ -11,6 +11,7 @@ import java.util.HashMap;
  *
  * @author abdah
  */
+// this interface Handle HAshmap  it save load take return only hashmap ( id , obj ) JSON or any other type of database
 public interface MapStorageHandler<K, V> {
     void saveMap(HashMap<K, V> dataMap) throws IOException;
 
