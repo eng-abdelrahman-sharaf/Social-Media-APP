@@ -31,11 +31,11 @@ public class UserInfoStorage {
 //        userRole.addUser(user3);
         
         //Save and load the user list
-//        userRole.saveList(storageHandler);
-//        System.out.println("saved succ" + userRole.getUserInfoList());
+        userRole.saveList(storageHandler);
+        System.out.println("saved succ" + userRole.getUserInfoList());
 
-        userRole.loadList(storageHandler);
-          System.out.println(userRole.getUserInfoList());
+//        userRole.loadList(storageHandler);
+//          System.out.println(userRole.getUserInfoList());
 //       //  Print loaded user info
         
 //        storageHandler.saveList(userRole.getUserInfoList());
