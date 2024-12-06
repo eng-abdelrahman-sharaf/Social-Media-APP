@@ -1,4 +1,5 @@
-// 
+// // this interface is no needed any more replaced by UserRole
+
 package com.MediaApp.UserAccountManagement;
 
 import com.MediaApp.DataHandlers.IDataObject;
