@@ -3,13 +3,17 @@ package com.MediaApp.NewsFeed;
 import SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.UserInfo;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
+import java.awt.*;
 import java.util.Objects;
 import java.util.List;
 
@@ -91,6 +95,13 @@ public class MainController {
             }
 
             if (user.getStatus() != null ){
+                UserNodeController controller = new UserNodeController();
+                Node  node = controller.createUserNode(user);
+                Button button = (Button) node;
+                button.setTextFill(Paint.valueOf("Green"));
+                FriendsStatusPane.getChildren().add(button);
+            }
+            else {
                 UserNodeController controller = new UserNodeController();
                 FriendsStatusPane.getChildren().add(controller.createUserNode(user));
             }
