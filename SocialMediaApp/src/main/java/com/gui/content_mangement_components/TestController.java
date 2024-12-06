@@ -33,7 +33,7 @@ public class TestController extends Pane {
                     new Story("4684" , "46984" , content , Instant.now()),
             };
             container.setItems(mediums);
-            container.setContainerWidth(200);
+            container.setContainerWidth(500);
         }catch (NullPointerException e){
             System.out.println("container does not exist");
         }
