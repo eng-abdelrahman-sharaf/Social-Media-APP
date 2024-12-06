@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.gui.content_mangement_components.ContentContainerComponent?>
+<?import com.gui.content_mangement_components.ContentComponent?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.content_mangement_components.TestController">
+   <children>
+      <ScrollPane layoutX="3.0" layoutY="20.0" prefHeight="360.0" prefWidth="590.0">
+         <content>
+            <ContentContainerComponent containerWidth="250" fx:id="container"/>
+         </content>
+      </ScrollPane>
+   </children>
+</Pane>
+
+
+<!--        <?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--        <?import javafx.scene.control.ScrollPane?>-->
+<!--        <?import javafx.scene.layout.Pane?>-->
+<!--        <?import com.Programming2.UI.ContentContainerComponent?>-->
+<!--        <?import com.Programming2.UI.ContentComponent?>-->
+
+
+<!--<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">-->
+<!--<children>-->
+<!--   <ScrollPane layoutX="190.0" layoutY="100.0" prefHeight="280.0" prefWidth="350.0">-->
+<!--      <content>-->
+
+<!--      </content>-->
+<!--   </ScrollPane>-->
+<!--</children>-->
+<!--</Pane>-->

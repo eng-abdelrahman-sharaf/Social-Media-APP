@@ -4,8 +4,9 @@
  */
 package com.MediaApp;
 
-import com.MediaApp.ContentManagement.Test;
-import com.MediaApp.ProfileManagement.ProfileApp;
+//import com.MediaApp.GUI.App;
+
+import com.MediaApp.DataHandlers.DataObject;
 
 /**
  *
@@ -13,7 +14,9 @@ import com.MediaApp.ProfileManagement.ProfileApp;
  */
 public class Main {
     public static void main(String[] args){
-        Test.main();
-        ProfileApp.main(args);
+//        Test.main();
+//        ProfileApp.main(args);
+//          App.main(args);
+        DataObject obj = new DataObject();
     }
 }
