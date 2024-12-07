@@ -20,4 +20,6 @@ module com.example.socialmedia {
     opens com.MediaApp.UserAccountManagement;
     exports com.gui.content_mangement_components to javafx.fxml;
     opens com.gui.content_mangement_components;
+    exports com.MediaApp.UserAccountManagement.tests to com.fasterxml.jackson.databind;
+    opens com.MediaApp.UserAccountManagement.tests;
 }
