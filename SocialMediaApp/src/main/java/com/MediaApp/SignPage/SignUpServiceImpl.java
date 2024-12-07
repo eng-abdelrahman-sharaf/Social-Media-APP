@@ -4,20 +4,19 @@
  */
 package com.MediaApp.SignPage;
 
-import com.MediaApp.DataHandlers.IDataObject;
 import com.MediaApp.UserAccountManagement.UserFinder;
 import com.MediaApp.UserAccountManagement.UserInfo;
-import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import java.util.List;
 
 public class SignUpServiceImpl implements SignUpService {
     private final UserFinder userFinder;
-    private final DataValidator dataValidator;  
-    private UserRoleDataBase userRoleDataBaseSignup= UserRoleDataBase.getInstance();
-    
-    public SignUpServiceImpl(UserFinder userFinder, DataValidator dataValidator) {
+    private final DataValidator dataValidator;
+    private final List<UserInfo> userList; // Simulates user storage
+
+    public SignUpServiceImpl(UserFinder userFinder, DataValidator dataValidator, List<UserInfo> userList) {
         this.userFinder = userFinder;
         this.dataValidator = dataValidator;
+        this.userList = userList;
     }
 
     @Override
@@ -65,11 +64,9 @@ public class SignUpServiceImpl implements SignUpService {
         }
 
         // Create a new user
-        IDataObject[] allUsers = userRoleDataBaseSignup.getData();
-        String userID = "U" + (allUsers.length + 1); // Use `length` property for arrays
-        UserInfo newUser = new UserInfo(userID, userName, password.hashCode() + "", email, dateOfBirth); // Hash the password for security
-
-        userRoleDataBaseSignup.addObject(newUser);
+//        String userID = "U" + (userList.size() + 1); // Generate a simple unique ID
+//        UserInfo newUser = new UserInfo(userID, userName, password.hashCode() + "", email, dateOfBirth); // Hash the password for security
+//        userList.add(newUser); 
         
 
         System.out.println("Success: User signed up successfully!");

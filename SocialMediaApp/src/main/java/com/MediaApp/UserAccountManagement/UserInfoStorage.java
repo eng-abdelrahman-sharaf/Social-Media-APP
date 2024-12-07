@@ -21,14 +21,14 @@ public class UserInfoStorage {
       
 //              
         
-//        String filePath = "user_data_Map.json";
-//        
-//        // Create a storage handler for the HashMap
-//        MapStorageHandler<String, UserInfo> storageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
-//        
-//        // Get the singleton instance of UserRoleDataBase
-//        UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
-         UserRoleDataBase userRoleDataBase= UserRoleDataBase.getInstance();
+        String filePath = "user_data_Map.json";
+        
+        // Create a storage handler for the HashMap
+        MapStorageHandler<String, UserInfo> storageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
+        
+        // Get the singleton instance of UserRoleDataBase
+        UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
+        
 //         Create some user objects
         UserInfo user1 = new UserInfo("user123", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("user456", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
@@ -44,29 +44,27 @@ public class UserInfoStorage {
 
 
 //       // init the file for the first time runnig the prog only
-//        userRoleDataBase.save();
+        userRoleDataBase.save();
         // Read a user object
-        IDataObject retrievedUser = userRoleDataBase.readObject("user123");
-        System.out.println("Retrieved User: " + retrievedUser);
+//        IDataObject retrievedUser = userRoleDataBase.readObject("user123");
+//        System.out.println("Retrieved User: " + retrievedUser);
 
         // Update a user object
-        UserInfo updatedUser = new UserInfo("user123", "Ali Updated", "newHashedPassword", "ali.updated@example.com", "1990-05-15");
-        userRoleDataBase.update("user123", updatedUser);
-        System.out.println("Updated User: " + userRoleDataBase.readObject("user123"));
+//        UserInfo updatedUser = new UserInfo("user123", "Ali Updated", "newHashedPassword", "ali.updated@example.com", "1990-05-15");
+//        userRoleDataBase.update("user123", updatedUser);
+//        System.out.println("Updated User: " + userRoleDataBase.readObject("user123"));
 //
 //        // Get all users
-        IDataObject[] allUsers = userRoleDataBase.getData();
-        System.out.println("All Users: " + Arrays.toString(allUsers));
+//        IDataObject[] allUsers = userRoleDataBase.getData();
+//        System.out.println("All Users: " + allUsers);
 //
 //        // Delete a user object
-        userRoleDataBase.deleteObject("user456");
-        
-        System.out.println("After Deletion, All Users: " +Arrays.toString(userRoleDataBase.getData()));
+//        userRoleDataBase.deleteObject("user456");
+//        System.out.println("After Deletion, All Users: " + userRoleDataBase.getData());
         
         // Reload the data to ensure it reflects the current state
-        userRoleDataBase.reload();
-        
-        System.out.println("Reloaded Users: " + Arrays.toString(userRoleDataBase.getData()));
+//        userRoleDataBase.reload();
+//        System.out.println("Reloaded Users: " + userRoleDataBase.getData());
     }
 }
 
