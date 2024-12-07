@@ -15,7 +15,7 @@
                <Image url="@avatar.jpg" />
             </image>
          </ImageView>
-         <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: black;" text="faowjfpoajpwoafjpoajwfopjawopfkpokfpoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa fpwkaopfk opkwaopk opkop kwoakfawf awk [pwak[p aw" wrappingWidth="359.84382724761963">
+         <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: black;" wrappingWidth="359.84382724761963">
             <font>
                <Font name="Corbel" size="13.0" />
             </font>

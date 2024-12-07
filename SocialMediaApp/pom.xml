@@ -58,8 +58,8 @@
                 <version>3.8.0</version>
                 <configuration>
                     <release>11</release>
-                    <source>21</source>
-                    <target>21</target>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
             <plugin>

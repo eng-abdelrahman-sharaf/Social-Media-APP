@@ -1,10 +1,13 @@
 package com.MediaApp.ProfileManagement;
 
 
+import com.MediaApp.DataHandlers.PostDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import javax.swing.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -29,10 +32,6 @@ public class Controller {
 
     @FXML
     public void initialize() {
-//        Image img = new Image(Controller.class.getResource("avatar.jpg").toString());
-        cover.setImage(new Image(Controller.class.getResource("avatar.jpg").toString()));
-//        System.out.println(avatar);
-        System.out.println(Controller.class.getResource("avatar.jpg").toString());
     }
     
 }

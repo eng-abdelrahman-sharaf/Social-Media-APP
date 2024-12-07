@@ -2,6 +2,7 @@
 package com.MediaApp.DataHandlers;
 
 import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.ContentManagement.Story;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,17 +10,17 @@ import java.util.HashMap;
 public class StoryDataBase implements IDataBase {
 
     private static StoryDataBase instance;
-    private HashMap<String, Post> dataMap;
-    private MapStorageHandler<String, Post> storageHandler;
+    private HashMap<String, Story> dataMap;
+    private MapStorageHandler<String, Story> storageHandler;
 
-    private StoryDataBase(MapStorageHandler<String, Post> handler) {
+    private StoryDataBase(MapStorageHandler<String, Story> handler) {
         this.storageHandler = handler;
         this.dataMap = new HashMap<>();
         reload(); // Initial load
     }
 
     // Singleton pattern
-    public static StoryDataBase getInstance(MapStorageHandler<String, Post> handler) {
+    public static StoryDataBase getInstance(MapStorageHandler<String, Story> handler) {
         if (instance == null) {
             instance = new StoryDataBase(handler);
         }
@@ -43,7 +44,7 @@ public class StoryDataBase implements IDataBase {
     @Override
     public void addObject(IDataObject object) {
         reload(); // Refresh data
-        dataMap.put(object.getID(), (Post) object.clone()); // Store a clone
+        dataMap.put(object.getID(), (Story) object.clone()); // Store a clone
         save(); // Save changes
     }
 
@@ -57,7 +58,7 @@ public class StoryDataBase implements IDataBase {
     @Override
     public void update(String ID, IDataObject object) {
         reload(); // Refresh data
-        dataMap.put(ID, (Post) object.clone()); // Update with a clone
+        dataMap.put(ID, (Story) object.clone()); // Update with a clone
         save(); // Save changes
     }
 
