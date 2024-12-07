@@ -6,7 +6,6 @@ package com.MediaApp.UserAccountManagement;
 import com.MediaApp.DataHandlers.DataObject;
 import com.MediaApp.DataHandlers.IDataBase;
 import com.MediaApp.DataHandlers.IDataObject;
-import com.MediaApp.DataHandlers.JsonMapStorageHandler;
 import com.MediaApp.DataHandlers.MapStorageHandler;
 import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
@@ -21,43 +20,19 @@ public class UserRoleDataBase implements IDataBase {
     private HashMap<String, UserInfo> dataMap;
     private MapStorageHandler<String, UserInfo> storageHandler;
 
-    
-    
-    // this is veryyyy Smart Gamed ya AnwaaaaRRRRRRR !!!!
-    
-    private static final String FILE_PATH = "user_data_Map.json";
-    // Private constructor to enforce singleton pattern
-    private UserRoleDataBase() {
-        // Initialize storage handler inside the class
-        this.storageHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, FILE_PATH);
+    private UserRoleDataBase(MapStorageHandler<String, UserInfo> handler) {
+        this.storageHandler = handler;
         this.dataMap = new HashMap<>();
         reload(); // Initial load
     }
-    
-     public static UserRoleDataBase getInstance() {
+
+    // Singleton pattern
+    public static UserRoleDataBase getInstance(MapStorageHandler<String, UserInfo> handler) {
         if (instance == null) {
-            instance = new UserRoleDataBase();
+            instance = new UserRoleDataBase(handler);
         }
         return instance;
     }
-    
-    
-    
-    
-    
-//    private UserRoleDataBase(MapStorageHandler<String, UserInfo> handler) {
-//        this.storageHandler = handler;
-//        this.dataMap = new HashMap<>();
-//        reload(); // Initial load
-//    }
-//
-//    // Singleton pattern
-//    public static UserRoleDataBase getInstance(MapStorageHandler<String, UserInfo> handler) {
-//        if (instance == null) {
-//            instance = new UserRoleDataBase(handler);
-//        }
-//        return instance;
-//    }
 
 
     @Override
