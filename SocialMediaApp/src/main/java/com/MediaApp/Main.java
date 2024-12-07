@@ -7,6 +7,10 @@ package com.MediaApp;
 //import com.MediaApp.GUI.App;
 
 import com.MediaApp.DataHandlers.DataObject;
+import com.MediaApp.DataHandlers.JsonMapStorageHandler;
+import com.MediaApp.DataHandlers.MapStorageHandler;
+import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 
 /**
  *
@@ -18,5 +22,11 @@ public class Main {
 //        ProfileApp.main(args);
 //          App.main(args);
         DataObject obj = new DataObject();
+        
+        
+     // Anwar code 
+     // there how you can call userRoleDataBase
+//      UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance();
+        
     }
 }
