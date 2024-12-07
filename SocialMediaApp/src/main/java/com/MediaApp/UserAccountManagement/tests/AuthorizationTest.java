@@ -8,6 +8,7 @@ import com.MediaApp.UserAccountManagement.UserInfo;
  */
 public class AuthorizationTest {
     public static void main(String[] args) {
+        // creation should be made only throw a factory or a builder
         UserInfo authorizedUser = new UserInfo();
         //setting authorized user
         AuthorizedUserGetter.getInstance().setUserInfo(authorizedUser);
