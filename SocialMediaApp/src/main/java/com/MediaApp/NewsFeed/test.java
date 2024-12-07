@@ -5,12 +5,15 @@ import com.MediaApp.ContentManagement.IContent;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.Main;
 import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
+import com.gui.content_mangement_components.StageGetter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -26,28 +29,13 @@ public class test extends Application {
 
             // Get the controller from the FXMLloader
             MainController controller = loader.getController();
-            UserInfo bora3y = new UserInfo("BORA3Y", "BOR3Y", "lakssd", "BORA3Y@example.com", "01/01/1990");
-            bora3y.setStatus("Online");
-            List<UserInfo> users = new ArrayList<>();
-            users.add(bora3y);
-            users.add(new UserInfo("meow", "samee7", "hjalkdsn", "Samee7@example.com", "15/02/1985"));
-            users.add(new UserInfo("hasnaa", "hasnaa", "alicebrown123", "HASNAA@example.com", "20/03/1992"));
-
-            // Pass the list of users to the controller's load method
-
-            List<Post> posts = new ArrayList<>();
-            Content content = new Content();
-            content.setText("Hello World");
-            Post post = new Post();
-            post.setID("asi");
-            post.setAuthorID("asd");
-            post.setContent(content);
-            post.setTimeStamp(String.valueOf(Instant.now()));
-            posts.add(post);
-            controller.load(users.get(0),users,users, posts);
+            UserInfo user = (UserInfo) UserRoleDataBase.getInstance(null).getData()[0];
+            controller.load(user,new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
+            controller.start();
             // Set the scene and show the stage
             stage.setScene(scene);
             stage.show();
+            StageGetter.getInstance().setStage(stage);
         } catch (Exception e) {
             e.printStackTrace();
         }

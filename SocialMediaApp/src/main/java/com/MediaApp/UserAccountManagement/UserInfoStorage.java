@@ -28,16 +28,21 @@ public class UserInfoStorage {
         
         // Get the singleton instance of UserRoleDataBase
         UserRoleDataBase userRoleDataBase = UserRoleDataBase.getInstance(storageHandler);
-        
+
+        System.out.println(userRoleDataBase.readObject("nogea"));
+        for(Object datum : Arrays.stream(userRoleDataBase.getData()).toArray() ){
+            System.out.println(datum);
+        }
+
 //         Create some user objects
         UserInfo user1 = new UserInfo("nogea", "Ali", "hashedPassword1", "ali@example.com", "1990-05-15");
         UserInfo user2 = new UserInfo("magdi", "Omar", "hashedPassword2", "omar@example.com", "1992-07-20");
         UserInfo user3 = new UserInfo("gogo", "Amr", "hashedPassword3", "amr@example.com", "1992-04-20");
 
         // Add users to the database
-        userRoleDataBase.addObject(user1);
-        userRoleDataBase.addObject(user2);
-        userRoleDataBase.addObject(user3);
+//        userRoleDataBase.addObject(user1);
+//        userRoleDataBase.addObject(user2);
+//        userRoleDataBase.addObject(user3);
 
 //        
 //            IDataObject[] users = userRoleDataBase.getData();

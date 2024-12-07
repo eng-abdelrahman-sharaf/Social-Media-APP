@@ -62,7 +62,7 @@
    <center>
       <ScrollPane fx:id="scrollPane" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="ContentPane" prefHeight="645.0" prefWidth="475.0">
+            <VBox fx:id="ContentPane" prefHeight="500.0" prefWidth="475.0">
                <children>
                   <ScrollPane prefHeight="20.0" prefWidth="475.0" />
                   <ScrollPane fx:id="FriendSuggestionsDisplay" prefHeight="47.0" prefWidth="475.0">
@@ -70,6 +70,7 @@
                         <HBox fx:id="SuggestedFriendsPane" prefHeight="31.0" prefWidth="667.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
+                  <ScrollPane fx:id="postsPanel" prefHeight="418.0" prefWidth="475.0" />
                </children>
             </VBox>
          </content>

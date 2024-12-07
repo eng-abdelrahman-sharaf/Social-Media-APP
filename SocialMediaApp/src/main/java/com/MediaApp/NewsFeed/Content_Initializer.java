@@ -57,6 +57,7 @@ public class Content_Initializer {
 
     private void handlePost() {
         if (currentUser == null || type == null) {
+            System.out.println("current USer" + currentUser);
             System.out.println("Information missing");
             return;
         }
@@ -65,6 +66,7 @@ public class Content_Initializer {
         if (!caption.isEmpty()) {
             Content content = new Content();
             content.setText(caption);
+            content.setAttachments(new String[]{selectedImage});
             UUID postId = UUID.randomUUID();
             if(type.equalsIgnoreCase("post")) {
                 Post newPost = new Post();

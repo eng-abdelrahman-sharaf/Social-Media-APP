@@ -13,6 +13,8 @@ import com.MediaApp.UserAccountManagement.UserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 
 import com.MediaApp.NewsFeed.test;
+import com.gui.content_mangement_components.StageGetter;
+import javafx.stage.Stage;
 
 /**
  *
@@ -33,10 +35,10 @@ public class Main {
 //        UserInfo user = new UserInfo();
 //        user.setBio("bio");
         UserRoleDataBase.getInstance(userHandler);
-
     }
 
     public static void main(String[] args) {
+        dataLoading();
         test.main(null);
     }
 }
