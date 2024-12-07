@@ -1,8 +1,15 @@
 package com.MediaApp.NewsFeed;
 
 import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.DataHandlers.PostDataBase;
+import com.MediaApp.DataHandlers.StoryDataBase;
+import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
+import com.gui.content_mangement_components.ContentContainerComponent;
+import com.gui.content_mangement_components.StageGetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +27,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.List;
 
@@ -27,6 +36,9 @@ public class MainController {
 
     @FXML
     private ImageView logo;
+
+    @FXML
+    private ScrollPane postsPanel;
 
     @FXML
     private VBox ButtonsPane;
@@ -62,9 +74,13 @@ public class MainController {
     private Button CreateStoryButton;
 
     private UserInfo Owner;
+    private ContentContainerComponent container;
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
+        container = new  ContentContainerComponent();
+        container.setContainerWidth(460);
+        postsPanel.setContent(container);
     }
 
     public void load(UserInfo owner,List<UserInfo> Suggestedusers, List<UserInfo> Friends,List<Post> posts /* posts*/) {
@@ -79,6 +95,9 @@ public class MainController {
         logo.setImage(new Image(Objects.requireNonNull(getClass().getResource("/Icons/Logo.png")).toExternalForm()));
         logo.setFitHeight(60);
         logo.setFitWidth(60);
+
+
+
 
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
@@ -98,6 +117,7 @@ public class MainController {
 
     // this method takes a list of UserInfo objects as a parameter and adds them to the SuggestedFriendsPane
     public void createSuggestedUsers(List<UserInfo> users) {
+        SuggestedFriendsPane.getChildren().clear();
         for (UserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
                 user.setProfilePhotoPath("/Icons/user.png");
@@ -109,11 +129,11 @@ public class MainController {
 
 
     public void createFriendStatus(List<UserInfo> users) {
+        FriendsStatusPane.getChildren().clear();
         for (UserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
                 user.setProfilePhotoPath("/Icons/user.png");
             }
-
             if (user.getStatus() != null ){
                 UserNodeController controller = new UserNodeController();
                 Node  node = controller.createUserNode(user);
@@ -130,7 +150,16 @@ public class MainController {
     }
 
     @FXML
-    private void ProfileButtonAction(ActionEvent event) {
+    private void ProfileButtonAction(ActionEvent event) throws IOException {
+        ProfileApp app = new ProfileApp();
+
+        Stage stage = StageGetter.getInstance().getStage();
+        stage.setTitle("Profile");
+//        Stage popupStage = new Stage();
+//        popupStage.initModality(Modality.APPLICATION_MODAL);
+//        popupStage.setTitle("Profile");
+
+        app.start(StageGetter.getInstance().getStage());
 
     }
 
@@ -142,7 +171,22 @@ public class MainController {
 
     @FXML
     private void RefreshButtonAction(ActionEvent event) {
+        PostDataBase.getInstance(null).reload();
+        UserRoleDataBase userdb = UserRoleDataBase.getInstance(null);
+        userdb.reload();
+        StoryDataBase.getInstance(null).reload();
+        List<UserInfo> users = new ArrayList<>();
+        for(Object user : Arrays.stream(userdb.getData()).toArray()){
+            users.add((UserInfo) user);
+        }
+        System.out.println(users);
 
+        ArrayList <Post> posts = new ArrayList<>();
+        for(Object post :PostDataBase.getInstance(null).getData()){
+            posts.add((Post) post);
+        }
+
+        load(this.Owner , users , users , posts);
     }
 
 
@@ -177,8 +221,13 @@ public class MainController {
 
     public void FillPostsPane(List<Post> posts) {
 
+        container.setItems(posts.toArray(new Post[0]));
     }
 
+
+    public void start(){
+        RefreshButtonAction(null);
+    }
 
 
     public void CreatePost() {

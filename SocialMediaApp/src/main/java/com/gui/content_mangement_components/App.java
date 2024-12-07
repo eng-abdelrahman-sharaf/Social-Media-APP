@@ -1,7 +1,12 @@
 package com.gui.content_mangement_components;
 
+import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.DataHandlers.JsonMapStorageHandler;
+import com.MediaApp.DataHandlers.MapStorageHandler;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
+import com.MediaApp.NewsFeed.MainController;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +27,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("test"), 640, 480);
+        scene = new Scene(loadFXML("/NewsFeedTemplate/NewsFeed"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
@@ -38,16 +43,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        // creating database
-        String filePath = "post.json";
-        // Create a storage handler for the HashMap
-        MapStorageHandler<String, Post> postHandler = new JsonMapStorageHandler<>(String.class, Post.class, filePath);
-        MapStorageHandler<String, Story> storyHandler = new JsonMapStorageHandler<>(String.class, Story.class, filePath);
-        MapStorageHandler<String, userInfo> userHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, filePath);
-        // Get the singleton instance of UserRoleDataBase
-        PostDataBase postdb = PostDataBase.getInstance(storageHandler);
-        StoryDataBase storydb = StoryDataBase.getInstance(storyHandler);
-
         launch();
     }
 

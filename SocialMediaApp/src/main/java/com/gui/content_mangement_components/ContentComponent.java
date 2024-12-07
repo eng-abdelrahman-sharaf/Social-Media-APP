@@ -44,27 +44,31 @@ public class ContentComponent extends VBox {
         }
     }
 
+
     public void setMedium(IMedium medium) {
         this.Medium = medium;
         this.text.setText(medium.getContent().getText());
 
         // the link will be like /com/gui/content_mangement_components/cover.jpg
-        this.links = medium.getContent().getAttachments();
-        for(int i = 0 ;i <links.length ; i++){
-            try{
-                images.add(i, new ImageView());
-                System.out.println(i);
-                container.getChildren().add(images.get(i));
-                images.get(i).setImage(new Image(links[i]));
-                System.out.println("images loaded successfully");
-            }catch (IllegalArgumentException e){
-                images.get(i).setFitHeight(0);
-                images.get(i).setFitWidth(0);
-                images.get(i).setImage(null);
+        try {
+            this.links = medium.getContent().getAttachments();
+            for (int i = 0; i < links.length; i++) {
+                try {
+                    images.add(i, new ImageView());
+                    System.out.println(i);
+                    container.getChildren().add(images.get(i));
+                    images.get(i).setImage(new Image(links[i]));
+                    System.out.println("images loaded successfully");
+                } catch (IllegalArgumentException e) {
+                    images.get(i).setFitHeight(0);
+                    images.get(i).setFitWidth(0);
+                    images.get(i).setImage(null);
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("index out of bounds");
+                }
             }
-            catch (IndexOutOfBoundsException e){
-                System.out.println("index out of bounds");
-            }
+        }catch (NullPointerException e) {
+            System.out.println("no links");
         }
         setContainerWidth(containerWidth);
     }
