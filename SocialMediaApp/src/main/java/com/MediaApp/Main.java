@@ -9,6 +9,7 @@ package com.MediaApp;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.ContentManagement.Story;
 import com.MediaApp.DataHandlers.*;
+import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.UserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 
@@ -39,6 +40,9 @@ public class Main {
 
     public static void main(String[] args) {
         dataLoading();
+        //for testing only
+        //will be handled through login page
+        AuthorizedUserGetter.getInstance().setUserInfo((UserInfo) UserRoleDataBase.getInstance(null).getData()[0]);
         test.main(null);
     }
 }

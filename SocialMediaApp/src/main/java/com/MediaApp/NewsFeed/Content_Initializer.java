@@ -4,7 +4,9 @@ import com.MediaApp.ContentManagement.Content;
 import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.ContentManagement.Story;
 import com.MediaApp.DataHandlers.PostDataBase;
+import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -78,6 +80,7 @@ public class Content_Initializer {
                 ps.add(postId.toString());
                 currentUser.setPostsIDs(ps);
                 PostDataBase.getInstance(null).addObject(newPost);
+                UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
                 System.out.println("post created");
             }
             else{
@@ -90,6 +93,8 @@ public class Content_Initializer {
                 List<String> ss = currentUser.getStoriesIDs();
                 ss.add(postId.toString());
                 currentUser.setStoriesIDs(ss);
+                StoryDataBase.getInstance(null).addObject(newStory);
+                UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
             }
 
             System.out.println("Post created with caption: " + caption);

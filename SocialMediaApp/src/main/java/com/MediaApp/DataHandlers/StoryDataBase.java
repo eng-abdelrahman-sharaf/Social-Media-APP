@@ -7,7 +7,7 @@ import com.MediaApp.ContentManagement.Story;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class StoryDataBase implements IDataBase {
+public class StoryDataBase implements IMediumDataBase {
 
     private static StoryDataBase instance;
     private HashMap<String, Story> dataMap;

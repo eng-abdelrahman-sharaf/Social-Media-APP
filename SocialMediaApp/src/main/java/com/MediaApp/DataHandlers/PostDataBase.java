@@ -6,7 +6,7 @@ import com.MediaApp.ContentManagement.Post;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class PostDataBase implements IDataBase {
+public class PostDataBase implements IMediumDataBase {
 
     private static PostDataBase instance;
     private HashMap<String, Post> dataMap;
