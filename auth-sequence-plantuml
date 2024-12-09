@@ -1,0 +1,39 @@
+@startuml
+skin rose
+autonumber
+title customer authentication
+actor User
+participant SignupService
+participant LoginService
+participant AuthorizedUserGetter
+participant UserDataBase
+
+alt User has an account
+  User -> LoginService: validate credintials
+  activate LoginService
+  LoginService -> UserDataBase:validate credintials
+  activate UserDataBase
+  UserDataBase --> LoginService:UserInfo
+  alt UserDataBase.getUser(customer) is null
+    LoginService-->User:show error message
+  else
+    LoginService-->AuthorizedUserGetter:give authority to this user
+    activate AuthorizedUserGetter
+    deactivate LoginService
+  end alt
+else
+  User -> SignupService:take user info
+  activate SignupService
+  SignupService ->UserDataBase :check if User already exists
+  alt UserDataBase.getUser(customer) is null
+    SignupService->UserDataBase:create user
+    UserDataBase --> SignupService: UserInfo
+    deactivate UserDataBase
+    SignupService->AuthorizedUserGetter:give him authority
+    deactivate AuthorizedUserGetter
+  else
+    SignupService --> User : show error message
+    deactivate SignupService
+  end alt
+end alt
+@enduml
