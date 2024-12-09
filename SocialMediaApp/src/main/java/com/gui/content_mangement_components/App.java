@@ -1,6 +1,5 @@
 package com.gui.content_mangement_components;
 
-import com.MediaApp.ContentManagement.Post;
 import com.MediaApp.DataHandlers.JsonMapStorageHandler;
 import com.MediaApp.DataHandlers.MapStorageHandler;
 import com.MediaApp.DataHandlers.PostDataBase;
@@ -15,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.MediaApp.ContentManagement.Story;
 import com.MediaApp.UserAccountManagement.UserInfo;
 
 /**

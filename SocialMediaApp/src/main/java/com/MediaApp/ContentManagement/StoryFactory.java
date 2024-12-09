@@ -4,20 +4,12 @@ import java.time.Duration;
 import java.time.Instant;
 
 public class StoryFactory implements IMediumFactory {
-    String ID;
-    String AuthorID;
-    Content content;
-    String timestamp;
 
-    public StoryFactory(String ID, String AuthorID, Content content, String timestamp) {
-        this.ID = ID;
-        this.AuthorID = AuthorID;
-        this.content = content;
-        this.timestamp = timestamp;
+    public StoryFactory() {
     }
 
     @Override
-    public Story createMedium() {
+    public IStory createMedium(String ID, String AuthorID, Content content, String timestamp) {
         Story story = new Story();
         story.setID(ID);
         story.setAuthorID(AuthorID);

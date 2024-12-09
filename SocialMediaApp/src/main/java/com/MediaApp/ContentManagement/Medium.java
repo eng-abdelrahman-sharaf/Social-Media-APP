@@ -1,14 +1,9 @@
 package com.MediaApp.ContentManagement;
 
-import com.MediaApp.DataHandlers.IDataObject;
-
-import java.time.Instant;
-
-public class Medium implements IMedium{
+abstract class Medium implements IMedium{
     String ID;
     String AuthorID;
     Content content;
-    String timestamp;
     public Medium() {
     }
 
@@ -24,11 +19,6 @@ public class Medium implements IMedium{
 
     public Content getContent() {
         return content;
-    }
-
-    @Override
-    public String getTimeStamp() {
-        return timestamp;
     }
 
     @Override
@@ -50,10 +40,6 @@ public class Medium implements IMedium{
         this.AuthorID = AuthorID;
     }
 
-    @Override
-    public void setTimeStamp(String timeStamp) {
-        this.timestamp = timeStamp;
-    }
 
     @Override
     public void setContent(Content content) {

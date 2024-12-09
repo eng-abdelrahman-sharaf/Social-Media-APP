@@ -1,7 +1,7 @@
 
 package com.MediaApp.DataHandlers;
 
-import com.MediaApp.ContentManagement.Post;
+import com.MediaApp.ContentManagement.IPost;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,17 +9,17 @@ import java.util.HashMap;
 public class PostDataBase implements IMediumDataBase {
 
     private static PostDataBase instance;
-    private HashMap<String, Post> dataMap;
-    private MapStorageHandler<String, Post> storageHandler;
+    private HashMap<String, IPost> dataMap;
+    private MapStorageHandler<String, IPost> storageHandler;
 
-    private PostDataBase(MapStorageHandler<String, Post> handler) {
+    private PostDataBase(MapStorageHandler<String, IPost> handler) {
         this.storageHandler = handler;
         this.dataMap = new HashMap<>();
         reload(); // Initial load
     }
 
     // Singleton pattern
-    public static PostDataBase getInstance(MapStorageHandler<String, Post> handler) {
+    public static PostDataBase getInstance(MapStorageHandler<String, IPost> handler) {
         if (instance == null) {
             instance = new PostDataBase(handler);
         }
@@ -43,7 +43,7 @@ public class PostDataBase implements IMediumDataBase {
     @Override
     public void addObject(IDataObject object) {
         reload(); // Refresh data
-        dataMap.put(object.getID(), (Post) object.clone()); // Store a clone
+        dataMap.put(object.getID(), (IPost) object.clone()); // Store a clone
         save(); // Save changes
     }
 
@@ -57,7 +57,7 @@ public class PostDataBase implements IMediumDataBase {
     @Override
     public void update(String ID, IDataObject object) {
         reload(); // Refresh data
-        dataMap.put(ID, (Post) object.clone()); // Update with a clone
+        dataMap.put(ID, (IPost) object.clone()); // Update with a clone
         save(); // Save changes
     }
 

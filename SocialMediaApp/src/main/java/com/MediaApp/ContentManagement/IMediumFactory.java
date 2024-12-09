@@ -1,5 +1,5 @@
 package com.MediaApp.ContentManagement;
 
 public interface IMediumFactory {
-    IMedium createMedium();
+    IMedium createMedium(String ID, String AuthorID, Content content, String timestamp);
 }
