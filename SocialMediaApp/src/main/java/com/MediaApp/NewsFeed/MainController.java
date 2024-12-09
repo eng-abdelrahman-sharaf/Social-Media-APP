@@ -1,7 +1,6 @@
 package com.MediaApp.NewsFeed;
 
-import com.MediaApp.ContentManagement.Post;
-import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.ProfileManagement.ProfileApp;
@@ -41,6 +40,9 @@ public class MainController {
     private ScrollPane postsPanel;
 
     @FXML
+    private ScrollPane storiesPanel;
+
+    @FXML
     private VBox ButtonsPane;
 
     @FXML
@@ -74,16 +76,20 @@ public class MainController {
     private Button CreateStoryButton;
 
     private UserInfo Owner;
-    private ContentContainerComponent container;
+    private ContentContainerComponent postsContainer;
+    private ContentContainerComponent storyContainer;
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
-        container = new  ContentContainerComponent();
-        container.setContainerWidth(460);
-        postsPanel.setContent(container);
+        postsContainer = new  ContentContainerComponent();
+        postsContainer.setContainerWidth(230);
+        postsPanel.setContent(postsContainer);
+        storyContainer = new  ContentContainerComponent();
+        storyContainer.setContainerWidth(230);
+        storiesPanel.setContent(storyContainer);
     }
 
-    public void load(UserInfo owner,List<UserInfo> Suggestedusers, List<UserInfo> Friends,List<Post> posts /* posts*/) {
+    public void load(UserInfo owner,List<UserInfo> Suggestedusers, List<UserInfo> Friends,List<IPost> posts /* posts*/) {
         this.Owner = owner;
         // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
@@ -154,7 +160,6 @@ public class MainController {
         ProfileApp app = new ProfileApp();
 
         Stage stage = StageGetter.getInstance().getStage();
-        stage.setTitle("Profile");
 //        Stage popupStage = new Stage();
 //        popupStage.initModality(Modality.APPLICATION_MODAL);
 //        popupStage.setTitle("Profile");
@@ -181,9 +186,9 @@ public class MainController {
         }
         System.out.println(users);
 
-        ArrayList <Post> posts = new ArrayList<>();
+        ArrayList <IPost> posts = new ArrayList<>();
         for(Object post :PostDataBase.getInstance(null).getData()){
-            posts.add((Post) post);
+            posts.add((IPost) post);
         }
 
         load(this.Owner , users , users , posts);
@@ -219,9 +224,8 @@ public class MainController {
         }
     }
 
-    public void FillPostsPane(List<Post> posts) {
-
-        container.setItems(posts.toArray(new Post[0]));
+    public void FillPostsPane(List<IPost> posts) {
+        postsContainer.setItems(posts.toArray(new IPost[0]));
     }
 
 
