@@ -21,6 +21,7 @@ public class ProfileApp extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(new FXMLLoader(ProfileApp.class.getResource("profile.fxml")).load());
         stage.setScene(scene);
+        stage.setTitle("Profile Management");
         stage.show();
     }
 
