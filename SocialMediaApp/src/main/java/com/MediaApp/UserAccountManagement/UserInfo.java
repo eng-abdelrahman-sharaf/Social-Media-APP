@@ -7,7 +7,7 @@ import com.MediaApp.DataHandlers.IDataObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfo implements IDataObject {
+class UserInfo implements IUserInfo {
     private String userID;
     private String userName;
     private List<String> friendsIDs= new ArrayList<>();

@@ -5,7 +5,8 @@ import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.SuggestedUsers.UserNodeController;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
@@ -75,7 +76,7 @@ public class MainController {
     @FXML
     private Button CreateStoryButton;
 
-    private UserInfo Owner;
+    private IUserInfo Owner;
     private ContentContainerComponent postsContainer;
     private ContentContainerComponent storyContainer;
     public void initialize() {
@@ -89,7 +90,7 @@ public class MainController {
         storiesPanel.setContent(storyContainer);
     }
 
-    public void load(UserInfo owner,List<UserInfo> Suggestedusers, List<UserInfo> Friends,List<IPost> posts /* posts*/) {
+    public void load(IUserInfo owner, List<IUserInfo> Suggestedusers, List<IUserInfo> Friends, List<IPost> posts /* posts*/) {
         this.Owner = owner;
         // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
@@ -121,10 +122,10 @@ public class MainController {
         button.setGraphic(icon);
     }
 
-    // this method takes a list of UserInfo objects as a parameter and adds them to the SuggestedFriendsPane
-    public void createSuggestedUsers(List<UserInfo> users) {
+    // this method takes a list of IUserInfo objects as a parameter and adds them to the SuggestedFriendsPane
+    public void createSuggestedUsers(List<IUserInfo> users) {
         SuggestedFriendsPane.getChildren().clear();
-        for (UserInfo user : users) {
+        for (IUserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
                 user.setProfilePhotoPath("/Icons/user.png");
             }
@@ -134,9 +135,9 @@ public class MainController {
     }
 
 
-    public void createFriendStatus(List<UserInfo> users) {
+    public void createFriendStatus(List<IUserInfo> users) {
         FriendsStatusPane.getChildren().clear();
-        for (UserInfo user : users) {
+        for (IUserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
                 user.setProfilePhotoPath("/Icons/user.png");
             }
@@ -180,9 +181,9 @@ public class MainController {
         UserRoleDataBase userdb = UserRoleDataBase.getInstance(null);
         userdb.reload();
         StoryDataBase.getInstance(null).reload();
-        List<UserInfo> users = new ArrayList<>();
+        List<IUserInfo> users = new ArrayList<>();
         for(Object user : Arrays.stream(userdb.getData()).toArray()){
-            users.add((UserInfo) user);
+            users.add((IUserInfo) user);
         }
         System.out.println(users);
 

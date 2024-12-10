@@ -1,7 +1,7 @@
 package com.MediaApp.NewsFeed;
 
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.gui.content_mangement_components.StageGetter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class NewsFeedApp extends Application {
 
             // Get the controller from the FXMLloader
             MainController controller = loader.getController();
-            UserInfo user = AuthorizedUserGetter.getInstance().getUserInfo();
+            IUserInfo user = AuthorizedUserGetter.getInstance().getUserInfo();
             controller.load(user,new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
             controller.start();
             // Set the scene and show the stage

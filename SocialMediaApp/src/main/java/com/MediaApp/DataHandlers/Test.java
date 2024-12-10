@@ -1,7 +1,7 @@
 package com.MediaApp.DataHandlers;
 
 import com.MediaApp.ContentManagement.*;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 
 import java.time.Instant;

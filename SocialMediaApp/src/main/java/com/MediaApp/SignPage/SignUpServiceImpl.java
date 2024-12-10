@@ -5,15 +5,15 @@
 package com.MediaApp.SignPage;
 
 import com.MediaApp.UserAccountManagement.UserFinder;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import java.util.List;
 
 public class SignUpServiceImpl implements SignUpService {
     private final UserFinder userFinder;
     private final DataValidator dataValidator;
-    private final List<UserInfo> userList; // Simulates user storage
+    private final List<IUserInfo> userList; // Simulates user storage
 
-    public SignUpServiceImpl(UserFinder userFinder, DataValidator dataValidator, List<UserInfo> userList) {
+    public SignUpServiceImpl(UserFinder userFinder, DataValidator dataValidator, List<IUserInfo> userList) {
         this.userFinder = userFinder;
         this.dataValidator = dataValidator;
         this.userList = userList;

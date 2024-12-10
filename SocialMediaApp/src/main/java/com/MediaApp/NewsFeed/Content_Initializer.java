@@ -3,7 +3,7 @@ package com.MediaApp.NewsFeed;
 import com.MediaApp.ContentManagement.*;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -30,11 +30,11 @@ public class Content_Initializer {
     @FXML
     private TextArea Caption;
 
-    private UserInfo currentUser;
+    private IUserInfo currentUser;
     private String selectedImage;
 
     private String type;
-    public void settter(UserInfo user, String type) {
+    public void settter(IUserInfo user, String type) {
         this.currentUser = user;
         this.type = type;
     }

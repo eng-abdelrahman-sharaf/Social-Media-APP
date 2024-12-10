@@ -7,7 +7,7 @@ import com.MediaApp.NewsFeed.NewsFeedApp;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.MediaApp.utils.ImageChooser;
 import com.gui.content_mangement_components.ContentContainerComponent;
@@ -67,14 +67,14 @@ public class Controller {
             mediums.add((IMedium) db.readObject(ID));
         }
         ContentContainerComponent mediumsContent = new ContentContainerComponent();
-        mediumsContent.setContainerWidth(470);
+        mediumsContent.setContainerWidth(460);
         mediumsContent.setItems(mediums.toArray(new IMedium[0]));
         panel.setContent(mediumsContent);
     }
 
 
 
-    private UserInfo user;
+    private IUserInfo user;
 
     @FXML
     public void initialize() {

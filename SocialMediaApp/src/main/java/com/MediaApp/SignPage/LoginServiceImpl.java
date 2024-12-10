@@ -2,7 +2,7 @@
 package com.MediaApp.SignPage;
 
 import com.MediaApp.UserAccountManagement.UserFinder;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import java.util.Objects;
 
 
@@ -16,7 +16,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean login(String usernameOrEmail, String password) {
-        UserInfo user = null;
+        IUserInfo user = null;
 
         // Check if input is an email or username and find the user
         if (usernameOrEmail.contains("@")) {
