@@ -11,10 +11,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ArrayList;
 
 public class test extends Application {
