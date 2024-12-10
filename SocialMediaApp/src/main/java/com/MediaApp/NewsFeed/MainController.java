@@ -4,6 +4,7 @@ import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.ProfileManagement.ProfileApp;
+import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.IUserInfo;
@@ -36,7 +37,6 @@ public class MainController {
 
     @FXML
     private ImageView logo;
-
     @FXML
     private ScrollPane postsPanel;
 
@@ -45,34 +45,24 @@ public class MainController {
 
     @FXML
     private VBox ButtonsPane;
-
     @FXML
     private Button RefreshButton;
-
     @FXML
     private Button LogoutButton;
-
     @FXML
     private Button ProfileButton;
-
     @FXML
     private Button ViewRequestsButton;
-
     @FXML
     private ScrollPane scrollPane;
-
     @FXML
     private VBox ContentPane;
-
     @FXML
     private HBox SuggestedFriendsPane;
-
     @FXML
     private VBox FriendsStatusPane;
-
     @FXML
     private Button CreatePostButton;
-
     @FXML
     private Button CreateStoryButton;
 
@@ -82,6 +72,7 @@ public class MainController {
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
+        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
         postsContainer = new  ContentContainerComponent();
         postsContainer.setContainerWidth(230);
         postsPanel.setContent(postsContainer);
@@ -103,11 +94,17 @@ public class MainController {
         logo.setFitHeight(60);
         logo.setFitWidth(60);
 
-
-
-
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
+
+
+        List<String> ls = new ArrayList<>();
+        for (IUserInfo user : Friends) {
+            ls.add(user.getUserID());
+        }
+        Owner.setFriendsREquest(ls);
+
+
 
         createSuggestedUsers(Suggestedusers);
         createFriendStatus(Friends);
@@ -130,10 +127,17 @@ public class MainController {
                 user.setProfilePhotoPath("/Icons/user.png");
             }
             UserNodeController controller = new UserNodeController();
-            SuggestedFriendsPane.getChildren().add(controller.createUserNode(user));
+            Button userButton = (Button) controller.createUserNode(user);
+            userButton.setOnAction(event -> {
+                List<String> ls =   user.getFriendsIDs();
+                ls.add(user.getUserID());
+                user.setFriendsIDs(ls);
+                userButton.setVisible(false);
+                SuggestedFriendsPane.getChildren().remove(userButton);
+            });
+            SuggestedFriendsPane.getChildren().add(userButton);
         }
     }
-
 
     public void createFriendStatus(List<IUserInfo> users) {
         FriendsStatusPane.getChildren().clear();
@@ -242,4 +246,24 @@ public class MainController {
     public void CreateStory() {
         openCreatePostPopup("story");
     }
+
+    public void ViewRequest() {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RequestsPage/RequestsPage.fxml"));
+
+        try {
+            Parent root = loader.load();
+            RequestsPageController controller = loader.getController();
+
+            controller.setRequests(this.Owner);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
+

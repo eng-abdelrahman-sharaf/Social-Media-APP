@@ -37,6 +37,9 @@ public class UserNodeController {
 
             UserNodeController controller = loader.getController();
             controller.initialize(user);
+            if (user.getProfilePhotoPath() == null) {
+                user.setProfilePhotoPath("/Icons/user.png");
+            }
 
             return node;
         } catch (Exception e) {

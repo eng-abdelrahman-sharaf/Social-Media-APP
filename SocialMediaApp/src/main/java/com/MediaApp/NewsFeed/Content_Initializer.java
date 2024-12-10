@@ -102,5 +102,6 @@ public class Content_Initializer {
             alert.setContentText("Caption is empty. Post not created.");
             alert.showAndWait();
         }
+        
     }
 }
