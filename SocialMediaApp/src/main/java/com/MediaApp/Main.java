@@ -13,6 +13,7 @@ import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserInfoClassType;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
+import com.MediaApp.authentication.StartupController;
 
 /**
  *
@@ -38,8 +39,6 @@ public class Main {
     public static void main(String[] args) {
         dataLoading();
         //for testing only
-        //will be handled through login page
-        AuthorizedUserGetter.getInstance().setUserInfo((IUserInfo) UserRoleDataBase.getInstance(null).getData()[0]);
-        NewsFeedApp.main(null);
+        new StartupController().run();
     }
 }

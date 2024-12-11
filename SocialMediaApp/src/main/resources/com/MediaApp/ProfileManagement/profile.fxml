@@ -46,7 +46,7 @@
                </font>
             </TextArea>
             <AnchorPane prefHeight="59.0" prefWidth="194.0" />
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" spacing="3.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#changeUsername" prefHeight="26.0" prefWidth="126.0" text="Change username">
                      <font>
@@ -79,7 +79,7 @@
                      </font>
                   </Button>
                   <AnchorPane prefHeight="5.0" prefWidth="170.0" />
-                  <Button layoutX="32.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotoNewsFeed" prefHeight="26.0" prefWidth="34.0" text="&lt;-">
+                  <Button layoutX="32.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotoNewsFeed" prefHeight="26.0" prefWidth="79.0" text="Go Back">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

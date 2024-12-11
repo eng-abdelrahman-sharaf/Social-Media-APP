@@ -29,6 +29,7 @@ public class NewsFeedApp extends Application {
             stage.setTitle("NewsFeed");
             stage.show();
             StageGetter.getInstance().setStage(stage);
+            stage.setResizable(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

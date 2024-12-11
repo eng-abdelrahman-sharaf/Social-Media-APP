@@ -1,8 +1,11 @@
 
 package com.MediaApp.SignPage;
 
+import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.UserFinder;
 import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
+
 import java.util.Objects;
 
 
@@ -29,9 +32,12 @@ public class LoginServiceImpl implements LoginService {
         if (user == null) {
             return false;
         }
-
+        if(!validatePassword(hashPassword(password), user.getHashedPassword())){
+            return false;
+        }
+        AuthorizedUserGetter.getInstance().setUserInfo(user);
         // Validate hashed password 
-        return validatePassword(password, user.getHashedPassword());
+        return true;
     }
 
     // Placeholder for password validation

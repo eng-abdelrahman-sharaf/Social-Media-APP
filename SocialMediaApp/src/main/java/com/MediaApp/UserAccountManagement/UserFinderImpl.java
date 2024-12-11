@@ -8,31 +8,36 @@ package com.MediaApp.UserAccountManagement;
  *
  * @author abdah
  */
+import com.MediaApp.DataHandlers.IDataBase;
+import com.MediaApp.DataHandlers.IDataObject;
+
 import java.util.List;
 
 public class UserFinderImpl implements UserFinder {
-    private List<UserInfo> userList;
+    private IDataBase userdb;
    
     // Constructor to initialize with user list
-    public UserFinderImpl(List<UserInfo> userList) {
-        this.userList = userList;
+    public UserFinderImpl(IDataBase userdb) {
+        this.userdb = userdb;
     }
     
     @Override
-    public UserInfo findUserByUserName(String userName) {
-        for (UserInfo user : userList) {
+    public IUserInfo findUserByUserName(String userName) {
+        for (IDataObject obj : userdb.getData()) {
+            IUserInfo user = (IUserInfo)obj;
             if (user.getUserName().equalsIgnoreCase(userName)) {
-                return user; 
+                return user;
             }
         }
         return null; 
     }
 
     @Override
-    public UserInfo findUserByEmail(String email) {
-        for (UserInfo user : userList) {
-            if (user.getEmail().equalsIgnoreCase(email)) {
-                return user; 
+    public IUserInfo findUserByEmail(String email) {
+        for (IDataObject obj : userdb.getData()) {
+            IUserInfo userInfo = (IUserInfo)obj;
+            if (userInfo.getEmail().equalsIgnoreCase(email)) {
+                return userInfo;
             }
         }
         return null; 

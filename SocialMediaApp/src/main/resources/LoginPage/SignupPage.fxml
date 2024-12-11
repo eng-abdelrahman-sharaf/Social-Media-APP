@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="520.0" prefWidth="730.0" style="-fx-background-color: #d9d9d9;" stylesheets="@../NewsFeedTemplate/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.authentication.SignupController">
+   <children>
+      <AnchorPane layoutX="-10.0" prefHeight="520.0" prefWidth="315.0" style="-fx-background-color: #808080;" styleClass="Vbox" stylesheets="@../NewsFeedTemplate/MainStyle.css">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="28.0" layoutY="95.0" prefHeight="345.0" prefWidth="258.0" spacing="5.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="84.0" text="Sign up" textFill="#f8f8f8">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="18.0" prefWidth="260.0" text="User Name" textFill="#faf6f6" VBox.vgrow="ALWAYS" />
+                  <TextField fx:id="usernameField" />
+                  <Label prefHeight="18.0" prefWidth="266.0" text="Email" textFill="WHITE" />
+                  <TextField fx:id="emailField" layoutX="10.0" layoutY="72.0" />
+                  <Label layoutX="10.0" layoutY="104.0" prefHeight="18.0" prefWidth="266.0" text="Date of Birth" textFill="WHITE" />
+                  <DatePicker fx:id="dobField" prefHeight="26.0" prefWidth="269.0" />
+                  <Label layoutX="10.0" layoutY="104.0" prefHeight="18.0" prefWidth="266.0" text="Password" textFill="WHITE" />
+                  <PasswordField fx:id="passwordField" layoutX="10.0" layoutY="127.0" />
+                  <Label layoutX="10.0" layoutY="208.0" prefHeight="18.0" prefWidth="266.0" text="Password Confirmation" textFill="WHITE" />
+                  <PasswordField fx:id="passwordField1" layoutX="10.0" layoutY="231.0" />
+                  <HBox alignment="CENTER" prefHeight="84.0" prefWidth="258.0" spacing="50.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#gotoStartup" text="Go Back" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#signUp" text="Sign up" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox layoutX="76.0" layoutY="52.0" prefHeight="62.0" prefWidth="200.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="424.0" layoutY="366.0" text="ConnectHub">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="Logo" fitHeight="189.0" fitWidth="233.0" layoutX="424.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
