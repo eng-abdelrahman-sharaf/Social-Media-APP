@@ -1,11 +1,12 @@
 package com.MediaApp.UserAccountManagement;
 
 import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.SearchEngines.INamedDataObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public interface IUserInfo extends IDataObject {
+public interface IUserInfo extends INamedDataObject {
 
     public String getUserID();
 
@@ -63,4 +64,8 @@ public interface IUserInfo extends IDataObject {
     public void setFriendsREquest(List<String> friendsREquest);
     public UserInfo  clone();
     public String toString();
+
+
+
+
 }

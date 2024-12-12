@@ -10,6 +10,7 @@ package com.MediaApp.UserAccountManagement;
  */
 import com.MediaApp.DataHandlers.IDataBase;
 import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.SearchEngines.INamedDataObject;
 
 import java.util.List;
 
@@ -41,5 +42,10 @@ public class UserFinderImpl implements UserFinder {
             }
         }
         return null; 
+    }
+
+    @Override
+    public INamedDataObject findByName(String name) {
+        return findUserByUserName(name);
     }
 }
