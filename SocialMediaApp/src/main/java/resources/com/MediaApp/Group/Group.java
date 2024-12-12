@@ -18,7 +18,8 @@ public class Group {
     private String primaryAdminId;
     private List<String> adminIds;
     private List<String> memberIds;
-
+    private List<GroupPost> posts;
+    
     private Group(Builder builder) {
         this.groupId = builder.groupId;
         this.name = builder.name;
@@ -27,6 +28,7 @@ public class Group {
         this.primaryAdminId = builder.primaryAdminId;
         this.adminIds = builder.adminIds;
         this.memberIds = builder.memberIds;
+        this.posts = builder.posts;
     }
 
     public static class Builder {
@@ -37,6 +39,8 @@ public class Group {
         private String primaryAdminId;
         private List<String> adminIds = new ArrayList<>();
         private List<String> memberIds = new ArrayList<>();
+        private List<GroupPost> posts = new ArrayList<>();
+
 
         public Builder setGroupId(String groupId) {
             this.groupId = groupId;
@@ -73,6 +77,16 @@ public class Group {
             this.adminIds.add(adminId);
             return this;
         }
+        
+        public Builder addPost(GroupPost post) {
+            this.posts.add(post);
+            return this;
+        }
+
+        public Builder setPosts(List<GroupPost> posts) {
+            this.posts = posts;
+            return this;
+        }
 
         public Group build() {
             return new Group(this);
@@ -105,5 +119,9 @@ public class Group {
 
     public List<String> getMemberIds() {
         return memberIds;
+    }
+    
+    public List<GroupPost> getPosts() {
+        return posts;
     }
 }

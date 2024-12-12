@@ -4,17 +4,14 @@
  */
 package resources.com.MediaApp.Group;
 
-import com.MediaApp.ContentManagement.Content;
-
 /**
  *
  * @author ay654
  */
-public interface PrimaryAdminService {
-    void promoteToAdmin(String groupId, String userId);
-    void demoteAdmin(String groupId, String adminId);
-    void removeMember(String groupId, String memberId);
-    void deleteGroup(String groupId);
+import com.MediaApp.ContentManagement.Content;
+
+public interface GroupPostService {
+    void addPost(String groupId, String authorId, Content content);
     void editPost(String groupId, String postId, String userId, Content newContent);
     void deletePost(String groupId, String postId, String userId);
 }

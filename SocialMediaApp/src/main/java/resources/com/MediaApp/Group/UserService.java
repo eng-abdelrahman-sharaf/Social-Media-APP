@@ -8,7 +8,9 @@ package resources.com.MediaApp.Group;
  *
  * @author ay654
  */
+import com.MediaApp.ContentManagement.Content;
+
 public interface UserService {
-    void postToGroup(String groupId, String content);
-    void leaveGroup(String groupId);
+    void postToGroup(String groupId, String userId, Content content);
+    void leaveGroup(String groupId, String userId);
 }
