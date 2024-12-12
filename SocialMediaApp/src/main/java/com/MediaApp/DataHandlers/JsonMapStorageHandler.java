@@ -19,9 +19,9 @@ public class JsonMapStorageHandler<K, V extends IDataObject> implements MapStora
 
     private final String filePath;
     private final Class<K> keyType;
-    private final Class<V> valueType;
+    private final Class<?> valueType;
 
-    public JsonMapStorageHandler(Class<K> keyType, Class<V> valueType, String filePath) {
+    public JsonMapStorageHandler(Class<K> keyType, Class<?> valueType, String filePath) {
         this.keyType = keyType;
         this.valueType = valueType;
         this.filePath = filePath;

@@ -4,10 +4,12 @@ package com.MediaApp.UserAccountManagement;
 
 import com.MediaApp.DataHandlers.DataObject;
 import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.SearchEngines.INamedDataObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfo implements IDataObject {
+class UserInfo implements IUserInfo {
     private String userID;
     private String userName;
     private List<String> friendsIDs= new ArrayList<>();
@@ -22,17 +24,18 @@ public class UserInfo implements IDataObject {
     private String coverPhotoPath;
     private List<String> storiesIDs= new ArrayList<>();
     private List<String> friendsREquest= new ArrayList<>();
+    private List<String> joinedGroups= new ArrayList<>();
 
     // Constructor 1 using when signup
     public UserInfo(String userID,String userName,String hashedPassword, String email, String dateOfBirth) {
         this.userID = userID;
         this.userName = userName;
         this.hashedPassword = hashedPassword;
-        
+
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        
-        
+
+
         
     }
     // Constructor 2 
@@ -167,7 +170,7 @@ public class UserInfo implements IDataObject {
     }
     public void addFrinedRequestId(String id ){
         friendsREquest.add(id);
-        
+
     }
     public void removeFirndREuest(String id ){
         friendsREquest.remove(id);
@@ -176,7 +179,15 @@ public class UserInfo implements IDataObject {
     public void setFriendsREquest(List<String> friendsREquest) {
         this.friendsREquest = friendsREquest;
     }
-    
+
+    public List<String> getJoinedGroups() {
+        return  new ArrayList<>(joinedGroups);
+    }
+
+    public void setJoinedGroups(List<String> joinedGroups) {
+        this.joinedGroups = joinedGroups;
+    }
+
     @Override
     public String getID() {
         return userID;
@@ -205,7 +216,7 @@ public class UserInfo implements IDataObject {
         cloned.setPostsIDs(new ArrayList<>(this.postsIDs));
         cloned.setStoriesIDs(new ArrayList<>(this.storiesIDs));
         cloned.setFriendsREquest(new ArrayList<>(this.friendsREquest));
-        
+
         return cloned;
     }
    
@@ -231,6 +242,15 @@ public class UserInfo implements IDataObject {
                 '}';
     }
 
-   
+
+    @Override
+    public String getName() {
+        return this.userName;
+    }
+
+    @Override
+    public void setName(String name) {
+        setUserName(name);
+    }
 }
 

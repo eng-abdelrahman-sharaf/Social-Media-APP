@@ -1,10 +1,10 @@
 package com.MediaApp.NewsFeed;
 
-import com.MediaApp.ContentManagement.Content;
-import com.MediaApp.ContentManagement.Post;
-import com.MediaApp.ContentManagement.Story;
+import com.MediaApp.ContentManagement.*;
 import com.MediaApp.DataHandlers.PostDataBase;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.DataHandlers.StoryDataBase;
+import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,6 +18,9 @@ import java.util.UUID;
 
 public class Content_Initializer {
 
+    private PostFactory postFactory = new PostFactory();
+    private StoryFactory storyFactory = new StoryFactory();
+
     @FXML
     private Button ImageChooser;
 
@@ -27,11 +30,11 @@ public class Content_Initializer {
     @FXML
     private TextArea Caption;
 
-    private UserInfo currentUser;
+    private IUserInfo currentUser;
     private String selectedImage;
 
     private String type;
-    public void settter(UserInfo user, String type) {
+    public void settter(IUserInfo user, String type) {
         this.currentUser = user;
         this.type = type;
     }
@@ -69,27 +72,22 @@ public class Content_Initializer {
             content.setAttachments(new String[]{selectedImage});
             UUID postId = UUID.randomUUID();
             if(type.equalsIgnoreCase("post")) {
-                Post newPost = new Post();
-                newPost.setID(postId.toString());
-                newPost.setAuthorID(currentUser.getID());
-                newPost.setContent(content);
-                newPost.setTimeStamp(String.valueOf(Instant.now()));
+                IPost newPost = postFactory.createMedium(postId.toString() , currentUser.getID() , content , String.valueOf(Instant.now()));
                 List<String> ps = currentUser.getPostsIDs();
                 ps.add(postId.toString());
                 currentUser.setPostsIDs(ps);
                 PostDataBase.getInstance(null).addObject(newPost);
+                UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
                 System.out.println("post created");
             }
             else{
-                Story newStory = new Story();
-                newStory.setID(postId.toString());
-                newStory.setAuthorID(currentUser.getID());
-                newStory.setContent(content);
-                newStory.setTimeStamp(String.valueOf(Instant.now()));
+                IStory newStory = storyFactory.createMedium(postId.toString() , currentUser.getID() , content , String.valueOf(Instant.now()));
                 System.out.println("Story created");
                 List<String> ss = currentUser.getStoriesIDs();
                 ss.add(postId.toString());
                 currentUser.setStoriesIDs(ss);
+                StoryDataBase.getInstance(null).addObject(newStory);
+                UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
             }
 
             System.out.println("Post created with caption: " + caption);

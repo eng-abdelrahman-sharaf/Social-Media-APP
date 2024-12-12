@@ -1,7 +1,7 @@
 package com.MediaApp.RequestsPage;
 
 import com.MediaApp.SuggestedUsers.UserNodeController;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,18 +21,18 @@ public class RequestsPageController {
     public void initialize() {
     }
 
-    public void setRequests(UserInfo User) {
+    public void setRequests(IUserInfo User) {
         UserNodeController userNodeController = new UserNodeController();
         UserRoleDataBase userDB = UserRoleDataBase.getInstance(null);
-        List<UserInfo> users = new ArrayList<>();
+        List<IUserInfo> users = new ArrayList<>();
         System.out.println(User.getFriendsREquest());
 
         for (String id : User.getFriendsREquest()) {
-            users.add((UserInfo) userDB.readObject(id));
+            users.add((IUserInfo) userDB.readObject(id));
             System.out.println("akjbdlas");
         }
 
-        for (UserInfo user : users) {
+        for (IUserInfo user : users) {
             Button userNodeButton = (Button) userNodeController.createUserNode(user);
             userNodeButton.setOnAction(event -> {
 

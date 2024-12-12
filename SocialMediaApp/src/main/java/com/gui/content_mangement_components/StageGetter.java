@@ -19,5 +19,6 @@ public class StageGetter {
     }
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setResizable(false);
     }
 }

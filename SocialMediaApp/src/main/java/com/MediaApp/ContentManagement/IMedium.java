@@ -14,5 +14,6 @@ public interface IMedium extends IDataObject {
     String getTimeStamp();
     void setAuthorID(String AuthorID);
     void setTimeStamp(String timeStamp);
+
     void setContent(Content content);
 }

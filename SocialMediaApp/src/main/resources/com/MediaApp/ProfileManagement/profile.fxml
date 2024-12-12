@@ -12,71 +12,74 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.ProfileManagement.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.ProfileManagement.Controller">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="170.0" style="-fx-background-color: gray;">
+      <VBox alignment="TOP_CENTER" prefHeight="520.0" prefWidth="194.0" style="-fx-background-color: gray;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
             <Pane prefHeight="115.0" prefWidth="170.0">
                <children>
-                  <ImageView fx:id="cover" fitHeight="90.0" fitWidth="170.0" layoutY="-8.0">
-                     <image>
-                        <Image url="@cover.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="avatar" fitHeight="90.0" fitWidth="90.0" layoutX="40.0" layoutY="14.0">
+                  <ImageView fx:id="cover" fitHeight="90.0" fitWidth="194.0" layoutY="-8.0" />
+                  <ImageView fx:id="avatar" fitHeight="90.0" fitWidth="90.0" layoutX="52.0" layoutY="13.0">
                      <image>
                         <Image url="@avatar.jpg" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <AnchorPane prefHeight="27.0" prefWidth="170.0" />
-            <Text layoutX="71.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+            <Text fx:id="username" layoutX="71.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
                <font>
                   <Font name="Corbel" size="12.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email">
+            <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" text="email">
                <font>
                   <Font name="Corbel" size="12.0" />
                </font>
             </Text>
-            <TextArea blendMode="COLOR_BURN" editable="false" maxWidth="-Infinity" prefHeight="88.0" prefWidth="158.0" style="-fx-background-color: gray;" text="It is my description" wrapText="true">
+            <AnchorPane prefHeight="19.0" prefWidth="194.0" />
+            <TextArea fx:id="description" blendMode="COLOR_BURN" editable="false" maxWidth="-Infinity" prefHeight="88.0" prefWidth="158.0" style="-fx-background-color: gray;" wrapText="true">
                <font>
-                  <Font name="MS Reference Sans Serif" size="14.0" />
+                  <Font name="MS Reference Sans Serif" size="12.0" />
                </font>
             </TextArea>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <AnchorPane prefHeight="59.0" prefWidth="194.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" spacing="3.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Change username">
+                  <Button mnemonicParsing="false" onAction="#changeUsername" prefHeight="26.0" prefWidth="126.0" text="Change username">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Change bio">
+                  <Button mnemonicParsing="false" onAction="#ChangeBio" prefHeight="26.0" prefWidth="127.0" text="Change bio">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Change Password">
+                  <Button mnemonicParsing="false" onAction="#ChangePassword" prefHeight="26.0" prefWidth="128.0" text="Change Password">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Change email">
+                  <Button mnemonicParsing="false" onAction="#ChangeEmail" prefHeight="26.0" prefWidth="128.0" text="Change email">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="32.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Change profile ">
+                  <Button layoutX="32.0" layoutY="46.0" mnemonicParsing="false" onAction="#changeProfile" prefHeight="26.0" prefWidth="126.0" text="Change profile ">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="32.0" layoutY="138.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Change cover">
+                  <Button layoutX="32.0" layoutY="138.0" mnemonicParsing="false" onAction="#ChangeCover" prefHeight="26.0" prefWidth="126.0" text="Change cover">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <AnchorPane prefHeight="5.0" prefWidth="170.0" />
+                  <Button layoutX="32.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotoNewsFeed" prefHeight="26.0" prefWidth="79.0" text="Go Back">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -85,9 +88,9 @@
             </VBox>
          </children>
       </VBox>
-      <ScrollPane hbarPolicy="NEVER" layoutX="170.0" prefHeight="400.0" prefWidth="430.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="195.0" prefHeight="520.0" prefWidth="535.0">
          <content>
-            <Pane maxHeight="-Infinity" prefHeight="600.0" prefWidth="413.0">
+            <Pane maxHeight="-Infinity" prefHeight="600.0" prefWidth="518.0">
                <children>
                   <Pane layoutX="-2.0" layoutY="6.0" prefHeight="62.0" prefWidth="419.0">
                      <children>
@@ -98,33 +101,17 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutX="5.0" layoutY="211.0" prefHeight="62.0" prefWidth="412.0">
+                  <Pane layoutX="18.0" layoutY="271.0" prefHeight="48.0" prefWidth="412.0">
                      <children>
-                        <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posts">
+                        <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Posts">
                            <font>
                               <Font name="Corbel" size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </Pane>
-                  <VBox centerShape="false" fillWidth="false" layoutX="14.0" layoutY="273.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="233.0" prefWidth="361.0" spacing="10.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: gray;">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: black;" text="faowjfpoajpwoafjpoajwfopjawopfkpokfpoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa fpwkaopfk opkwaopk opkop kwoakfawf awk [pwak[p aw" wrappingWidth="365.44392490386963">
-                           <font>
-                              <Font name="Corbel" size="13.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="150.0" fitWidth="366.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@cover.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <ScrollPane layoutX="18.0" layoutY="68.0" prefHeight="162.0" prefWidth="395.0" />
+                  <ScrollPane fx:id="storiespanel" layoutX="13.0" layoutY="68.0" prefHeight="204.0" prefWidth="481.0" />
+                  <ScrollPane fx:id="postspanel" layoutX="13.0" layoutY="319.0" prefHeight="230.0" prefWidth="481.0" />
                </children>
             </Pane>
          </content>

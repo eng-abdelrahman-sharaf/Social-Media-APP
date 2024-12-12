@@ -1,6 +1,6 @@
 package com.MediaApp.RelationsManagement;
 
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class FriendRequestsManager implements IFriendRequestsManager{
 
     @Override //User1 sends a Friend request to User2
-    public void sendFriendRequest(UserInfo user1, UserInfo user2) throws Exception {
+    public void sendFriendRequest(IUserInfo user1, IUserInfo user2) throws Exception {
         if (user1.getBlockedAccountsIDs().contains(user2.getUserID()) ||
                 user2.getBlockedAccountsIDs().contains(user1.getUserID())) {
             throw new Exception("User is in BlockList");
@@ -23,7 +23,7 @@ public class FriendRequestsManager implements IFriendRequestsManager{
     }
 
     @Override //User1 declines the Friend request from user2
-    public void declineFriendRequest(UserInfo user1, UserInfo user2) {
+    public void declineFriendRequest(IUserInfo user1, IUserInfo user2) {
         if (user1.getFriendsREquest().contains(user2.getUserID())) {
             List<String> arr = user1.getFriendsREquest();
             arr.remove(user2.getUserID());
@@ -33,7 +33,7 @@ public class FriendRequestsManager implements IFriendRequestsManager{
     }
 
     @Override //user1 accepts the friend from user2
-    public void acceptFriendRequest(UserInfo user1, UserInfo user2) {
+    public void acceptFriendRequest(IUserInfo user1, IUserInfo user2) {
         if (user1.getFriendsREquest().contains(user2.getUserID())) {
             List<String> arr = user1.getFriendsIDs();
             arr.add(user2.getUserID());

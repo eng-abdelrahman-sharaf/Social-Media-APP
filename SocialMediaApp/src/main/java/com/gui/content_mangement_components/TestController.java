@@ -27,7 +27,7 @@ public class TestController extends Pane {
             IContent content = new Content();
             content.setText("apwldp[wkfoawmjopamnfomwaopfmaw[f[pawkmf[wpamfwap[mfp[awmf[pawlkfdp[aw [kwa[p kw[pfak [pkwap[f lkwap[ kp[wkaf [pk[p k [pkawp[ k[pdwakp[ fkw[ap");
             content.setAttachments(new String[]{"/com/gui/content_mangement_components/cover.jpg","/com/gui/content_mangement_components/cover.jpg","/com/gui/content_mangement_components/cover.jpg"});
-            Medium[] mediums= {
+            IMedium[] mediums= {
 //                    new Post("4613646" , "4f6a68w" , content , String.valueOf(Instant.now())),
 //                    new Story("4684" , "46984" , content , String.valueOf(Instant.now())),
             };

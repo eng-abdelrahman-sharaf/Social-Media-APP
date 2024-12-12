@@ -2,7 +2,7 @@ package com.MediaApp.UserAccountManagement;
 
 public class AuthorizedUserGetter {
     private static AuthorizedUserGetter instance;
-    private UserInfo userInfo;
+    private IUserInfo userInfo;
     private AuthorizedUserGetter() {}
     public static AuthorizedUserGetter getInstance() {
         if(instance == null) {
@@ -11,11 +11,11 @@ public class AuthorizedUserGetter {
         return instance;
     }
 
-    public UserInfo getUserInfo() {
+    public IUserInfo getUserInfo() {
         return userInfo;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
+    public void setUserInfo(IUserInfo userInfo) {
         this.userInfo = userInfo;
     }
 }

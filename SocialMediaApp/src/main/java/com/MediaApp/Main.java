@@ -6,15 +6,14 @@ package com.MediaApp;
 
 //import com.MediaApp.GUI.App;
 
-import com.MediaApp.ContentManagement.Post;
-import com.MediaApp.ContentManagement.Story;
+import com.MediaApp.ContentManagement.*;
 import com.MediaApp.DataHandlers.*;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.NewsFeed.NewsFeedApp;
+import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
+import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.UserInfoClassType;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
-
-import com.MediaApp.NewsFeed.test;
-import com.gui.content_mangement_components.StageGetter;
-import javafx.stage.Stage;
+import com.MediaApp.authentication.StartupController;
 
 /**
  *
@@ -26,9 +25,9 @@ public class Main {
         String storyFilePath = "story.json";
         String userFilePath = "user.json";
         // Create a storage handler for the HashMap
-        MapStorageHandler<String, Post> postHandler = new JsonMapStorageHandler<>(String.class, Post.class, postFilePath);
-        MapStorageHandler<String, Story> storyHandler = new JsonMapStorageHandler<>(String.class, Story.class, storyFilePath);
-        MapStorageHandler<String, UserInfo> userHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, userFilePath);
+        MapStorageHandler<String, IPost> postHandler = new JsonMapStorageHandler<>(String.class, PostClassType.type, postFilePath);
+        MapStorageHandler<String, IStory> storyHandler = new JsonMapStorageHandler<>(String.class, StoryClassType.type, storyFilePath);
+        MapStorageHandler<String, IUserInfo> userHandler = new JsonMapStorageHandler<>(String.class, UserInfoClassType.type, userFilePath);
         // Get the singleton instance of UserRoleDataBase
         PostDataBase.getInstance(postHandler);
         StoryDataBase.getInstance(storyHandler);
@@ -39,6 +38,7 @@ public class Main {
 
     public static void main(String[] args) {
         dataLoading();
-        test.main(null);
+        //for testing only
+        new StartupController().run();
     }
 }

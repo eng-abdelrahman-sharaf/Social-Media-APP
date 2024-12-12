@@ -70,7 +70,12 @@
                         <HBox fx:id="SuggestedFriendsPane" prefHeight="31.0" prefWidth="667.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
-                  <ScrollPane fx:id="postsPanel" prefHeight="418.0" prefWidth="475.0" />
+                  <HBox prefHeight="416.0" prefWidth="475.0">
+                     <children>
+                        <ScrollPane fx:id="storiesPanel" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
+                        <ScrollPane fx:id="postsPanel" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </content>

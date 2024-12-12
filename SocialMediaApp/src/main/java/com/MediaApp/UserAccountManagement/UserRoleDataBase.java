@@ -17,17 +17,17 @@ import java.util.List;
 public class UserRoleDataBase implements IDataBase {
 
     private static UserRoleDataBase instance;
-    private HashMap<String, UserInfo> dataMap;
-    private MapStorageHandler<String, UserInfo> storageHandler;
+    private HashMap<String, IUserInfo> dataMap;
+    private MapStorageHandler<String, IUserInfo> storageHandler;
 
-    private UserRoleDataBase(MapStorageHandler<String, UserInfo> handler) {
+    private UserRoleDataBase(MapStorageHandler<String, IUserInfo> handler) {
         this.storageHandler = handler;
         this.dataMap = new HashMap<>();
         reload(); // Initial load
     }
 
     // Singleton pattern
-    public static UserRoleDataBase getInstance(MapStorageHandler<String, UserInfo> handler) {
+    public static UserRoleDataBase getInstance(MapStorageHandler<String, IUserInfo> handler) {
         if (instance == null) {
             instance = new UserRoleDataBase(handler);
         }

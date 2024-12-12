@@ -1,10 +1,7 @@
 package com.MediaApp.DataHandlers;
 
-import com.MediaApp.ContentManagement.Content;
-import com.MediaApp.ContentManagement.IContent;
-import com.MediaApp.ContentManagement.Post;
-import com.MediaApp.ContentManagement.PostFactory;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.ContentManagement.*;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 
 import java.time.Instant;
@@ -16,7 +13,7 @@ public class Test {
         // creating database
         String filePath = "post.json";
         // Create a storage handler for the HashMap
-        MapStorageHandler<String, Post> storageHandler = new JsonMapStorageHandler<>(String.class, Post.class, filePath);
+        MapStorageHandler<String, IPost> storageHandler = new JsonMapStorageHandler<>(String.class, IPost.class, filePath);
         // Get the singleton instance of UserRoleDataBase
         PostDataBase postdb = PostDataBase.getInstance(storageHandler);
 
@@ -25,11 +22,12 @@ public class Test {
         content.setText("apwldp[wkfoawmjopamnfomwaopfmaw[f[pawkmf[wpamfwap[mfp[awmf[pawlkfdp[aw [kwa[p kw[pfak [pkwap[f lkwap[ kp[wkaf [pk[p k [pkawp[ k[pdwakp[ fkw[ap");
         content.setAttachments(new String[]{"/com/gui/content_mangement_components/cover.jpg","/com/gui/content_mangement_components/cover.jpg","/com/gui/content_mangement_components/cover.jpg"});
 
-        PostFactory postFactory = new PostFactory("4613646" , "4f6a68w" , content , String.valueOf(Instant.now()));
+        PostFactory postFactory = new PostFactory();
+        IPost post = postFactory.createMedium("4613646" , "4f6a68w" , content , String.valueOf(Instant.now()));
 
-        postdb.addObject(postFactory.createMedium());
-        postdb.addObject(postFactory.createMedium());
-        postdb.addObject(postFactory.createMedium());
-        postdb.addObject(postFactory.createMedium());
+        postdb.addObject(post);
+        postdb.addObject(post);
+        postdb.addObject(post);
+        postdb.addObject(post);
     }
 }

@@ -1,6 +1,8 @@
 package com.MediaApp.ProfileManagement;
 
 
+import com.gui.PageLoader;
+import com.gui.content_mangement_components.StageGetter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,9 +21,8 @@ public class ProfileApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(new FXMLLoader(ProfileApp.class.getResource("profile.fxml")).load());
-        stage.setScene(scene);
-        stage.show();
+        PageLoader loader = new PageLoader("Profile" , ProfileApp.class.getResource("profile.fxml") , stage);
+        loader.load();
     }
 
 

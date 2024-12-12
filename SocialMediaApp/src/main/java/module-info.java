@@ -22,9 +22,11 @@ module com.example.socialmedia {
     opens com.gui.content_mangement_components;
     exports com.MediaApp.UserAccountManagement.tests to com.fasterxml.jackson.databind;
     opens com.MediaApp.UserAccountManagement.tests;
-    exports com.MediaApp.LoginPage;
-    opens com.MediaApp.LoginPage to javafx.fxml;
+    exports com.MediaApp.authentication;
+    opens com.MediaApp.authentication to javafx.fxml;
     opens com.MediaApp.RequestsPage to javafx.fxml;
     exports com.MediaApp.RequestsPage;
+    exports com.gui to javafx.fxml;
+    opens com.gui;
 
 }

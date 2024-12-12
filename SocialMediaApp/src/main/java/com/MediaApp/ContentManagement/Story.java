@@ -1,10 +1,8 @@
 package com.MediaApp.ContentManagement;
 
-import java.time.Duration;
-import java.time.Instant;
+class Story extends Medium implements IStory {
 
-public class Story extends Medium implements ITemporalMedium {
-
+    String timeStamp;
     String expirationTime;
     public Story(){
     }
@@ -19,4 +17,15 @@ public class Story extends Medium implements ITemporalMedium {
     public void setExpirationTime(String expirationTime) {
         this.expirationTime = expirationTime;
     }
+
+    @Override
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    @Override
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
 }

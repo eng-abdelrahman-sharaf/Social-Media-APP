@@ -1,12 +1,12 @@
 package com.MediaApp.RelationsManagement;
 
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 
 import java.util.List;
 
 public class BlockingManager implements IBlockingManager{
     @Override // user1 blocks user2
-    public void blockUser(UserInfo user1, UserInfo user2) {
+    public void blockUser(IUserInfo user1, IUserInfo user2) {
         if (!user1.getBlockedAccountsIDs().contains(user2.getUserID())) {
 
             //add user1 to blocked
@@ -32,7 +32,7 @@ public class BlockingManager implements IBlockingManager{
 
 
     @Override //user1 unblocks user2
-    public void unblockUser(UserInfo user1, UserInfo user2) {
+    public void unblockUser(IUserInfo user1, IUserInfo user2) {
         if (user1.getBlockedAccountsIDs().contains(user2.getUserID())) {
             List<String> arr = user1.getBlockedAccountsIDs();
             arr.remove(user2.getUserID());

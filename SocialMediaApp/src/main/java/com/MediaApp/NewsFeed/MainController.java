@@ -1,11 +1,13 @@
 package com.MediaApp.NewsFeed;
-import com.MediaApp.ContentManagement.Post;
+
+import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
@@ -37,6 +39,10 @@ public class MainController {
     private ImageView logo;
     @FXML
     private ScrollPane postsPanel;
+
+    @FXML
+    private ScrollPane storiesPanel;
+
     @FXML
     private VBox ButtonsPane;
     @FXML
@@ -60,19 +66,22 @@ public class MainController {
     @FXML
     private Button CreateStoryButton;
 
-    private UserInfo Owner;
-
-    private ContentContainerComponent container;
+    private IUserInfo Owner;
+    private ContentContainerComponent postsContainer;
+    private ContentContainerComponent storyContainer;
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
         ViewRequestsButton.setOnAction(event -> ViewRequest());// here
-        container = new  ContentContainerComponent();
-        container.setContainerWidth(460);
-        postsPanel.setContent(container);
+        postsContainer = new  ContentContainerComponent();
+        postsContainer.setContainerWidth(230);
+        postsPanel.setContent(postsContainer);
+        storyContainer = new  ContentContainerComponent();
+        storyContainer.setContainerWidth(230);
+        storiesPanel.setContent(storyContainer);
     }
 
-    public void load(UserInfo owner,List<UserInfo> Suggestedusers, List<UserInfo> Friends,List<Post> posts /* posts*/) {
+    public void load(IUserInfo owner, List<IUserInfo> Suggestedusers, List<IUserInfo> Friends, List<IPost> posts /* posts*/) {
         this.Owner = owner;
         // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
@@ -90,7 +99,7 @@ public class MainController {
 
 
         List<String> ls = new ArrayList<>();
-        for (UserInfo user : Friends) {
+        for (IUserInfo user : Friends) {
             ls.add(user.getUserID());
         }
         Owner.setFriendsREquest(ls);
@@ -110,10 +119,10 @@ public class MainController {
         button.setGraphic(icon);
     }
 
-    // this method takes a list of UserInfo objects as a parameter and adds them to the SuggestedFriendsPane
-    public void createSuggestedUsers(List<UserInfo> users) {
+    // this method takes a list of IUserInfo objects as a parameter and adds them to the SuggestedFriendsPane
+    public void createSuggestedUsers(List<IUserInfo> users) {
         SuggestedFriendsPane.getChildren().clear();
-        for (UserInfo user : users) {
+        for (IUserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
                 user.setProfilePhotoPath("/Icons/user.png");
             }
@@ -130,9 +139,12 @@ public class MainController {
         }
     }
 
-    public void createFriendStatus(List<UserInfo> users) {
+    public void createFriendStatus(List<IUserInfo> users) {
         FriendsStatusPane.getChildren().clear();
-               for (UserInfo user : users) {
+        for (IUserInfo user : users) {
+            if (user.getProfilePhotoPath() == null) {
+                user.setProfilePhotoPath("/Icons/user.png");
+            }
             if (user.getStatus() != null ){
                 UserNodeController controller = new UserNodeController();
                 Node  node = controller.createUserNode(user);
@@ -153,7 +165,6 @@ public class MainController {
         ProfileApp app = new ProfileApp();
 
         Stage stage = StageGetter.getInstance().getStage();
-        stage.setTitle("Profile");
 //        Stage popupStage = new Stage();
 //        popupStage.initModality(Modality.APPLICATION_MODAL);
 //        popupStage.setTitle("Profile");
@@ -174,15 +185,15 @@ public class MainController {
         UserRoleDataBase userdb = UserRoleDataBase.getInstance(null);
         userdb.reload();
         StoryDataBase.getInstance(null).reload();
-        List<UserInfo> users = new ArrayList<>();
+        List<IUserInfo> users = new ArrayList<>();
         for(Object user : Arrays.stream(userdb.getData()).toArray()){
-            users.add((UserInfo) user);
+            users.add((IUserInfo) user);
         }
         System.out.println(users);
 
-        ArrayList <Post> posts = new ArrayList<>();
+        ArrayList <IPost> posts = new ArrayList<>();
         for(Object post :PostDataBase.getInstance(null).getData()){
-            posts.add((Post) post);
+            posts.add((IPost) post);
         }
 
         load(this.Owner , users , users , posts);
@@ -218,9 +229,8 @@ public class MainController {
         }
     }
 
-    public void FillPostsPane(List<Post> posts) {
-
-        container.setItems(posts.toArray(new Post[0]));
+    public void FillPostsPane(List<IPost> posts) {
+        postsContainer.setItems(posts.toArray(new IPost[0]));
     }
 
 

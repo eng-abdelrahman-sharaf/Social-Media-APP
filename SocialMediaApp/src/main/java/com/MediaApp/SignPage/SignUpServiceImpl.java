@@ -4,19 +4,22 @@
  */
 package com.MediaApp.SignPage;
 
-import com.MediaApp.UserAccountManagement.UserFinder;
-import com.MediaApp.UserAccountManagement.UserInfo;
-import java.util.List;
+import com.MediaApp.DataHandlers.IDataBase;
+import com.MediaApp.DataHandlers.IDataObject;
+import com.MediaApp.UserAccountManagement.*;
 
-public class SignUpServiceImpl implements SignUpService {
+import java.util.List;
+import java.util.UUID;
+
+class SignUpServiceImpl implements SignUpService {
     private final UserFinder userFinder;
     private final DataValidator dataValidator;
-    private final List<UserInfo> userList; // Simulates user storage
+    private final IDataBase userDataBase; // Simulates user storage
 
-    public SignUpServiceImpl(UserFinder userFinder, DataValidator dataValidator, List<UserInfo> userList) {
+    public SignUpServiceImpl(UserFinder userFinder, DataValidator dataValidator, IDataBase userRoleDataBase) {
         this.userFinder = userFinder;
         this.dataValidator = dataValidator;
-        this.userList = userList;
+        this.userDataBase = userRoleDataBase;
     }
 
     @Override
@@ -64,11 +67,14 @@ public class SignUpServiceImpl implements SignUpService {
         }
 
         // Create a new user
-//        String userID = "U" + (userList.size() + 1); // Generate a simple unique ID
-//        UserInfo newUser = new UserInfo(userID, userName, password.hashCode() + "", email, dateOfBirth); // Hash the password for security
-//        userList.add(newUser); 
-        
-
+        String userID;
+        do {
+            userID = UUID.randomUUID().toString(); // Generate a simple unique ID
+        }while (UserRoleDataBase.getInstance(null).readObject(userID) != null );
+        UserInfoFactory userInfoFactory = new UserInfoFactory();
+        IUserInfo newUser = userInfoFactory.getUserInfo(userID, userName, Integer.toHexString(password.hashCode()) + "", email, dateOfBirth);
+        userDataBase.addObject(newUser);
+        AuthorizedUserGetter.getInstance().setUserInfo(newUser);
         System.out.println("Success: User signed up successfully!");
         return "True, User signed up successfully!";
     }

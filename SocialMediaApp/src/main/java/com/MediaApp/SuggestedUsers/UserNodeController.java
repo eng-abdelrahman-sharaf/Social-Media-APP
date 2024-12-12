@@ -1,6 +1,6 @@
 package com.MediaApp.SuggestedUsers;
 
-import com.MediaApp.UserAccountManagement.UserInfo;
+import com.MediaApp.UserAccountManagement.IUserInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +12,7 @@ public class UserNodeController {
     @FXML
     private Button suggestedUser;
 
-    public void initialize(UserInfo user) {
+    public void initialize(IUserInfo user) {
         suggestedUser.setText(user.getUserName());
         ImageView icon = loadImage(user.getProfilePhotoPath());
         icon.setFitHeight(20);
@@ -30,7 +30,7 @@ public class UserNodeController {
     }
 
     //this funciton is used to create a usernode from the fxml file and return it
-    public Parent createUserNode(UserInfo user) {
+    public Parent createUserNode(IUserInfo user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserNode/UserNode.fxml"));
             Parent node = loader.load();

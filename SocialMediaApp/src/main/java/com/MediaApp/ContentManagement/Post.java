@@ -1,8 +1,19 @@
 package com.MediaApp.ContentManagement;
 
-import java.time.Instant;
+class Post extends Medium implements IPost {
+    private String timeStamp;
 
-public class Post extends Medium implements IPermanentMedium {
     public Post() {
     }
+
+    @Override
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    @Override
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
 }
