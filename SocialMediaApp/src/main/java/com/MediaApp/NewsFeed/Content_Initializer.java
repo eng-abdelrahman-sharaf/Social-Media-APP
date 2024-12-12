@@ -80,7 +80,7 @@ public class Content_Initializer {
                 UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
                 System.out.println("post created");
             }
-            else{
+            else if (type.equalsIgnoreCase("story")){
                 IStory newStory = storyFactory.createMedium(postId.toString() , currentUser.getID() , content , String.valueOf(Instant.now()));
                 System.out.println("Story created");
                 List<String> ss = currentUser.getStoriesIDs();
@@ -88,6 +88,10 @@ public class Content_Initializer {
                 currentUser.setStoriesIDs(ss);
                 StoryDataBase.getInstance(null).addObject(newStory);
                 UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
+            }
+            else {
+                // handle group post creation logic
+                System.out.println("Group post creation is not implemented");
             }
 
             System.out.println("Post created with caption: " + caption);

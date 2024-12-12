@@ -68,22 +68,36 @@ public class MainController {
     private Button CreateStoryButton;
     @FXML
     private HBox GroupsSuggestionsPane;
+
     @FXML
-    private VBox GroupPostsPane;
+    private ScrollPane GroupsPostsPanel;
+
+    @FXML
+    private Button GoupPost;
 
     private IUserInfo Owner;
     private ContentContainerComponent postsContainer;
     private ContentContainerComponent storyContainer;
+    private ContentContainerComponent GroupPostsContainer;
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
         ViewRequestsButton.setOnAction(event -> ViewRequest());// here
+        GoupPost.setOnAction(event -> {
+            CreateGroupPost();
+        });
         postsContainer = new  ContentContainerComponent();
+        GroupPostsContainer = new  ContentContainerComponent();
+        GroupPostsContainer.setContainerWidth(700);
         postsContainer.setContainerWidth(230);
-        postsPanel.setContent(postsContainer);
         storyContainer = new  ContentContainerComponent();
         storyContainer.setContainerWidth(230);
         storiesPanel.setContent(storyContainer);
+
+    }
+
+    private void CreateGroupPost() {
+        openCreatePostPopup("group");
     }
 
     public void load(IUserInfo owner, List<IUserInfo> Suggestedusers, List<IUserInfo> Friends, List<IPost> posts /* posts*/) {
@@ -94,6 +108,7 @@ public class MainController {
         setButtonIcon(ProfileButton, "/Icons/user.png");
         setButtonIcon(ViewRequestsButton, "/Icons/add-friend.png");
         setButtonIcon(CreatePostButton, "/Icons/more.png");
+        setButtonIcon(CreateStoryButton, "/Icons/story.png");
 
         logo.setImage(new Image(Objects.requireNonNull(getClass().getResource("/Icons/Logo.png")).toExternalForm()));
         logo.setFitHeight(60);
@@ -111,9 +126,15 @@ public class MainController {
 
 
 
-        createSuggestedUsers(Suggestedusers);
+        createSuggestedUsers(Suggestedusers,SuggestedFriendsPane);
         createFriendStatus(Friends);
         FillPostsPane(posts);
+        FillGroupPostsPane(posts);
+    }
+
+    private void FillGroupPostsPane(List<IPost> posts) {
+        GroupsPostsPanel.setContent(GroupPostsContainer);
+        GroupPostsContainer.setItems(posts.toArray(new IPost[0]));
     }
 
 
@@ -125,7 +146,7 @@ public class MainController {
     }
 
     // this method takes a list of IUserInfo objects as a parameter and adds them to the SuggestedFriendsPane
-    public void createSuggestedUsers(List<IUserInfo> users) {
+    public void createSuggestedUsers(List<IUserInfo> users, HBox pane) {
         SuggestedFriendsPane.getChildren().clear();
         for (IUserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
@@ -138,9 +159,9 @@ public class MainController {
                 ls.add(user.getUserID());
                 user.setFriendsIDs(ls);
                 userButton.setVisible(false);
-                SuggestedFriendsPane.getChildren().remove(userButton);
+                pane.getChildren().remove(userButton);
             });
-            SuggestedFriendsPane.getChildren().add(userButton);
+            pane.getChildren().add(userButton);
         }
     }
 
@@ -222,7 +243,7 @@ public class MainController {
             // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("Create Post");
+            popupStage.setTitle("Create "+type);
 
             Scene scene = new Scene(createPostRoot);
             popupStage.setScene(scene);
@@ -235,6 +256,7 @@ public class MainController {
     }
 
     public void FillPostsPane(List<IPost> posts) {
+        postsPanel.setContent(postsContainer);
         postsContainer.setItems(posts.toArray(new IPost[0]));
     }
 

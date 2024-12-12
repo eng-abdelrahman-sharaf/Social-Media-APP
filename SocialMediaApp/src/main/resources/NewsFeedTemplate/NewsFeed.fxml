@@ -12,12 +12,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.NewsFeed.MainController">
+<TabPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MediaApp.NewsFeed.MainController">
    <tabs>
       <Tab text="Friends">
          <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="757.0" stylesheets="@MainStyle.css">
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="730.0" stylesheets="@MainStyle.css">
                <left>
                   <VBox fx:id="ButtonsPane" prefHeight="514.0" prefWidth="101.0" styleClass="Vbox" BorderPane.alignment="CENTER">
                      <children>
@@ -41,8 +40,16 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="CreatePostButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Post" />
-                        <Button fx:id="CreateStoryButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Story" />
+                        <Button fx:id="CreatePostButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Post">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="CreateStoryButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Story">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </Button>
                         <ImageView fx:id="logo" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets bottom="10.0" left="30.0" right="28.0" top="150.0" />
@@ -60,13 +67,6 @@
                      <padding>
                         <Insets top="30.0" />
                      </padding>
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="121.0" text="       Active Friends" textAlignment="CENTER">
-                           <padding>
-                              <Insets bottom="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
                   </VBox>
                </right>
                <center>
@@ -83,7 +83,7 @@
                               <HBox prefHeight="416.0" prefWidth="475.0">
                                  <children>
                                     <ScrollPane fx:id="storiesPanel" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
-                                    <ScrollPane fx:id="postsPanel" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="268.0" />
+                                    <ScrollPane fx:id="postsPanel" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
                                  </children>
                               </HBox>
                            </children>
@@ -98,12 +98,13 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <VBox fx:id="GroupPostsPane" layoutY="46.0" prefHeight="508.0" prefWidth="757.0" />
                   <ScrollPane>
                      <content>
-                        <HBox fx:id="GroupsSuggestionsPane" prefHeight="47.0" prefWidth="757.0" />
+                        <HBox fx:id="GroupsSuggestionsPane" prefHeight="41.0" prefWidth="730.0" />
                      </content>
                   </ScrollPane>
+                  <ScrollPane fx:id="GroupsPostsPanel" layoutX="82.0" layoutY="48.0" prefHeight="457.0" prefWidth="634.0" />
+                  <Button fx:id="GoupPost" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" text="Post" />
                </children>
             </AnchorPane>
         </content>
