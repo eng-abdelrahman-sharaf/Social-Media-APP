@@ -36,16 +36,16 @@ public class UserRoleDataBase implements IDataBase {
 
 
     @Override
-    public IDataObject readObject(String ID) {
-        IDataObject object = dataMap.get(ID);
+    public IUserInfo readObject(String ID) {
+        IUserInfo object = dataMap.get(ID);
         return (object != null) ? object.clone() : null; // Return a clone
     }
 
     @Override
-    public IDataObject[] getData() {
+    public IUserInfo[] getData() {
         return dataMap.values().stream()
-                .map(IDataObject::clone)
-                .toArray(IDataObject[]::new); // Return cloned objects in Array
+                .map(IUserInfo::clone)
+                .toArray(IUserInfo[]::new); // Return cloned objects in Array
         // if you want Return hashMap use the following code 
         
         // Create a new HashMap to store cloned objects

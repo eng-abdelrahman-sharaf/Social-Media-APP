@@ -38,7 +38,13 @@ public class Main {
 
     public static void main(String[] args) {
         dataLoading();
-        //for testing only
+
+        // for testing only
+        // sign in with abdo Aa1234
+
         new StartupController().run();
+
+        //testing RelationsManagement
+        com.MediaApp.RelationsManagement.test.main(null);
     }
 }
