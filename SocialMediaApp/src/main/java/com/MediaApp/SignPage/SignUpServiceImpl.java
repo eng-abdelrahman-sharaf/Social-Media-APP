@@ -73,6 +73,7 @@ class SignUpServiceImpl implements SignUpService {
         }while (UserRoleDataBase.getInstance(null).readObject(userID) != null );
         UserInfoFactory userInfoFactory = new UserInfoFactory();
         IUserInfo newUser = userInfoFactory.getUserInfo(userID, userName, Integer.toHexString(password.hashCode()) + "", email, dateOfBirth);
+        newUser.setStatus("online");
         userDataBase.addObject(newUser);
         AuthorizedUserGetter.getInstance().setUserInfo(newUser);
         System.out.println("Success: User signed up successfully!");

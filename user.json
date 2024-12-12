@@ -37,6 +37,25 @@
     "name" : "Ali",
     "id" : "nogea"
   },
+  "fe61f0ba-3dde-4aa1-8303-a4399c818b03" : {
+    "userID" : "fe61f0ba-3dde-4aa1-8303-a4399c818b03",
+    "userName" : "eng_omar",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ ],
+    "bio" : null,
+    "hashedPassword" : "7458f082",
+    "status" : null,
+    "email" : "kfowa@fawc.vaop",
+    "dateOfBirth" : "2024-12-11",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ "gogo", "nogea", "fe61f0ba-3dde-4aa1-8303-a4399c818b03", "magdi", "9d9c2b47-2ee3-4a91-b0de-8829a01f3bb4", "d681de1c-b912-4ba8-bb75-369d0fcf8d02", "26041798-fe04-4e63-8689-7334581536ca", "62c8192f-c07a-4734-81c9-437b77e80645", "ali" ],
+    "joinedGroups" : [ ],
+    "name" : "eng_omar",
+    "id" : "fe61f0ba-3dde-4aa1-8303-a4399c818b03"
+  },
   "magdi" : {
     "userID" : "magdi",
     "userName" : "Omar",
@@ -127,7 +146,7 @@
     "profilePhotoPath" : null,
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
-    "friendsREquest" : [ "gogo", "nogea", "magdi", "9d9c2b47-2ee3-4a91-b0de-8829a01f3bb4", "d681de1c-b912-4ba8-bb75-369d0fcf8d02", "26041798-fe04-4e63-8689-7334581536ca", "62c8192f-c07a-4734-81c9-437b77e80645", "ali" ],
+    "friendsREquest" : [ "gogo", "nogea", "fe61f0ba-3dde-4aa1-8303-a4399c818b03", "magdi", "9d9c2b47-2ee3-4a91-b0de-8829a01f3bb4", "d681de1c-b912-4ba8-bb75-369d0fcf8d02", "26041798-fe04-4e63-8689-7334581536ca", "62c8192f-c07a-4734-81c9-437b77e80645", "ali" ],
     "joinedGroups" : [ ],
     "name" : "abdo",
     "id" : "62c8192f-c07a-4734-81c9-437b77e80645"

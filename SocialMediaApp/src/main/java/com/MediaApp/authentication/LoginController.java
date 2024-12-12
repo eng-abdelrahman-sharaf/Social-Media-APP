@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class LoginController extends Application {
@@ -43,17 +44,17 @@ public class LoginController extends Application {
         String password =  passwordField.getText();
         MapStorageHandler<String, IUserInfo> userHandler = new JsonMapStorageHandler<>(String.class, UserInfoClassType.type, "user.json");
         UserRoleDataBase.getInstance(userHandler);
-        IDataObject[] userDB = UserRoleDataBase.getInstance(null).getData();
         LoginServiceFactory loginServiceFactory = new LoginServiceFactory();
         UserFinderFactory userFinderFactory = new UserFinderFactory();
         UserFinder userFinder = userFinderFactory.create(UserRoleDataBase.getInstance(null));
         LoginService  loginService = loginServiceFactory.create(userFinder);
+
         if(loginService.login(username, password)){
             System.out.println("Login Successful");
             new NewsFeedApp().start(StageGetter.getInstance().getStage());
         }
         else{
-            System.out.println("Login Failed");
+            JOptionPane.showMessageDialog(null, "username or password are incorrect");
         }
 
     }

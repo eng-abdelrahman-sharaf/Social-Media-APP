@@ -6,6 +6,7 @@ import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
+import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
@@ -202,7 +203,10 @@ public class MainController {
 
     @FXML
     private void LogoutButtonAction(ActionEvent event) {
-
+        IUserInfo user =  AuthorizedUserGetter.getInstance().getUserInfo();
+        user.setStatus(null);
+        UserRoleDataBase.getInstance(null).update(user.getID(), user);
+        StageGetter.getInstance().getStage().close();
     }
 
 
