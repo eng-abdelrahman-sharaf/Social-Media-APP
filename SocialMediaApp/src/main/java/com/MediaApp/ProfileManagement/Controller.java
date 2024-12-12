@@ -78,7 +78,7 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        user = AuthorizedUserGetter.getInstance().getUserInfo();
+        if(user == null)user = AuthorizedUserGetter.getInstance().getUserInfo();
         try {
             cover.setImage(new Image(user.getCoverPhotoPath()));
         }catch (NullPointerException e){}
@@ -155,4 +155,12 @@ public class Controller {
         initialize();
     }
 
+    public void setUser(IUserInfo user) {
+        this.user = user;
+        initialize();
+    }
+
+    public IUserInfo getUser() {
+        return user;
+    }
 }

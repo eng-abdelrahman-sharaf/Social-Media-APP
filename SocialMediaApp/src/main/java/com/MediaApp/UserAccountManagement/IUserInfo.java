@@ -62,7 +62,7 @@ public interface IUserInfo extends INamedDataObject {
     public void addFrinedRequestId(String id );
     public void removeFirndREuest(String id );
     public void setFriendsREquest(List<String> friendsREquest);
-    public UserInfo  clone();
+    public IUserInfo  clone();
     public String toString();
 
 
