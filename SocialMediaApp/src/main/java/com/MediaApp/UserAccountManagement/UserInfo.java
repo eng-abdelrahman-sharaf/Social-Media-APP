@@ -9,7 +9,7 @@ import com.MediaApp.SearchEngines.INamedDataObject;
 import java.util.ArrayList;
 import java.util.List;
 
-class UserInfo implements IUserInfo {
+public class UserInfo implements IUserInfo {
     private String userID;
     private String userName;
     private List<String> friendsIDs= new ArrayList<>();

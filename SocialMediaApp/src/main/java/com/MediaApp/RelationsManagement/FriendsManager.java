@@ -1,6 +1,7 @@
 //package com.MediaApp.RelationsManagement;
 //
 //import com.MediaApp.UserAccountManagement.FindObjByIdIMP;
+//import com.MediaApp.UserAccountManagement.IUserInfo;
 //import com.MediaApp.UserAccountManagement.UserInfo;
 //
 //import java.util.ArrayList;
@@ -45,4 +46,13 @@
 //    }
 //
 //
+//    @Override
+//    public void removeFriend(IUserInfo user1, IUserInfo user2) {
+//
+//    }
+//
+//    @Override
+//    public List<IUserInfo> getSuggestedFriends(IUserInfo user) {
+//        return List.of();
+//    }
 //}

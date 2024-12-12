@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
@@ -65,6 +66,10 @@ public class MainController {
     private Button CreatePostButton;
     @FXML
     private Button CreateStoryButton;
+    @FXML
+    private HBox GroupsSuggestionsPane;
+    @FXML
+    private VBox GroupPostsPane;
 
     private IUserInfo Owner;
     private ContentContainerComponent postsContainer;
@@ -262,6 +267,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
 
 
 
