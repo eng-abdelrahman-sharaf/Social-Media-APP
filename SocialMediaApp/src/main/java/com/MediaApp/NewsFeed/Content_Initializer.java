@@ -8,6 +8,7 @@ import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 
@@ -29,6 +30,11 @@ public class Content_Initializer {
 
     @FXML
     private TextArea Caption;
+
+    @FXML
+    private ChoiceBox<String/*put group instead of String*/> GroupChoicePane;
+
+
 
     private IUserInfo currentUser;
     private String selectedImage;
@@ -106,6 +112,6 @@ public class Content_Initializer {
             alert.setContentText("Caption is empty. Post not created.");
             alert.showAndWait();
         }
-        
+
     }
 }

@@ -7,7 +7,6 @@ import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.IUserInfo;
-import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
@@ -17,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
@@ -126,7 +124,8 @@ public class MainController {
 
 
 
-        createSuggestedUsers(Suggestedusers,SuggestedFriendsPane);
+        createSuggested(Friends,GroupsSuggestionsPane,"friends");
+        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
         createFriendStatus(Friends);
         FillPostsPane(posts);
         FillGroupPostsPane(posts);
@@ -146,7 +145,7 @@ public class MainController {
     }
 
     // this method takes a list of IUserInfo objects as a parameter and adds them to the SuggestedFriendsPane
-    public void createSuggestedUsers(List<IUserInfo> users, HBox pane) {
+    public void createSuggested(List<IUserInfo> users, HBox pane, String type) {
         SuggestedFriendsPane.getChildren().clear();
         for (IUserInfo user : users) {
             if (user.getProfilePhotoPath() == null) {
@@ -154,13 +153,21 @@ public class MainController {
             }
             UserNodeController controller = new UserNodeController();
             Button userButton = (Button) controller.createUserNode(user);
-            userButton.setOnAction(event -> {
-                List<String> ls =   user.getFriendsIDs();
-                ls.add(user.getUserID());
-                user.setFriendsIDs(ls);
-                userButton.setVisible(false);
-                pane.getChildren().remove(userButton);
-            });
+            if(type.equalsIgnoreCase("group")) {
+                userButton.setOnAction(event -> {
+                    List<String> ls = user.getFriendsIDs();
+                    ls.add(user.getUserID());
+                    user.setFriendsIDs(ls);
+                    userButton.setVisible(false);
+                    pane.getChildren().remove(userButton);
+                });
+            }
+            else{
+                //Implementation needed
+                userButton.setOnAction(event -> {
+                    System.out.println("implementaion missing");
+                });
+            }
             pane.getChildren().add(userButton);
         }
     }
@@ -242,8 +249,13 @@ public class MainController {
             createPostController.settter(this.Owner,type);
             // Create a new stage for the popup
             Stage popupStage = new Stage();
+
+            if (!type.equalsIgnoreCase("group"))
+                popupStage.setHeight(153);
+            popupStage.setResizable(false);
+
             popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("Create "+type);
+            popupStage.setTitle("Create Content");
 
             Scene scene = new Scene(createPostRoot);
             popupStage.setScene(scene);
