@@ -35,6 +35,8 @@ public class LoginServiceImpl implements LoginService {
         if(!validatePassword(hashPassword(password), user.getHashedPassword())){
             return false;
         }
+        user.setStatus("online");
+        UserRoleDataBase.getInstance(null).update(user.getID(),user);
         AuthorizedUserGetter.getInstance().setUserInfo(user);
         // Validate hashed password 
         return true;
