@@ -1,0 +1,25 @@
+{
+  "4352476a-3357-4479-af44-122024226f93" : {
+    "userId" : "user456",
+    "message" : "Your post received a new comment",
+    "type" : "New Post",
+    "createdAt" : 1734123278820,
+    "actions" : {
+      "View Post" : "/post/view/user456"
+    },
+    "read" : false,
+    "id" : "4352476a-3357-4479-af44-122024226f93"
+  },
+  "9ad5dc84-1f48-42f0-9f72-64077b037c6e" : {
+    "userId" : "user123",
+    "message" : "You have a new friend request",
+    "type" : "Friend Request",
+    "createdAt" : 1734123278819,
+    "actions" : {
+      "Decline" : "/friendRequest/decline/user123",
+      "Accept" : "/friendRequest/accept/user123"
+    },
+    "read" : false,
+    "id" : "9ad5dc84-1f48-42f0-9f72-64077b037c6e"
+  }
+}
