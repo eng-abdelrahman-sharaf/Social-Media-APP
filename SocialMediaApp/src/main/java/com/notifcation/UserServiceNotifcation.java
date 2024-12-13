@@ -10,10 +10,10 @@ import java.util.List;
  *
  * @author abdah
  */
-public class UserService {
+public class UserServiceNotifcation {
     private INotificationService notificationService;
 
-    public UserService(INotificationService notificationService) {
+    public UserServiceNotifcation(INotificationService notificationService) {
         this.notificationService = notificationService;
     }
 

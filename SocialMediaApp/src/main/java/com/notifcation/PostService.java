@@ -8,6 +8,7 @@ import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import java.util.List;
 import resources.com.MediaApp.Group.Group;
+import resources.com.MediaApp.Group.GroupPost;
 
 // PostService Class 
 // This class handles the logic for new post notifications. 
@@ -23,7 +24,7 @@ public class PostService {
         this.actionFactory = actionFactory;
     }
 
-    public void newGroupPost(Group group, IPost post) {
+    public void newGroupPost(Group group, GroupPost post) {
         // Logic to create new post in group
         List<String> members = group.getMemberIds();
         for (String member : members) {
