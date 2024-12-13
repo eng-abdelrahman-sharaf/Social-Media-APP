@@ -13,7 +13,7 @@ public class Test {
         // creating database
         String filePath = "post.json";
         // Create a storage handler for the HashMap
-        MapStorageHandler<String, IPost> storageHandler = new JsonMapStorageHandler<>(String.class, IPost.class, filePath);
+        MapStorageHandler<String, IPost> storageHandler = new JsonMapStorageHandler<>(String.class, PostClassType.type, filePath);
         // Get the singleton instance of UserRoleDataBase
         PostDataBase postdb = PostDataBase.getInstance(storageHandler);
 
@@ -29,5 +29,8 @@ public class Test {
         postdb.addObject(post);
         postdb.addObject(post);
         postdb.addObject(post);
+
+        MapStorageHandler<String , IGroupPost> groupsHandler = new JsonMapStorageHandler<>(String.class , GroupPostClassType.type, "group-posts.json" );
+        GroupPostDataBase.getInstance(groupsHandler).addObject();
     }
 }
