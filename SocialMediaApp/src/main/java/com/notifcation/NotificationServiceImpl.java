@@ -8,11 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author abdah
- */
-//Can't apply singlton here bec each user has his own notifcation list 
+// NotificationServiceImpl Class 
+// This class is a concrete implementation of the NotificationService interface. 
+// It handles storing and retrieving notifications.
+
 public class NotificationServiceImpl implements INotificationService {
     private List<INotification> notifications = new ArrayList<>();
 
@@ -27,3 +26,4 @@ public class NotificationServiceImpl implements INotificationService {
             .collect(Collectors.toList());
     }
 }
+//Can't apply singlton here bec each user has his own notifcation list 
