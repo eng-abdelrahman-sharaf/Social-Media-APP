@@ -8,10 +8,10 @@ import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import java.util.List;
 
-/**
- *
- * @author abdah
- */
+// PostService Class 
+// This class handles the logic for new post notifications. 
+// It uses the NotificationService to create and send notifications.
+
 public class PostService {
     private INotificationService notificationService;
 
