@@ -6,6 +6,9 @@ package com.notifcation;
 
 import java.util.Date;
 
+// BasicNotification Class 
+// This class is a concrete implementation of the Notification interface. 
+// It represents a simple notification with attributes like user ID, message, type, creation date, and read status.
 
 public class BasicNotification implements INotification {
     private String userId;
