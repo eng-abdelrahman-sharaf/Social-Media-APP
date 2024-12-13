@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
  *
  * @author abdah
  */
+//Can't apply singlton here bec each user has his own notifcation list 
 public class NotificationServiceImpl implements INotificationService {
     private List<INotification> notifications = new ArrayList<>();
 
