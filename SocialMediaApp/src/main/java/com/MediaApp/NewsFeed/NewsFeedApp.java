@@ -20,7 +20,6 @@ public class NewsFeedApp extends Application {
 
             com.MediaApp.Main.dataLoading();
 
-            // Get the controller from the FXMLloader
             MainController controller = loader.getController();
             UserInfoFactory userInfoFactory = new UserInfoFactory();
             controller.load(AuthorizedUserGetter.getInstance().getUserInfo());
