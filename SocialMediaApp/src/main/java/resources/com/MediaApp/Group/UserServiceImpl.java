@@ -11,7 +11,7 @@ package resources.com.MediaApp.Group;
 import com.MediaApp.ContentManagement.Content;
 
 public class UserServiceImpl implements UserService {
-    private final GroupRepository repository = GroupRepository.getInstance();
+    private final GroupRepository repository = GroupRepository.getInstance(null);
     private final GroupPostService postService = (GroupPostService) new GroupPostServiceImpl();
 
     @Override
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void leaveGroup(String groupId, String userId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null && group.getMemberIds().contains(userId)) {
             group.getMemberIds().remove(userId);
             repository.save(group);

@@ -11,12 +11,12 @@ package resources.com.MediaApp.Group;
 import com.MediaApp.ContentManagement.Content;
 
 public class PrimaryAdminServiceImpl implements PrimaryAdminService {
-    private final GroupRepository repository = GroupRepository.getInstance();
+    private final GroupRepository repository = GroupRepository.getInstance(null);
     private final GroupPostService postService = (GroupPostService) new GroupPostServiceImpl();
 
     @Override
     public void promoteToAdmin(String groupId, String userId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null && !group.getAdminIds().contains(userId)) {
             group.getAdminIds().add(userId);
             repository.save(group);
@@ -27,7 +27,7 @@ public class PrimaryAdminServiceImpl implements PrimaryAdminService {
 
     @Override
     public void demoteAdmin(String groupId, String adminId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null && group.getAdminIds().contains(adminId) && !group.getPrimaryAdminId().equals(adminId)) {
             group.getAdminIds().remove(adminId);
             repository.save(group);
@@ -38,7 +38,7 @@ public class PrimaryAdminServiceImpl implements PrimaryAdminService {
 
     @Override
     public void removeMember(String groupId, String memberId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null && group.getMemberIds().contains(memberId)) {
             group.getMemberIds().remove(memberId);
             repository.save(group);
@@ -49,9 +49,9 @@ public class PrimaryAdminServiceImpl implements PrimaryAdminService {
 
     @Override
     public void deleteGroup(String groupId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null) {
-            repository.delete(groupId);
+            repository.deleteObject(groupId);
         } else {
             throw new IllegalArgumentException("Group not found.");
         }

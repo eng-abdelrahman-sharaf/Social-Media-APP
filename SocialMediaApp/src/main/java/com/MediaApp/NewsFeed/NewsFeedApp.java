@@ -23,8 +23,7 @@ public class NewsFeedApp extends Application {
             // Get the controller from the FXMLloader
             MainController controller = loader.getController();
             UserInfoFactory userInfoFactory = new UserInfoFactory();
-            IUserInfo user = userInfoFactory.getUserInfo("test" , "testuname" , "123456" , "test.mail.com" , "3/1/2005");
-            controller.load(user,new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
+            controller.load(AuthorizedUserGetter.getInstance().getUserInfo());
             controller.start();
             // Set the scene and show the stage
             stage.setScene(scene);

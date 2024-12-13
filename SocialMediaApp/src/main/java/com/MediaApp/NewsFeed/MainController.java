@@ -8,6 +8,7 @@ import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.UserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
@@ -99,8 +100,9 @@ public class MainController {
         openCreatePostPopup("group");
     }
 
-    public void load(IUserInfo owner, List<IUserInfo> Suggestedusers, List<IUserInfo> Friends, List<IPost> posts /* posts*/) {
+    public void load(IUserInfo owner) {
         this.Owner = owner;
+
         // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
         setButtonIcon(LogoutButton, "/Icons/check-out.png");
@@ -116,18 +118,25 @@ public class MainController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
 
-
-        List<String> ls = new ArrayList<>();
-        for (IUserInfo user : Friends) {
-            ls.add(user.getUserID());
+        ArrayList<IUserInfo> friends = new ArrayList<>();
+        for(String user: owner.getFriendsIDs()){
+            friends.add(UserRoleDataBase.getInstance(null).readObject(user));
         }
-        Owner.setFriendsREquest(ls);
 
+        ArrayList<IPost> posts = new ArrayList<>();
+        ArrayList<String> postsIDs  = new ArrayList<>();
+        for(IUserInfo friend: friends){
+            postsIDs.addAll(friend.getPostsIDs());
+        }
 
+        for(String postID: owner.getPostsIDs() ){
+            posts.add(PostDataBase.getInstance(null).readObject(postID));
+        }
 
-        createSuggested(Friends,GroupsSuggestionsPane,"friends");
-        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
-        createFriendStatus(Friends);
+        createSuggested(friends,GroupsSuggestionsPane,"friends");
+        System.out.println(posts.size());
+//        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
+        createFriendStatus(friends);
         FillPostsPane(posts);
         FillGroupPostsPane(posts);
     }
@@ -230,7 +239,7 @@ public class MainController {
             posts.add((IPost) post);
         }
 
-        load(this.Owner , users , users , posts);
+        load(this.Owner);
     }
 
 
