@@ -5,6 +5,7 @@
 package com.notifcation;
 
 import java.util.Date;
+import java.util.Map;
 
 // Notification Interface 
 // This interface defines the basic structure for all notification types, 
@@ -15,4 +16,5 @@ public interface INotification {
     String getType();
     Date getCreatedAt();
     boolean isRead();
+    Map<String, String> getActions();  // Key: Action, Value: URL or Command
 }
