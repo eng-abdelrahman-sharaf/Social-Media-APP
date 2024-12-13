@@ -14,7 +14,28 @@
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
     "friendsREquest" : [ ],
+    "joinedGroups" : [ ],
+    "name" : "Omar",
     "id" : "user456"
+  },
+  "0f49a47f-e176-4f59-89e9-033220b3271b" : {
+    "userID" : "0f49a47f-e176-4f59-89e9-033220b3271b",
+    "userName" : "Anwar",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ "6b4a3069-9262-43d3-a4e3-ffd0f9851cac" ],
+    "bio" : "esef",
+    "hashedPassword" : "30e4d8ac",
+    "status" : null,
+    "email" : "Anwar@gm.com",
+    "dateOfBirth" : "2003-10-24",
+    "profilePhotoPath" : "file:/C:/Users/abdah/Pictures/bunny.jpeg",
+    "coverPhotoPath" : "file:/N:/Personal/Me%20Pro%20photos/Anwar.jpg",
+    "storiesIDs" : [ "7bdf3d1b-84c0-48c2-a024-96f70eadadc6", "71f0157f-5dbf-47d0-9a58-a650d05daaa1", "51b5ea38-c96c-4f7a-b71a-51b594f59737", "1daaec17-66e2-4a8f-ab56-3239c4f3bfb8", "573ba78a-ed76-4173-880b-59be5b90540f" ],
+    "friendsREquest" : [ "user456", "0f49a47f-e176-4f59-89e9-033220b3271b", "user123", "user6" ],
+    "joinedGroups" : [ ],
+    "name" : "Anwar",
+    "id" : "0f49a47f-e176-4f59-89e9-033220b3271b"
   },
   "user123" : {
     "userID" : "user123",
@@ -31,6 +52,8 @@
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
     "friendsREquest" : [ ],
+    "joinedGroups" : [ ],
+    "name" : "Ali",
     "id" : "user123"
   },
   "user6" : {
@@ -48,6 +71,8 @@
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
     "friendsREquest" : [ ],
+    "joinedGroups" : [ ],
+    "name" : "Amr",
     "id" : "user6"
   }
 }
