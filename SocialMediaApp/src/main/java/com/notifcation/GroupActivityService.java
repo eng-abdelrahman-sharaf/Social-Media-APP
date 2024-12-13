@@ -6,10 +6,9 @@ package com.notifcation;
 
 import com.MediaApp.UserAccountManagement.IUserInfo;
 
-/**
- *
- * @author abdah
- */
+// GroupActivityService Class 
+// This class handles the logic for group activity notifications.
+// It uses the NotificationService to create and send notifications.
 public class GroupActivityService {
     private INotificationService notificationService;
 
