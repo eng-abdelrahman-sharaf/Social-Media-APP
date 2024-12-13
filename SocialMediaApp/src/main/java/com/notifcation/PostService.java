@@ -7,6 +7,7 @@ package com.notifcation;
 import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import java.util.List;
+import resources.com.MediaApp.Group.Group;
 
 // PostService Class 
 // This class handles the logic for new post notifications. 
@@ -19,13 +20,13 @@ public class PostService {
         this.notificationService = notificationService;
     }
 
-//    public void newGroupPost(Group group, IPost post) {
-//        // Logic to create new post in group
-//        List<IUserInfo> members = group.getMembers();
-//        for (IUserInfo member : members) {
-//            INotification notification = new BasicNotification(member.getUserID(), 
-//                "New post in group " + group.getName() + ".", "New Post");
-//            notificationService.sendNotification(notification);
-//        }
-//    }
+    public void newGroupPost(Group group, IPost post) {
+        // Logic to create new post in group
+        List<String> members = group.getMemberIds();
+        for (String member : members) {
+            INotification notification = new BasicNotification(member, 
+                "New post in group " + group.getName() + ".", "New Post");
+            notificationService.sendNotification(notification);
+        }
+    }
 }
