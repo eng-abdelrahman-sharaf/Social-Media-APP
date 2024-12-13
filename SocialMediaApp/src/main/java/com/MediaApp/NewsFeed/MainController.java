@@ -111,11 +111,10 @@ public class MainController {
 
     private void DisplayNotifications() {
         List<String> notifications = new ArrayList<>();
-        notifications.add("You have a new message from John.");
-        notifications.add("Your friend request to Sarah has been accepted.");
-        notifications.add("Your post has received 10 new likes!");
-        notifications.add("Anna commented on your photo.");
-        notifications.add("You have 3 new friend suggestions.");
+        notifications.add("Hatem OStora.");
+        notifications.add("Hatem wow.");
+        notifications.add("عضلات حاتم ضخمة");
+        notifications.add("lksjdfpjkepo");
 
         Stage notificationsStage = new Stage();
         notificationsStage.setTitle("Notifications");
