@@ -9,11 +9,13 @@ package com.MediaApp;
 import com.MediaApp.ContentManagement.*;
 import com.MediaApp.DataHandlers.*;
 import com.MediaApp.NewsFeed.NewsFeedApp;
+import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserInfoClassType;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.MediaApp.authentication.StartupController;
+import com.gui.content_mangement_components.StageGetter;
 import resources.com.MediaApp.Group.GroupClassType;
 import resources.com.MediaApp.Group.GroupPostService;
 import resources.com.MediaApp.Group.GroupRepository;
@@ -54,5 +56,11 @@ public class Main {
         // sign in with abdo Aa1234
 
         new StartupController().run();
+
+
+//        ProfileApp profileApp = new ProfileApp();
+
+//        profileApp.start(StageGetter.getInstance().getStage() , UserRoleDataBase.getInstance(null).getData()[0]);
+
     }
 }

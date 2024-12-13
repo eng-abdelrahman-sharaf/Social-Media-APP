@@ -92,7 +92,8 @@ public class MainController {
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
-        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
+//        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
+        ViewRequestsButton.setVisible(false);
         GoupPost.setOnAction(event -> {
             CreateGroupPost();
         });
@@ -178,7 +179,8 @@ public class MainController {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // newValue is the button you press on it is of typre user info choose the action
-                System.out.println("selected user: " + newValue.getName());
+                ProfileApp profileApp = new ProfileApp();
+                profileApp.start(StageGetter.getInstance().getStage() , newValue);
             }
         });
 

@@ -1,8 +1,6 @@
 package com.MediaApp.RequestsPage;
 
-import com.MediaApp.RelationsManagement.FriendRequestsManager;
 import com.MediaApp.SuggestedUsers.UserNodeController;
-import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
@@ -23,27 +21,27 @@ public class RequestsPageController {
     public void initialize() {
     }
 
-    public void setRequests(IUserInfo owner) {
+    public void setRequests(IUserInfo User) {
         UserNodeController userNodeController = new UserNodeController();
         UserRoleDataBase userDB = UserRoleDataBase.getInstance(null);
         List<IUserInfo> users = new ArrayList<>();
-        for (String id : AuthorizedUserGetter.getInstance().getUserInfo().getFriendsREquest()) {
+        System.out.println(User.getFriendsREquest());
+
+        for (String id : User.getFriendsREquest()) {
             users.add((IUserInfo) userDB.readObject(id));
-            System.out.println(id);
+            System.out.println("akjbdlas");
         }
-        RequestsPane.getChildren().clear();
+
         for (IUserInfo user : users) {
             Button userNodeButton = (Button) userNodeController.createUserNode(user);
             userNodeButton.setOnAction(event -> {
 
-                        FriendRequestsManager friendRequestsManager = new FriendRequestsManager();
-                        friendRequestsManager.acceptFriendRequest(user , AuthorizedUserGetter.getInstance().getUserInfo());
-//                     List<String> ls =   owner.getFriendsIDs();
-//                     ls.add(user.getUserID());
-//                     owner.setFriendsIDs(ls);
-//                    List<String> ls2 =   owner.getFriendsREquest();
-//                     ls2.remove(user.getUserID());
-//                     owner.setFriendsREquest(ls2);
+                     List<String> ls =   User.getFriendsIDs();
+                     ls.add(user.getUserID());
+                     User.setFriendsIDs(ls);
+                    List<String> ls2 =   User.getFriendsREquest();
+                     ls2.remove(user.getUserID());
+                     User.setFriendsREquest(ls2);
                      userNodeButton.setVisible(false);
                 RequestsPane.getChildren().remove(userNodeButton);
 
@@ -54,6 +52,7 @@ public class RequestsPageController {
             icon.setFitWidth(20);
             userNodeButton.setGraphic(icon);
             RequestsPane.getChildren().add(userNodeButton);
+            System.out.println("akjbdlas");
         }
     }
 }
