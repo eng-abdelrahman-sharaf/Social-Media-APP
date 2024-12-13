@@ -5,6 +5,7 @@
 package com.notifcation;
 
 import com.MediaApp.UserAccountManagement.IUserInfo;
+import resources.com.MediaApp.Group.Group;
 
 // GroupActivityService Class 
 // This class handles the logic for group activity notifications.
@@ -16,11 +17,11 @@ public class GroupActivityService {
         this.notificationService = notificationService;
     }
 
-//    public void addUserToGroup(IUserInfo user, Group group) {
-//        // Logic to add user to group
-//        INotification notification = new BasicNotification(user.getUserID(), 
-//            "You were added to the group " + group.getName() + ".", "Group Activity");
-//        notificationService.sendNotification(notification);
-//    }
+    public void addUserToGroup(IUserInfo user, Group group) {
+        // Logic to add user to group
+        INotification notification = new BasicNotification(user.getUserID(), 
+            "You were added to the group " + group.getName() + ".", "Group Activity");
+        notificationService.sendNotification(notification);
+    }
 }
 
