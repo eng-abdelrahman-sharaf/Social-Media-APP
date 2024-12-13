@@ -6,10 +6,9 @@ package com.notifcation;
 
 import java.util.Date;
 
-/**
- *
- * @author abdah
- */
+// Notification Interface 
+// This interface defines the basic structure for all notification types, 
+// ensuring that any notification will have methods to get the user ID, message, type, creation date, and read status.
 public interface INotification {
     String getUserId();
     String getMessage();
