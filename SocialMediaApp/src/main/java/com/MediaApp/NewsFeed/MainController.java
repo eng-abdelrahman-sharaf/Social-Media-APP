@@ -433,8 +433,6 @@ public class MainController {
             Scene scene = new Scene(createPostRoot);
             popupStage.setScene(scene);
             popupStage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
