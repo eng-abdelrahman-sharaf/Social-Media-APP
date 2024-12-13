@@ -16,6 +16,8 @@ module com.example.socialmedia {
     exports com.MediaApp.SuggestedUsers;
     opens com.MediaApp.SuggestedUsers to javafx.fxml;
 
+    exports resources.com.MediaApp.Group to com.fasterxml.jackson.databind;
+    opens resources.com.MediaApp.Group;
     exports com.MediaApp.UserAccountManagement to  com.fasterxml.jackson.databind;
     opens com.MediaApp.UserAccountManagement;
     exports com.gui.content_mangement_components to javafx.fxml;
