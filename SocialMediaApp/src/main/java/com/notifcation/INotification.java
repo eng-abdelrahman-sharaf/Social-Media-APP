@@ -4,13 +4,14 @@
  */
 package com.notifcation;
 
+import com.MediaApp.DataHandlers.IDataObject;
 import java.util.Date;
 import java.util.Map;
 
 // Notification Interface 
 // This interface defines the basic structure for all notification types, 
 // ensuring that any notification will have methods to get the user ID, message, type, creation date, and read status, and actions.
-public interface INotification {
+public interface INotification extends IDataObject {
     String getUserId();
     String getMessage();
     String getType();

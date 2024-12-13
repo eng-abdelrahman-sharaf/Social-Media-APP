@@ -69,16 +69,17 @@ public class TestNotifcation {
             notification.getActions().forEach((action, url) -> System.out.println(action + ": " + url));
          });
         
+        
         System.out.println("444----------------");
         // Simulate user accepting a friend request 
         notificationService.markNotificationAsRead(user2.getUserID(), "Friend Request");
         
 //        // Fetch and display updated notifications for user2
-        List<INotification> updatedNotifications = notificationService.getNotifications(user2.getUserID());
-        updatedNotifications.forEach(notification -> {
-        System.out.println(notification.getMessage());
-        notification.getActions().forEach((action, url) -> System.out.println(action + ": " + url));
-        });
+//        List<INotification> updatedNotifications = notificationService.getNotifications(user2.getUserID());
+//        updatedNotifications.forEach(notification -> {
+//        System.out.println(notification.getMessage());
+//        notification.getActions().forEach((action, url) -> System.out.println(action + ": " + url));
+//        });
         
         
         
