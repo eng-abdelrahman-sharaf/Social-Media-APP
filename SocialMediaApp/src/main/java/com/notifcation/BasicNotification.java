@@ -5,6 +5,8 @@
 package com.notifcation;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 // BasicNotification Class 
 // This class is a concrete implementation of the Notification interface. 
@@ -16,6 +18,7 @@ public class BasicNotification implements INotification {
     private String type;
     private Date createdAt;
     private boolean isRead;
+    private Map<String, String> actions = new HashMap<>();
 
     // Constructor
     public BasicNotification(String userId, String message, String type) {
@@ -50,5 +53,9 @@ public class BasicNotification implements INotification {
     @Override
     public boolean isRead() {
         return isRead;
+    }
+    @Override 
+    public Map<String, String> getActions() {
+        return actions;
     }
 }
