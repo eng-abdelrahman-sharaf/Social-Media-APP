@@ -77,7 +77,7 @@ public class TestNotifcation {
         
         System.out.println("444----------------");
         // Simulate user accepting a friend request 
-//        notificationService.markNotificationAsRead(user2.getUserID(), "Friend Request");
+        notificationService.markNotificationAsRead(user2.getUserID(), "Friend Request");
         
 //        // Fetch and display updated notifications for user2
         List<INotification> updatedNotifications = notificationService.getNotifications(user2.getUserID());
