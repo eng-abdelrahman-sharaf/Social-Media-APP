@@ -8,6 +8,7 @@ import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
+import com.MediaApp.UserAccountManagement.UserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
@@ -17,10 +18,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
@@ -74,10 +74,17 @@ public class MainController {
     @FXML
     private Button GoupPost;
 
+    @FXML
+    private Button SearchButton;
+
+    @FXML
+    private TextField UserQuery;
+
     private IUserInfo Owner;
     private ContentContainerComponent postsContainer;
     private ContentContainerComponent storyContainer;
     private ContentContainerComponent GroupPostsContainer;
+    private SearchEngine searchEngine;
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
@@ -85,6 +92,8 @@ public class MainController {
         GoupPost.setOnAction(event -> {
             CreateGroupPost();
         });
+        SearchButton.setOnAction(event -> UserSearchButtonAction());
+        searchEngine = new SearchEngine();
         postsContainer = new  ContentContainerComponent();
         GroupPostsContainer = new  ContentContainerComponent();
         GroupPostsContainer.setContainerWidth(700);
@@ -94,6 +103,36 @@ public class MainController {
         storiesPanel.setContent(storyContainer);
 
     }
+
+    private void UserSearchButtonAction() {
+        List<UserInfo> us = searchEngine.search(UserQuery.getText(), "users");
+
+        Stage stage = new Stage();
+        stage.setTitle("Search Results");
+
+        ListView<UserInfo> listView = new ListView<>();
+        listView.getItems().addAll(us);
+
+        listView.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(UserInfo user, boolean empty) {
+                super.updateItem(user, empty);
+                setText((user == null || empty) ? null : user.getName());
+            }
+        });
+
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                System.out.println("Selected user: " + newValue.getName());
+            }
+        });
+
+        Scene scene = new Scene(listView, 400, 300);
+        stage.setScene(scene);
+
+        stage.show();
+    }
+
 
     private void CreateGroupPost() {
         openCreatePostPopup("group");
@@ -307,7 +346,4 @@ public class MainController {
     }
 
 
-
-
 }
-
