@@ -12,6 +12,10 @@ import java.util.ArrayList;
 
 public class NewsFeedApp extends Application {
 
+    public void run(){
+        launch();
+    }
+
     @Override
     public void start(Stage stage) {
         try {
