@@ -21,7 +21,7 @@ public class BasicNotification implements INotification {
     private Map<String, String> actions = new HashMap<>();
 
     // Constructor
-    public BasicNotification(String userId, String message, String type) {
+    public BasicNotification(String userId, String message, String type,INotificationActionFactory actionFactory) {
         this.userId = userId;
         this.message = message;
         this.type = type;

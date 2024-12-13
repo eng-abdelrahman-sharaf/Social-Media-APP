@@ -28,7 +28,7 @@ public class PostService {
         List<String> members = group.getMemberIds();
         for (String member : members) {
             INotification notification = new BasicNotification(member, 
-                "New post in group " + group.getName() + ".", "New Post");
+                "New post in group " + group.getName() + ".", "New Post", actionFactory);
             notificationService.sendNotification(notification);
         }
     }

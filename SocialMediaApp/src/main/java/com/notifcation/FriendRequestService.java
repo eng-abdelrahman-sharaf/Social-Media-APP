@@ -21,7 +21,7 @@ public class FriendRequestService {
     public void sendFriendRequest(IUserInfo sender, IUserInfo receiver) {
         // Logic to send friend request
         INotification notification = new BasicNotification(receiver.getUserID(), 
-            sender.getUserName() + " sent you a friend request.", "Friend Request");
+            sender.getUserName() + " sent you a friend request.", "Friend Request", actionFactory);
         notificationService.sendNotification(notification);
     }
 }

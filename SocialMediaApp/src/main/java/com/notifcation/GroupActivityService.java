@@ -20,7 +20,7 @@ public class GroupActivityService {
     public void addUserToGroup(IUserInfo user, Group group) {
         // Logic to add user to group
         INotification notification = new BasicNotification(user.getUserID(), 
-            "You were added to the group " + group.getName() + ".", "Group Activity");
+            "You were added to the group " + group.getName() + ".", "Group Activity", actionFactory);
         notificationService.sendNotification(notification);
     }
 }
