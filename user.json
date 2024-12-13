@@ -37,6 +37,25 @@
     "name" : "Ali",
     "id" : "nogea"
   },
+  "test" : {
+    "userID" : "test",
+    "userName" : "testuname",
+    "friendsIDs" : [ ],
+    "blockedAccountsIDs" : [ ],
+    "postsIDs" : [ "0ea0f0e3-ad91-41dc-9e71-8c3f68bc05dc", "6339cde3-d860-4cb3-a7b8-0f48c08215e2" ],
+    "bio" : null,
+    "hashedPassword" : "123456",
+    "status" : null,
+    "email" : "test.mail.com",
+    "dateOfBirth" : "3/1/2005",
+    "profilePhotoPath" : null,
+    "coverPhotoPath" : null,
+    "storiesIDs" : [ ],
+    "friendsREquest" : [ "gogo", "nogea", "test", "magdi", "9d9c2b47-2ee3-4a91-b0de-8829a01f3bb4", "d681de1c-b912-4ba8-bb75-369d0fcf8d02", "26041798-fe04-4e63-8689-7334581536ca", "62c8192f-c07a-4734-81c9-437b77e80645", "ali" ],
+    "joinedGroups" : [ ],
+    "name" : "testuname",
+    "id" : "test"
+  },
   "magdi" : {
     "userID" : "magdi",
     "userName" : "Omar",
