@@ -97,7 +97,7 @@
                                     <HBox fx:id="SuggestedFriendsPane" prefHeight="31.0" prefWidth="667.0" spacing="10.0" />
                                  </content>
                               </ScrollPane>
-                              <HBox prefHeight="412.0" prefWidth="475.0">
+                              <HBox prefHeight="356.0" prefWidth="475.0">
                                  <children>
                                     <ScrollPane fx:id="storiesPanel" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
                                     <ScrollPane fx:id="postsPanel" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="412.0" prefWidth="274.0" />
@@ -113,15 +113,21 @@
       </Tab>
       <Tab text="Groups">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="730.0">
                <children>
-                  <ScrollPane layoutX="2.0" layoutY="-1.0" prefHeight="44.0" prefWidth="730.0">
+                  <ScrollPane layoutY="32.0" prefHeight="44.0" prefWidth="730.0">
                      <content>
                         <HBox fx:id="GroupsSuggestionsPane" prefHeight="41.0" prefWidth="1209.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
-                  <ScrollPane fx:id="GroupsPostsPanel" layoutX="82.0" layoutY="48.0" prefHeight="457.0" prefWidth="634.0" />
-                  <Button fx:id="GoupPost" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" text="Post" />
+                  <ScrollPane fx:id="GroupsPostsPanel" layoutX="82.0" layoutY="76.0" prefHeight="430.0" prefWidth="634.0" />
+                  <Button fx:id="GoupPost" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" text="Post" />
+                  <AnchorPane prefHeight="34.0" prefWidth="722.0">
+                     <children>
+                        <TextField fx:id="groupQuery" layoutX="179.0" layoutY="4.0" prefHeight="25.0" prefWidth="224.0" />
+                        <Button fx:id="SearchButton2" layoutX="442.0" layoutY="4.0" mnemonicParsing="false" text="Search" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
         </content>

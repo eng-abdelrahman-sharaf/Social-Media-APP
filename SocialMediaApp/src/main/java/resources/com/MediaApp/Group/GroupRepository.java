@@ -8,38 +8,32 @@ package resources.com.MediaApp.Group;
  *
  * @author ay654
  */
+import com.MediaApp.ContentManagement.IPost;
+import com.MediaApp.DataHandlers.*;
+import com.MediaApp.UserAccountManagement.IUserInfo;
+
+import java.io.IOException;
 import java.util.*;
 
-public class GroupRepository {
+public class GroupRepository extends DataBase<IGroup> {
+
     private static GroupRepository instance;
-    private final Map<String, Group> groupStore = new HashMap<>();
 
-    private GroupRepository() {}
+    private GroupRepository(MapStorageHandler<String, IGroup> handler) {
+        super(handler);
+    }
 
-    public static GroupRepository getInstance() {
+    // Singleton pattern
+    public static GroupRepository getInstance(MapStorageHandler<String, IGroup> handler) {
         if (instance == null) {
-            synchronized (GroupRepository.class) {
-                if (instance == null) {
-                    instance = new GroupRepository();
-                }
-            }
+            instance = new GroupRepository(handler);
         }
         return instance;
     }
-
-    public void save(Group group) {
-        groupStore.put(group.getGroupId(), group);
-    }
-
-    public Group findById(String groupId) {
-        return groupStore.get(groupId);
-    }
-
-    public void delete(String groupId) {
-        groupStore.remove(groupId);
-    }
-
-    public List<Group> findAll() {
-        return new ArrayList<>(groupStore.values());
+    @Override
+    public IGroup[] getData() {
+        return getObjectsStore().values().stream()
+                .map(IGroup::clone)
+                .toArray(IGroup[]::new);
     }
 }

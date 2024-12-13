@@ -6,11 +6,9 @@ import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import resources.com.MediaApp.Group.IGroup;
 
 import java.io.File;
 import java.time.Instant;
@@ -27,6 +25,10 @@ public class Content_Initializer {
 
     @FXML
     private Button PostButton;
+
+    @FXML
+    private MenuButton groupChooser;
+
 
     @FXML
     private TextArea Caption;
@@ -49,6 +51,27 @@ public class Content_Initializer {
     public void initialize() {
         ImageChooser.setOnAction(event -> chooseImage());
         PostButton.setOnAction(event -> handlePost());
+
+        // handle group post creation logic
+        groupChooser.getItems().clear();
+
+        System.out.println("gouppy");
+
+//        for(IGroup group)
+
+        // Create MenuItems
+        MenuItem option1 = new MenuItem("Option 1");
+        MenuItem option2 = new MenuItem("Option 2");
+        MenuItem option3 = new MenuItem("Option 3");
+
+        // Add action handlers for menu items
+        option1.setOnAction(e -> System.out.println("Option 1 selected"));
+        option2.setOnAction(e -> System.out.println("Option 2 selected"));
+        option3.setOnAction(e -> System.out.println("Option 3 selected"));
+
+
+        // Add MenuItems to the MenuButton
+        groupChooser.getItems().addAll(option1, option2, option3);
     }
 
     private void chooseImage() {
@@ -96,8 +119,7 @@ public class Content_Initializer {
                 UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
             }
             else {
-                // handle group post creation logic
-                System.out.println("Group post creation is not implemented");
+
             }
 
             System.out.println("Post created with caption: " + caption);

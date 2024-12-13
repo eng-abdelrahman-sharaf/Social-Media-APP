@@ -1,5 +1,6 @@
 package com.MediaApp.NewsFeed;
 
+import com.MediaApp.ContentManagement.IGroupPost;
 import com.MediaApp.ContentManagement.IPost;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
@@ -26,6 +27,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import resources.com.MediaApp.Group.GroupRepository;
+import resources.com.MediaApp.Group.IGroup;
 
 import javax.management.Notification;
 import java.io.IOException;
@@ -79,7 +82,13 @@ public class MainController {
     private Button SearchButton;
 
     @FXML
+    private Button SearchButton2;
+
+    @FXML
     private TextField UserQuery;
+
+    @FXML
+    private TextField groupQuery;
 
     @FXML
     private Button NotificationsButton;
@@ -92,11 +101,14 @@ public class MainController {
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
-        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
+//        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
+        ViewRequestsButton.setVisible(false);
         GoupPost.setOnAction(event -> {
             CreateGroupPost();
         });
         SearchButton.setOnAction(event -> UserSearchButtonAction());
+        SearchButton2.setOnAction(event -> GroupSearchButtonAction());
+
         NotificationsButton.setOnAction(event -> DisplayNotifications());
         searchEngine = new SearchEngine();
         postsContainer = new  ContentContainerComponent();
@@ -157,6 +169,49 @@ public class MainController {
 
 
 
+    private void GroupSearchButtonAction() {
+        String targetName = groupQuery.getText();
+        List<IGroup> groups = new ArrayList<>();
+        for(IGroup group : GroupRepository.getInstance(null).getData()){
+            if(group.getName().toLowerCase().contains(targetName.toLowerCase())){
+                groups.add(group);
+            }
+        }
+
+        for(IGroup group : groups){
+            System.out.println(group.getName());
+            System.out.println("target" + targetName);
+        }
+
+        Stage stage = new Stage();
+        stage.setTitle("Search Results");
+
+        ListView<IGroup> listView = new ListView<>();
+        listView.getItems().addAll(groups);
+
+        listView.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(IGroup group, boolean empty) {
+                super.updateItem(group, empty);
+                setText((group == null || empty) ? null : group.getName());
+            }
+        });
+
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                // newValue is the button you press on it is of typre user info choose the action
+                ProfileApp profileApp = new ProfileApp();
+//                profileApp.start(StageGetter.getInstance().getStage() , newValue);
+            }
+        });
+
+        Scene scene = new Scene(listView, 400, 300);
+        stage.setScene(scene);
+
+        stage.show();
+    }
+
+
 
     private void UserSearchButtonAction() {
         List<UserInfo> us = searchEngine.search(UserQuery.getText(), "users");
@@ -178,7 +233,8 @@ public class MainController {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // newValue is the button you press on it is of typre user info choose the action
-                System.out.println("selected user: " + newValue.getName());
+                ProfileApp profileApp = new ProfileApp();
+                profileApp.start(StageGetter.getInstance().getStage() , newValue);
             }
         });
 
@@ -193,8 +249,9 @@ public class MainController {
         openCreatePostPopup("group");
     }
 
-    public void load(IUserInfo owner, List<IUserInfo> Suggestedusers, List<IUserInfo> Friends, List<IPost> posts /* posts*/) {
+    public void load(IUserInfo owner) {
         this.Owner = owner;
+
         // Set button icons
         setButtonIcon(RefreshButton, "/Icons/refresh-button.png");
         setButtonIcon(LogoutButton, "/Icons/check-out.png");
@@ -210,18 +267,30 @@ public class MainController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
 
-
-        List<String> ls = new ArrayList<>();
-        for (IUserInfo user : Friends) {
-            ls.add(user.getUserID());
+        ArrayList<IUserInfo> friends = new ArrayList<>();
+        for(String user: owner.getFriendsIDs()){
+            friends.add(UserRoleDataBase.getInstance(null).readObject(user));
         }
-        Owner.setFriendsREquest(ls);
 
+        ArrayList<IPost> posts = new ArrayList<>();
+        ArrayList<String> postsIDs  = new ArrayList<>();
+        for(IUserInfo friend: friends){
+            postsIDs.addAll(friend.getPostsIDs());
+        }
 
+        for(String postID: owner.getPostsIDs() ){
+            posts.add(PostDataBase.getInstance(null).readObject(postID));
+        }
 
-        createSuggested(Friends,GroupsSuggestionsPane,"friends");
-        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
-        createFriendStatus(Friends);
+        for(IGroup group: GroupRepository.getInstance(null).getData()){
+
+        }
+
+        createSuggestedGroups();
+
+        System.out.println(posts.size());
+//        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
+        createFriendStatus(friends);
         FillPostsPane(posts);
         FillGroupPostsPane(posts);
     }
@@ -266,6 +335,12 @@ public class MainController {
             pane.getChildren().add(userButton);
         }
     }
+
+    public void createSuggestedGroups(){
+
+    }
+
+
 
     public void createFriendStatus(List<IUserInfo> users) {
         FriendsStatusPane.getChildren().clear();
@@ -324,7 +399,7 @@ public class MainController {
             posts.add((IPost) post);
         }
 
-        load(this.Owner , users , users , posts);
+        load(this.Owner);
     }
 
 
@@ -358,8 +433,6 @@ public class MainController {
             Scene scene = new Scene(createPostRoot);
             popupStage.setScene(scene);
             popupStage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

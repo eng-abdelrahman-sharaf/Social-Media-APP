@@ -15,10 +15,12 @@ import com.gui.content_mangement_components.StageGetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -77,14 +79,27 @@ public class Controller {
     private IUserInfo user;
 
     @FXML
+    private VBox buttonsVBox;
+
+    @FXML
+    private Button goBackButton;
+
+
+    public void hideButtons (){
+        buttonsVBox.getChildren().clear();
+        buttonsVBox.getChildren().add(goBackButton);
+    }
+
+    @FXML
     public void initialize() {
         if(user == null)user = AuthorizedUserGetter.getInstance().getUserInfo();
+        if(user != AuthorizedUserGetter.getInstance().getUserInfo()) hideButtons();
         try {
             cover.setImage(new Image(user.getCoverPhotoPath()));
-        }catch (NullPointerException e){}
+        }catch (RuntimeException e){}
         try {
             avatar.setImage(new Image(user.getProfilePhotoPath()));
-        }catch (NullPointerException e){}
+        }catch (RuntimeException e){}
         username.setText(user.getUserName());
         description.setText(user.getBio());
         email.setText(user.getEmail());

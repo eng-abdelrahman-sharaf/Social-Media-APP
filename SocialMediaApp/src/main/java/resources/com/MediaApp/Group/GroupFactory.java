@@ -10,7 +10,8 @@ package resources.com.MediaApp.Group;
  */
 import java.util.*;
 
-public class GroupFactory implements IGroupFactory {
+public class
+GroupFactory implements IGroupFactory {
     @Override
     public Group createGroup(String name, String description, String groupPhoto, String creatorId) {
         return new Group.Builder()

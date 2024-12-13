@@ -9,11 +9,11 @@ package resources.com.MediaApp.Group;
  * @author ay654
  */
 public class AdminServiceImpl implements AdminService {
-    private final GroupRepository repository = GroupRepository.getInstance();
+    private final GroupRepository repository = GroupRepository.getInstance(null);
 
     @Override
     public void approveMembership(String groupId, String userId) {
-        Group group = repository.findById(groupId);
+        IGroup group = (IGroup)repository.readObject(groupId);
         if (!group.getMemberIds().contains(userId)) {
             group.getMemberIds().add(userId);
         } else {
@@ -23,7 +23,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void removeMember(String groupId, String memberId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group.getMemberIds().contains(memberId)) {
             group.getMemberIds().remove(memberId);
         } else {

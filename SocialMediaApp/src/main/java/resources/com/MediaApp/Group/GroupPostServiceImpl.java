@@ -9,26 +9,33 @@ package resources.com.MediaApp.Group;
  * @author ay654
  */
 import com.MediaApp.ContentManagement.Content;
+import com.MediaApp.ContentManagement.GroupPostFactory;
+import com.MediaApp.ContentManagement.IGroupPost;
+import com.MediaApp.ContentManagement.IMediumFactory;
+
+import java.time.Instant;
+
 public class GroupPostServiceImpl implements GroupPostService {
-    private final GroupRepository repository = GroupRepository.getInstance();
+    private final GroupRepository repository = GroupRepository.getInstance(null);
 
     @Override
     public void addPost(String groupId, String authorId, Content content) {
-        Group group = repository.findById(groupId);
-        if (group != null && group.getMemberIds().contains(authorId)) {
-            GroupPost post = new GroupPost(groupId, authorId, content);
+        IGroup group = repository.readObject(groupId);
+        if (group != null && (group.getMemberIds().contains(authorId))) {
+            IGroupPost post = new GroupPostFactory().create(authorId, content , Instant.now().toString() , groupId);
             group.getPosts().add(post);
             repository.save(group);
         } else {
+            System.out.println(groupId + "," + authorId);
             throw new IllegalArgumentException("User is not a member of the group or group not found.");
         }
     }
 
     @Override
     public void editPost(String groupId, String postId, String userId, Content newContent) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null) {
-            GroupPost post = findPost(group, postId);
+            IGroupPost post = findPost(group, postId);
             if (post != null) {
                 if (group.getAdminIds().contains(userId) || group.getPrimaryAdminId().equals(userId)) {
                     post.setContent(newContent);
@@ -46,9 +53,9 @@ public class GroupPostServiceImpl implements GroupPostService {
 
     @Override
     public void deletePost(String groupId, String postId, String userId) {
-        Group group = repository.findById(groupId);
+        IGroup group = repository.readObject(groupId);
         if (group != null) {
-            GroupPost post = findPost(group, postId);
+            IGroupPost post = findPost(group, postId);
             if (post != null) {
                 if (group.getAdminIds().contains(userId) || group.getPrimaryAdminId().equals(userId)) {
                     group.getPosts().remove(post);
@@ -64,9 +71,9 @@ public class GroupPostServiceImpl implements GroupPostService {
         }
     }
 
-    private GroupPost findPost(Group group, String postId) {
+    private IGroupPost findPost(IGroup group, String postId) {
         return group.getPosts().stream()
-                .filter(post -> post.getPostId().equals(postId))
+                .filter(post -> post.getID().equals(postId))
                 .findFirst()
                 .orElse(null);
     }
