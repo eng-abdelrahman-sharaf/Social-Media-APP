@@ -9,7 +9,7 @@ import java.util.Map;
 
 // Notification Interface 
 // This interface defines the basic structure for all notification types, 
-// ensuring that any notification will have methods to get the user ID, message, type, creation date, and read status.
+// ensuring that any notification will have methods to get the user ID, message, type, creation date, and read status, and actions.
 public interface INotification {
     String getUserId();
     String getMessage();

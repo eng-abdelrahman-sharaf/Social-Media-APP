@@ -6,10 +6,8 @@ package com.notifcation;
 
 import java.util.Map;
 
-/**
- *
- * @author abdah
- */
+// ActionProvider Interface 
+// This interface defines the method for creating actions for a specific notification type.
 public interface ActionProvider {
     Map<String, String> createActions(String userId);
 }

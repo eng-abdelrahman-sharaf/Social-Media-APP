@@ -8,12 +8,14 @@ import com.MediaApp.UserAccountManagement.IUserInfo;
 
 // FriendRequestService Class 
 // This class handles the logic for sending friend request notifications. 
-// It uses the NotificationService to create and send notifications.
+// It uses the NotificationService to create and send notifications.and action factory.
 public class FriendRequestService {
     private INotificationService notificationService;
-
-    public FriendRequestService(INotificationService notificationService) {
+    private INotificationActionFactory actionFactory;
+    
+    public FriendRequestService(INotificationService notificationService,INotificationActionFactory actionFactory ) {
         this.notificationService = notificationService;
+        this.actionFactory= actionFactory;
     }
 
     public void sendFriendRequest(IUserInfo sender, IUserInfo receiver) {

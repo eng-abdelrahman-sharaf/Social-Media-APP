@@ -10,7 +10,7 @@ import java.util.Map;
 
 // BasicNotification Class 
 // This class is a concrete implementation of the Notification interface. 
-// It represents a simple notification with attributes like user ID, message, type, creation date, and read status.
+// It represents a simple notification with attributes like user ID, message, type, creation date, and read status, and actions.
 
 public class BasicNotification implements INotification {
     private String userId;
@@ -27,6 +27,7 @@ public class BasicNotification implements INotification {
         this.type = type;
         this.createdAt = new Date();
         this.isRead = false;
+        this.actions = actionFactory.createActions(type,userId);
     }
 
     // Getters and setters

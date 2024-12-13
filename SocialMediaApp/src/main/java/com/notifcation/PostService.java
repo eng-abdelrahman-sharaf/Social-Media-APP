@@ -16,8 +16,11 @@ import resources.com.MediaApp.Group.Group;
 public class PostService {
     private INotificationService notificationService;
 
-    public PostService(INotificationService notificationService) {
+    private INotificationActionFactory actionFactory;
+    
+    public PostService(INotificationService notificationService, INotificationActionFactory actionFactory) {
         this.notificationService = notificationService;
+        this.actionFactory = actionFactory;
     }
 
     public void newGroupPost(Group group, IPost post) {

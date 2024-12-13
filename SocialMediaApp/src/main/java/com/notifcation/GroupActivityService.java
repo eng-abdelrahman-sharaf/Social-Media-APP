@@ -9,9 +9,12 @@ import resources.com.MediaApp.Group.Group;
 // It uses the NotificationService to create and send notifications.
 public class GroupActivityService {
     private INotificationService notificationService;
-
-    public GroupActivityService(INotificationService notificationService) {
+    private INotificationActionFactory actionFactory;
+    
+    public GroupActivityService(INotificationService notificationService,INotificationActionFactory actionFactory ) {
         this.notificationService = notificationService;
+        
+        this.actionFactory = actionFactory;
     }
 
     public void addUserToGroup(IUserInfo user, Group group) {

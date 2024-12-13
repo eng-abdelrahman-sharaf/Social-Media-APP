@@ -6,10 +6,8 @@ package com.notifcation;
 
 import java.util.Map;
 
-/**
- *
- * @author abdah
- */
+// INotificationActionFactory Interface 
+// This interface defines the method for creating actions for different notification types.
 public interface INotificationActionFactory {
     Map<String, String> createActions(String notificationType, String userId);
 }

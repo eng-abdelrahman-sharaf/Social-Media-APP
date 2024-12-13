@@ -10,10 +10,9 @@ import java.util.Map;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- *
- * @author abdah
- */
+// NotificationActionFactory Class 
+// This class implements the INotificationActionFactory interface, 
+// providing logic to create actions based on notification type.
 public class NotificationActionFactory implements INotificationActionFactory {
     private final Map<String, ActionProvider> actionProviders = new HashMap<>();
 
