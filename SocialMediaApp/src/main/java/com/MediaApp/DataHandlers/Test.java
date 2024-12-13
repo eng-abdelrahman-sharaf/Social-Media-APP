@@ -30,7 +30,7 @@ public class Test {
         postdb.addObject(post);
         postdb.addObject(post);
 
-        MapStorageHandler<String , IGroupPost> groupsHandler = new JsonMapStorageHandler<>(String.class , GroupPostClassType.type, "group-posts.json" );
-        GroupPostDataBase.getInstance(groupsHandler).addObject();
+//        MapStorageHandler<String , IGroupPost> groupsHandler = new JsonMapStorageHandler<>(String.class , GroupPostClassType.type, "group-posts.json" );
+//        GroupPostDataBase.getInstance(groupsHandler).addObject();
     }
 }
