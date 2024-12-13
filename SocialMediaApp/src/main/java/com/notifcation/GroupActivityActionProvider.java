@@ -11,11 +11,12 @@ import java.util.Map;
  *
  * @author abdah
  */
-public class NewPostActionProvider implements ActionProvider {
+public class GroupActivityActionProvider implements ActionProvider {
     @Override
     public Map<String, String> createActions(String userId) {
         Map<String, String> actions = new HashMap<>();
-        actions.put("View Post", "/post/view/" + userId);
+        actions.put("Join Group", "/group/join/" + userId);
+        actions.put("Leave Group", "/group/leave/" + userId);
         return actions;
     }
 }

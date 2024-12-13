@@ -4,10 +4,24 @@
  */
 package com.notifcation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author abdah
  */
-public class FriendRequestActionProvider {
-    
+public class FriendRequestActionProvider implements ActionProvider {
+    @Override
+    public Map<String, String> createActions(String userId) {
+        Map<String, String> actions = new HashMap<>();
+        actions.put("Accept", "/friendRequest/accept/" + userId);
+        actions.put("Decline", "/friendRequest/decline/" + userId);
+        return actions;
+    }
 }
+
+
+
+
+
