@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,13 +17,13 @@
    <tabs>
       <Tab text="Friends">
          <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="730.0" stylesheets="@MainStyle.css">
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="730.0" stylesheets="@MainStyle.css">
                <left>
-                  <VBox fx:id="ButtonsPane" prefHeight="514.0" prefWidth="101.0" styleClass="Vbox" BorderPane.alignment="CENTER">
+                  <VBox fx:id="ButtonsPane" prefHeight="347.0" prefWidth="64.0" styleClass="Vbox" BorderPane.alignment="CENTER">
                      <children>
                         <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ProfileButtonAction" prefHeight="25.0" prefWidth="162.0" styleClass="Button" text="profile">
                            <VBox.margin>
-                              <Insets bottom="10.0" left="3.0" right="10.0" top="40.0" />
+                              <Insets left="3.0" right="10.0" top="30.0" />
                            </VBox.margin>
                         </Button>
                         <Button fx:id="ViewRequestsButton" mnemonicParsing="false" onAction="#ViewRequestButtonAction" prefHeight="25.0" prefWidth="207.0" styleClass="Button" text="Requests">
@@ -32,17 +33,17 @@
                         </Button>
                         <Button fx:id="RefreshButton" mnemonicParsing="false" onAction="#RefreshButtonAction" prefHeight="25.0" prefWidth="214.0" styleClass="Button" text="Refresh">
                            <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
                            </VBox.margin>
                         </Button>
                         <Button fx:id="LogoutButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="logout">
                            <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
                            </VBox.margin>
                         </Button>
                         <Button fx:id="CreatePostButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Post">
                            <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
                            </VBox.margin>
                         </Button>
                         <Button fx:id="CreateStoryButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Story">
@@ -50,6 +51,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" />
                            </VBox.margin>
                         </Button>
+                        <Button fx:id="NotificationsButton" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="25.0" prefWidth="266.0" styleClass="Button" text="Notifications" />
                         <ImageView fx:id="logo" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets bottom="10.0" left="30.0" right="28.0" top="150.0" />
@@ -81,16 +83,24 @@
                      <content>
                         <VBox fx:id="ContentPane" prefHeight="500.0" prefWidth="475.0">
                            <children>
-                              <ScrollPane prefHeight="36.0" prefWidth="1000.0" />
+                              <ScrollPane prefHeight="36.0" prefWidth="1000.0">
+                                 <content>
+                                    <AnchorPane prefHeight="34.0" prefWidth="467.0">
+                                       <children>
+                                          <TextField fx:id="UserQuery" layoutX="35.0" layoutY="5.0" prefHeight="25.0" prefWidth="224.0" />
+                                          <Button fx:id="SearchButton" layoutX="314.0" layoutY="5.0" mnemonicParsing="false" text="Search" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content></ScrollPane>
                               <ScrollPane fx:id="FriendSuggestionsDisplay" prefHeight="47.0" prefWidth="475.0">
                                  <content>
                                     <HBox fx:id="SuggestedFriendsPane" prefHeight="31.0" prefWidth="667.0" spacing="10.0" />
                                  </content>
                               </ScrollPane>
-                              <HBox prefHeight="416.0" prefWidth="475.0">
+                              <HBox prefHeight="412.0" prefWidth="475.0">
                                  <children>
                                     <ScrollPane fx:id="storiesPanel" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
-                                    <ScrollPane fx:id="postsPanel" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="262.0" />
+                                    <ScrollPane fx:id="postsPanel" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="412.0" prefWidth="274.0" />
                                  </children>
                               </HBox>
                            </children>
