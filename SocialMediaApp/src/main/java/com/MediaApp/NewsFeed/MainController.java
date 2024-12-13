@@ -27,6 +27,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.management.Notification;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,6 +81,9 @@ public class MainController {
     @FXML
     private TextField UserQuery;
 
+    @FXML
+    private Button NotificationsButton;
+
     private IUserInfo Owner;
     private ContentContainerComponent postsContainer;
     private ContentContainerComponent storyContainer;
@@ -93,6 +97,7 @@ public class MainController {
             CreateGroupPost();
         });
         SearchButton.setOnAction(event -> UserSearchButtonAction());
+        NotificationsButton.setOnAction(event -> DisplayNotifications());
         searchEngine = new SearchEngine();
         postsContainer = new  ContentContainerComponent();
         GroupPostsContainer = new  ContentContainerComponent();
@@ -103,6 +108,56 @@ public class MainController {
         storiesPanel.setContent(storyContainer);
 
     }
+
+    private void DisplayNotifications() {
+        List<String> notifications = new ArrayList<>();
+        notifications.add("You have a new message from John.");
+        notifications.add("Your friend request to Sarah has been accepted.");
+        notifications.add("Your post has received 10 new likes!");
+        notifications.add("Anna commented on your photo.");
+        notifications.add("You have 3 new friend suggestions.");
+
+        Stage notificationsStage = new Stage();
+        notificationsStage.setTitle("Notifications");
+
+        VBox vbox = new VBox(10); // Layout for notifications
+        vbox.setPadding(new javafx.geometry.Insets(10));
+
+        for (String notification : notifications) {
+            Button button = new Button(notification);
+            button.setStyle("-fx-font-size: 14px; -fx-background-color: white; -fx-background-radius: 10;");
+
+            button.setOnMousePressed(event -> {
+                button.setStyle("-fx-font-size: 14px; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.2, 0, 0);");
+            });
+
+            button.setOnMouseReleased(event -> {
+                button.setStyle("-fx-font-size: 14px; -fx-background-color: white; -fx-background-radius: 15;");
+            });
+
+            button.setOnAction(event -> {
+                // Action when a notification button is clicked (e.g., show more details)
+                System.out.println(notification + " clicked.");
+            });
+
+            vbox.getChildren().add(button);
+        }
+
+        ScrollPane scrollPane = new ScrollPane(vbox);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+
+        Scene scene = new Scene(scrollPane, 300, 200);
+        notificationsStage.setScene(scene);
+        notificationsStage.initModality(Modality.APPLICATION_MODAL);
+        notificationsStage.show();
+    }
+
+
+
+
+
+
 
     private void UserSearchButtonAction() {
         List<UserInfo> us = searchEngine.search(UserQuery.getText(), "users");
@@ -123,7 +178,8 @@ public class MainController {
 
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                System.out.println("Selected user: " + newValue.getName());
+                // newValue is the button you press on it is of typre user info choose the action
+                System.out.println("selected user: " + newValue.getName());
             }
         });
 

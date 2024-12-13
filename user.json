@@ -42,7 +42,7 @@
     "userName" : "testuname",
     "friendsIDs" : [ ],
     "blockedAccountsIDs" : [ ],
-    "postsIDs" : [ "0ea0f0e3-ad91-41dc-9e71-8c3f68bc05dc", "6339cde3-d860-4cb3-a7b8-0f48c08215e2" ],
+    "postsIDs" : [ "4820ffce-5eb1-49ac-b14d-848c0b2d8848", "ed717f2d-87cc-4df6-9016-ab9540d473a9" ],
     "bio" : null,
     "hashedPassword" : "123456",
     "status" : null,
