@@ -6,10 +6,9 @@ package com.notifcation;
 
 import com.MediaApp.UserAccountManagement.IUserInfo;
 
-/**
- *
- * @author abdah
- */
+// FriendRequestService Class 
+// This class handles the logic for sending friend request notifications. 
+// It uses the NotificationService to create and send notifications.
 public class FriendRequestService {
     private INotificationService notificationService;
 
