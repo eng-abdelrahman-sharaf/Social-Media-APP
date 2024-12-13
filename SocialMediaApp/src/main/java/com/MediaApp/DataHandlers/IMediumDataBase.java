@@ -1,4 +1,6 @@
 package com.MediaApp.DataHandlers;
 
-public interface IMediumDataBase extends IDataBase{
+import com.MediaApp.ContentManagement.IMedium;
+
+public interface IMediumDataBase<T extends IMedium> extends IDataBase<T>{
 }

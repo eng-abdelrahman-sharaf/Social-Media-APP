@@ -3,10 +3,7 @@ package com.MediaApp.UserAccountManagement;
 
 
 
-import com.MediaApp.DataHandlers.DataObject;
-import com.MediaApp.DataHandlers.IDataBase;
-import com.MediaApp.DataHandlers.IDataObject;
-import com.MediaApp.DataHandlers.MapStorageHandler;
+import com.MediaApp.DataHandlers.*;
 //import com.MediaApp.UserAccountManagement.ListStorageHandler;
 
 import java.io.IOException;
@@ -14,16 +11,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserRoleDataBase implements IDataBase {
+public class UserRoleDataBase extends DataBase<IUserInfo> {
 
     private static UserRoleDataBase instance;
-    private HashMap<String, IUserInfo> dataMap;
-    private MapStorageHandler<String, IUserInfo> storageHandler;
+
 
     private UserRoleDataBase(MapStorageHandler<String, IUserInfo> handler) {
-        this.storageHandler = handler;
-        this.dataMap = new HashMap<>();
-        reload(); // Initial load
+        super(handler);
+    }
+
+    @Override
+    public IUserInfo[] getData() {
+        return getObjectsStore().values().stream()
+                .map(IUserInfo::clone)
+                .toArray(IUserInfo[]::new);
     }
 
     // Singleton pattern
@@ -32,72 +33,5 @@ public class UserRoleDataBase implements IDataBase {
             instance = new UserRoleDataBase(handler);
         }
         return instance;
-    }
-
-
-    @Override
-    public IUserInfo readObject(String ID) {
-        IUserInfo object = dataMap.get(ID);
-        return (object != null) ? object.clone() : null; // Return a clone
-    }
-
-    @Override
-    public IUserInfo[] getData() {
-        return dataMap.values().stream()
-                .map(IUserInfo::clone)
-                .toArray(IUserInfo[]::new); // Return cloned objects in Array
-        // if you want Return hashMap use the following code 
-        
-        // Create a new HashMap to store cloned objects
-//        HashMap<String, IDataObject> clonedDataMap = new HashMap<>();
-//
-//        // Populate the cloned map with cloned objects
-//        for (Map.Entry<String, IDataObject> entry : dataMap.entrySet()) {
-//            clonedDataMap.put(entry.getKey(), entry.getValue().clone());
-//        }
-//
-//        return clonedDataMap; // Return the HashMap of cloned objects
-
-        
-        
-    }
-
-    @Override
-    public void addObject(IDataObject object) {
-        reload(); // Refresh data
-        dataMap.put(object.getID(), (UserInfo) object.clone()); // Store a clone
-        save(); // Save changes
-    }
-
-    @Override
-    public void deleteObject(String ID) {
-        reload(); // Refresh data
-        dataMap.remove(ID); // Remove the object
-        save(); // Save changes
-    }
-
-    @Override
-    public void update(String ID, IDataObject object) {
-        reload(); // Refresh data
-        dataMap.put(ID, (UserInfo) object.clone()); // Update with a clone
-        save(); // Save changes
-    }
-
-    @Override
-    public void reload() {
-        try {
-            dataMap = storageHandler.loadMap(); // Load the HashMap from storage
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle exception
-        }
-    }
-
-    @Override
-    public void save() {
-        try {
-            storageHandler.saveMap(dataMap); // Save the HashMap
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle exception
-        }
     }
 }
