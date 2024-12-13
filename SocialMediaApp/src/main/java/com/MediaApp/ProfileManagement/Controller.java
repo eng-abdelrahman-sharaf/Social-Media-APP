@@ -93,7 +93,7 @@ public class Controller {
     @FXML
     public void initialize() {
         if(user == null)user = AuthorizedUserGetter.getInstance().getUserInfo();
-        else hideButtons();
+        if(user != AuthorizedUserGetter.getInstance().getUserInfo()) hideButtons();
         try {
             cover.setImage(new Image(user.getCoverPhotoPath()));
         }catch (RuntimeException e){}

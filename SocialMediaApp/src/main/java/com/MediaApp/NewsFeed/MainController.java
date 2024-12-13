@@ -79,7 +79,13 @@ public class MainController {
     private Button SearchButton;
 
     @FXML
+    private Button SearchButton2;
+
+    @FXML
     private TextField UserQuery;
+
+    @FXML
+    private TextField groupQuery;
 
     @FXML
     private Button NotificationsButton;
@@ -98,6 +104,8 @@ public class MainController {
             CreateGroupPost();
         });
         SearchButton.setOnAction(event -> UserSearchButtonAction());
+        SearchButton2.setOnAction(event -> SearchButton2Action());
+
         NotificationsButton.setOnAction(event -> DisplayNotifications());
         searchEngine = new SearchEngine();
         postsContainer = new  ContentContainerComponent();
@@ -190,6 +198,37 @@ public class MainController {
         stage.show();
     }
 
+
+    private void SearchButton2Action() {
+        List<UserInfo> us = searchEngine.search(groupQuery.getText(), "users");
+
+        Stage stage = new Stage();
+        stage.setTitle("Search Results");
+
+        ListView<UserInfo> listView = new ListView<>();
+        listView.getItems().addAll(us);
+
+        listView.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(UserInfo user, boolean empty) {
+                super.updateItem(user, empty);
+                setText((user == null || empty) ? null : user.getName());
+            }
+        });
+
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                // newValue is the button you press on it is of typre user info choose the action
+                ProfileApp profileApp = new ProfileApp();
+                profileApp.start(StageGetter.getInstance().getStage() , newValue);
+            }
+        });
+
+        Scene scene = new Scene(listView, 400, 300);
+        stage.setScene(scene);
+
+        stage.show();
+    }
 
     private void CreateGroupPost() {
         openCreatePostPopup("group");
