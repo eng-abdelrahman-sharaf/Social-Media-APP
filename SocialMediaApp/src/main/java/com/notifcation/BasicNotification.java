@@ -59,4 +59,8 @@ public class BasicNotification implements INotification {
     public Map<String, String> getActions() {
         return actions;
     }
+    @Override 
+    public void markAsRead(boolean isRead) { 
+        this.isRead = isRead; 
+    }
 }

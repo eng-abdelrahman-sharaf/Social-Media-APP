@@ -25,5 +25,10 @@ public class NotificationServiceImpl implements INotificationService {
             .filter(notification -> notification.getUserId().equals(userId) && !notification.isRead())
             .collect(Collectors.toList());
     }
+    @Override
+    public void markNotificationAsRead(String userId, String type) { 
+        notifications.stream() 
+                .filter(notification -> notification.getUserId().equals(userId) && notification.getType().equals(type)) 
+                .forEach(notification -> notification.markAsRead(true));
+    }
 }
-//Can't apply singlton here bec each user has his own notifcation list 

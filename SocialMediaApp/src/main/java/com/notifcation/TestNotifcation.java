@@ -62,17 +62,34 @@ public class TestNotifcation {
         groupActivityService.addUserToGroup(user2, group);
         postService.newGroupPost(group, post);
 
+//        System.out.println("1----------------");
         // Send an event notification
-        INotification eventNotification = new BasicNotification(user2.getUserID(), "You have an upcoming event.", "Event", actionFactory);
-        notificationService.sendNotification(eventNotification);
+//        INotification eventNotification = new BasicNotification(user2.getUserID(), "You have an upcoming event.", "Event", actionFactory);
+//        notificationService.sendNotification(eventNotification);
+        System.out.println("222----------------");
 
         // Fetch and display notifications for user2
         List<INotification> notifications = notificationService.getNotifications(user2.getUserID());
         notifications.forEach(notification -> {
             System.out.println(notification.getMessage());
             notification.getActions().forEach((action, url) -> System.out.println(action + ": " + url));
+         });
+        
+        System.out.println("444----------------");
+        // Simulate user accepting a friend request 
+//        notificationService.markNotificationAsRead(user2.getUserID(), "Friend Request");
+        
+//        // Fetch and display updated notifications for user2
+        List<INotification> updatedNotifications = notificationService.getNotifications(user2.getUserID());
+        updatedNotifications.forEach(notification -> {
+        System.out.println(notification.getMessage());
+        notification.getActions().forEach((action, url) -> System.out.println(action + ": " + url));
         });
-    }
+        
+        
+        
+   IUserInfo authorizedUser = AuthorizedUserGetter.getInstance().getUserInfo(); 
+   System.out.println("Authorized User: " + authorizedUser.getUserName()); }
 }
 
 

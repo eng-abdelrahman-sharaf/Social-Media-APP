@@ -17,4 +17,5 @@ public interface INotification {
     Date getCreatedAt();
     boolean isRead();
     Map<String, String> getActions();  // Key: Action, Value: URL or Command
+    void markAsRead(boolean isRead);
 }
