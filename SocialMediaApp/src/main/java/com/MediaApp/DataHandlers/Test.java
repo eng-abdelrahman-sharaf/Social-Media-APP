@@ -31,6 +31,6 @@ public class Test {
         postdb.addObject(post);
 
         MapStorageHandler<String , IGroupPost> groupsHandler = new JsonMapStorageHandler<>(String.class , GroupPostClassType.type, "group-posts.json" );
-        GroupPostDataBase.getInstance(groupsHandler).addObject();
+        GroupPostDataBase.getInstance(groupsHandler).addObject(new GroupPostFactory().create("1234" , null , "1324568" , "13584"));
     }
 }
