@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
  */
 public interface INotificationService {
     void sendNotification(INotification notification);
+    public List<INotification> getNotifications(String userId);
 }
 
 
