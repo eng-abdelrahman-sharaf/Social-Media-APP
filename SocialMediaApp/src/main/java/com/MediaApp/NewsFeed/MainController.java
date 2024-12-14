@@ -3,6 +3,7 @@ package com.MediaApp.NewsFeed;
 import com.MediaApp.ContentManagement.IGroupPost;
 import com.MediaApp.ContentManagement.IMedium;
 import com.MediaApp.ContentManagement.IPost;
+import com.MediaApp.ContentManagement.IStory;
 import com.MediaApp.DataHandlers.GroupPostDataBase;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
@@ -271,15 +272,28 @@ public class MainController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
 
+        ArrayList<String> postsIDs = new ArrayList<>();
+        ArrayList<String> storiesIDs = new ArrayList<>();
+
         ArrayList<IUserInfo> friends = new ArrayList<>();
         for(String user: owner.getFriendsIDs()){
-            friends.add(UserRoleDataBase.getInstance(null).readObject(user));
+            IUserInfo friend = UserRoleDataBase.getInstance(null).readObject(user);
+            friends.add(friend);
+            postsIDs.addAll(friend.getPostsIDs());
+            storiesIDs.addAll(friend.getStoriesIDs());
         }
+
 
         ArrayList<IPost> posts = new ArrayList<>();
 
-        for(String postID: owner.getPostsIDs() ){
+        for(String postID: postsIDs ){
             posts.add(PostDataBase.getInstance(null).readObject(postID));
+        }
+
+        ArrayList<IStory> stories = new ArrayList<>();
+
+        for(String storyID: storiesIDs ){
+            stories.add(StoryDataBase.getInstance(null).readObject(storyID));
         }
 
         ArrayList<IMedium> groupPosts = new ArrayList<>();
@@ -301,6 +315,7 @@ public class MainController {
 //        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
         createFriendStatus(friends);
         FillPostsPane(posts);
+        FillStoriesPane(stories);
         FillGroupPostsPane(groupPosts);
     }
 
@@ -453,6 +468,11 @@ public class MainController {
     public void FillPostsPane(List<IPost> posts) {
         postsPanel.setContent(postsContainer);
         postsContainer.setItems(posts.toArray(new IPost[0]));
+    }
+
+    public void FillStoriesPane(List<IStory> stories) {
+        storiesPanel.setContent(storyContainer);
+        storyContainer.setItems(stories.toArray(new IStory[0]));
     }
 
 

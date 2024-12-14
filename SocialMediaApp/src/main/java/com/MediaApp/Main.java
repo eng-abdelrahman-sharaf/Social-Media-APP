@@ -54,13 +54,13 @@ public class Main {
 
         // for testing only
         // sign in with abdo Aa1234
-        AuthorizedUserGetter.getInstance().setUserInfo(UserRoleDataBase.getInstance(null).getData()[0]);
+//        AuthorizedUserGetter.getInstance().setUserInfo(UserRoleDataBase.getInstance(null).getData()[1]);
 
 //        System.out.println(AuthorizedUserGetter.getInstance().getUserInfo().getJoinedGroups());
 
-//        new StartupController().run();
+        new StartupController().run();
 
-        new NewsFeedApp().run();
+//        new NewsFeedApp().run();
 
 
 //        ProfileApp profileApp = new ProfileApp();
