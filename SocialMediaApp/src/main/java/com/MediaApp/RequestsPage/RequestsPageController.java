@@ -21,9 +21,10 @@ public class RequestsPageController {
     public void initialize() {
     }
 
-    public void setRequests(IUserInfo User) {
+    public void setRequests(String userID) {
         UserNodeController userNodeController = new UserNodeController();
         UserRoleDataBase userDB = UserRoleDataBase.getInstance(null);
+        IUserInfo User = userDB.readObject(userID);
         List<IUserInfo> users = new ArrayList<>();
         System.out.println(User.getFriendsREquest());
 
@@ -35,7 +36,6 @@ public class RequestsPageController {
         for (IUserInfo user : users) {
             Button userNodeButton = (Button) userNodeController.createUserNode(user);
             userNodeButton.setOnAction(event -> {
-
                      List<String> ls =   User.getFriendsIDs();
                      ls.add(user.getUserID());
                      User.setFriendsIDs(ls);
@@ -43,14 +43,18 @@ public class RequestsPageController {
                      ls2.remove(user.getUserID());
                      User.setFriendsREquest(ls2);
                      userNodeButton.setVisible(false);
+                     userDB.update(user.getID() , user);
+                     userDB.update(User.getID() , User);
                 RequestsPane.getChildren().remove(userNodeButton);
 
             });
 
-            ImageView icon = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(user.getProfilePhotoPath())).toExternalForm()));
-            icon.setFitHeight(20);
-            icon.setFitWidth(20);
-            userNodeButton.setGraphic(icon);
+            try{
+                ImageView icon = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(user.getProfilePhotoPath())).toExternalForm()));
+                icon.setFitHeight(20);
+                icon.setFitWidth(20);
+                userNodeButton.setGraphic(icon);
+            }catch (Exception e){}
             RequestsPane.getChildren().add(userNodeButton);
             System.out.println("akjbdlas");
         }

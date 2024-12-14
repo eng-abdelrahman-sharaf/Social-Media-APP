@@ -2,7 +2,7 @@
   "gogo" : {
     "userID" : "gogo",
     "userName" : "Amr",
-    "friendsIDs" : [ "nogea", "magdi", "37f3b020-16a4-4db0-aa05-bf43631a9429" ],
+    "friendsIDs" : [ "magdi", "37f3b020-16a4-4db0-aa05-bf43631a9429", "nogea" ],
     "blockedAccountsIDs" : [ ],
     "postsIDs" : [ "6430675b-9ad1-4810-b50f-2e5a0b3d47b0", "a7b09341-b669-4950-b639-af200cbc8956", "1990044e-2f69-4c05-8cf2-ea509d134430", "e5bc40d8-a649-428f-b574-5e048d5b173a", "0264b819-3f56-4171-9126-6ef0a74f4e2a" ],
     "bio" : "I am fine ",
@@ -21,7 +21,7 @@
   "nogea" : {
     "userID" : "nogea",
     "userName" : "Ali",
-    "friendsIDs" : [ "gogo" ],
+    "friendsIDs" : [ "gogo", "gogo" ],
     "blockedAccountsIDs" : [ ],
     "postsIDs" : [ ],
     "bio" : null,
@@ -32,7 +32,7 @@
     "profilePhotoPath" : null,
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
-    "friendsREquest" : [ "gogo" ],
+    "friendsREquest" : [ ],
     "joinedGroups" : [ "e9a16ad4-8867-489b-b448-cef40a863809" ],
     "name" : "Ali",
     "id" : "nogea"
@@ -178,7 +178,7 @@
     "postsIDs" : [ "a1dc9d62-25e0-43e0-96a6-affd23e5d5dc", "2c293a7a-58a6-4b34-9e32-31e8bb4dc317", "ca84d90b-9227-45b8-ba74-b1702495bb55" ],
     "bio" : "Hi",
     "hashedPassword" : "7458f082",
-    "status" : null,
+    "status" : "online",
     "email" : "aoiwfj@fawp.vaop",
     "dateOfBirth" : "2016-12-08",
     "profilePhotoPath" : "/Icons/user.png",
@@ -204,7 +204,7 @@
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
     "friendsREquest" : [ ],
-    "joinedGroups" : [ ],
+    "joinedGroups" : [ "e9a16ad4-8867-489b-b448-cef40a863809", "e9a16ad4-8867-489b-b448-cef40a863809", "e9a16ad4-8867-489b-b448-cef40a863809" ],
     "name" : "Ali",
     "id" : "ali"
   }

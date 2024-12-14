@@ -52,6 +52,11 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <Button layoutX="44.0" layoutY="48.0" mnemonicParsing="false" onAction="#showRequests" prefHeight="26.0" prefWidth="126.0" text="Requests">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                   <Button layoutX="32.0" layoutY="138.0" mnemonicParsing="false" onAction="#ChangeCover" prefHeight="26.0" prefWidth="126.0" text="Change photo">
                      <font>
                         <Font name="System Bold" size="12.0" />

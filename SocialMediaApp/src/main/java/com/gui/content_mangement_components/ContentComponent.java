@@ -53,7 +53,7 @@ public class ContentComponent extends VBox {
         try {
             avatar.setImage(new Image(UserRoleDataBase.getInstance(null).readObject(medium.getAuthorID()).getProfilePhotoPath()));
         }catch (Exception e){
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         // the link will be like /com/gui/content_mangement_components/cover.jpg
         try {
