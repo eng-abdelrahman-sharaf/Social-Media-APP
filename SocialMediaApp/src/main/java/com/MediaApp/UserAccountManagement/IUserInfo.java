@@ -3,69 +3,68 @@ package com.MediaApp.UserAccountManagement;
 import com.MediaApp.DataHandlers.IDataObject;
 import com.MediaApp.SearchEngines.INamedDataObject;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 public interface IUserInfo extends INamedDataObject {
+    // Getters and setters
+    String getUserID();
+    void setUserID(String userID);
 
-    public String getUserID();
+    String getUserName();
+    void setUserName(String userName);
 
-    public void setUserID(String userID);
+    List<String> getFriendsIDs();
+    void setFriendsIDs(List<String> friendsIDs);
 
-    public String getUserName();
+    List<String> getBlockedAccountsIDs();
+    void setBlockedAccountsIDs(List<String> blockedAccountsIDs);
 
-    public void setUserName(String userName);
-    public List<String> getFriendsIDs();
+    List<String> getPostsIDs();
+    void setPostsIDs(List<String> postsIDs);
 
-    public void setFriendsIDs(List<String> friendsIDs);
+    String getBio();
+    void setBio(String bio);
 
-    public List<String> getBlockedAccountsIDs();
+    String getHashedPassword();
+    void setHashedPassword(String hashedPassword);
 
-    public void setBlockedAccountsIDs(List<String> blockedAccountsIDs);
+    String getStatus();
+    void setStatus(String status);
 
-    public List<String> getPostsIDs();
+    String getEmail();
+    void setEmail(String email);
 
-    public void setPostsIDs(List<String> postsIDs);
+    String getDateOfBirth();
+    void setDateOfBirth(String dateOfBirth);
 
-    public String getBio();
+    String getProfilePhotoPath();
+    void setProfilePhotoPath(String profilePhotoPath);
 
-    public void setBio(String bio);
+    String getCoverPhotoPath();
+    void setCoverPhotoPath(String coverPhotoPath);
 
-    public String getHashedPassword();
+    List<String> getStoriesIDs();
+    void setStoriesIDs(List<String> storiesIDs);
 
-    public void setHashedPassword(String hashedPassword);
+    List<String> getFriendsREquest();
+    void setFriendsREquest(List<String> friendsREquest);
 
-    public String getStatus();
+    List<String> getJoinedGroups();
+    void setJoinedGroups(List<String> joinedGroups);
 
-    public void setStatus(String status);
+    // Method for cloning
+    IUserInfo clone();
 
-    public String getEmail();
+    // Methods for displaying and getting name
+    String getName();
+    void setName(String name);
 
-    public void setEmail(String email);
+    // Method for getting ID
+    String getID();
+    void setID(String ID);
 
-    public String getDateOfBirth();
-
-    public void setDateOfBirth(String dateOfBirth);
-
-    public String getProfilePhotoPath();
-
-    public void setProfilePhotoPath(String profilePhotoPath);
-
-    public String getCoverPhotoPath();
-
-    public void setCoverPhotoPath(String coverPhotoPath);
-
-    public List<String> getStoriesIDs();
-
-    public void setStoriesIDs(List<String> storiesIDs);
-    public List<String> getFriendsREquest();
-    public void addFrinedRequestId(String id );
-    public void removeFirndREuest(String id );
-    public void setFriendsREquest(List<String> friendsREquest);
-    public IUserInfo  clone();
-    public String toString();
-
-
-
-
+    // Optional: Method to add and remove friend requests
+    void addFrinedRequestId(String id);
+    void removeFirndREuest(String id);
 }

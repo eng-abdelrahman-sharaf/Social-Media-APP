@@ -6,6 +6,9 @@ module com.example.socialmedia {
     exports com.MediaApp.ContentManagement to javafx.fxml, com.fasterxml.jackson.databind;
     opens com.MediaApp.ContentManagement;
 
+    exports com.MediaApp.GroupManagement to javafx.fxml;
+    opens com.MediaApp.GroupManagement;
+
     exports com.MediaApp.NewsFeed;
     opens com.MediaApp.NewsFeed to javafx.fxml;
     requires com.fasterxml.jackson.core;

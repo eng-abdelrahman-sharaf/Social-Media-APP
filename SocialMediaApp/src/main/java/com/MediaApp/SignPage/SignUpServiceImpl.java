@@ -74,7 +74,7 @@ class SignUpServiceImpl implements SignUpService {
         UserInfoFactory userInfoFactory = new UserInfoFactory();
         IUserInfo newUser = userInfoFactory.getUserInfo(userID, userName, Integer.toHexString(password.hashCode()) + "", email, dateOfBirth);
         newUser.setStatus("online");
-        userDataBase.addObject(newUser);
+        userDataBase.addObject((IDataObject) newUser);
         AuthorizedUserGetter.getInstance().setUserInfo(newUser);
         System.out.println("Success: User signed up successfully!");
         return "True, User signed up successfully!";

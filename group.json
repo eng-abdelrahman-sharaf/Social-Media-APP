@@ -1,19 +1,19 @@
 {
   "e9a16ad4-8867-489b-b448-cef40a863809" : {
     "groupId" : "e9a16ad4-8867-489b-b448-cef40a863809",
-    "name" : "g1",
-    "description" : "desc",
-    "groupPhoto" : null,
-    "primaryAdminId" : null,
+    "name" : "legendsGroup",
+    "description" : "No way guys",
+    "groupPhoto" : "file:/C:/Users/ADMIN/Pictures/Screenshots/Screenshot%202024-11-25%20235323.png",
+    "primaryAdminId" : "gogo",
     "adminIds" : [ "gogo" ],
     "memberIds" : [ "gogo" ],
-    "posts" : [ ],
+    "posts" : [ "e6006799-059c-4b11-b974-5e93385d0335", "7f8df97f-772e-482d-ac31-3d7394615425", "024ed2d3-684d-45c6-9b46-7e1f4f320244" ],
     "requestsUserIDs" : [ ],
     "id" : "e9a16ad4-8867-489b-b448-cef40a863809"
   },
   "a8b749b3-ae13-4513-96b0-68c7032476b9" : {
     "groupId" : "a8b749b3-ae13-4513-96b0-68c7032476b9",
-    "name" : "g1",
+    "name" : "g2",
     "description" : "desc",
     "groupPhoto" : null,
     "primaryAdminId" : null,
@@ -25,7 +25,7 @@
   },
   "6e6f6454-92fa-49d9-88bc-4626a0bf67a5" : {
     "groupId" : "6e6f6454-92fa-49d9-88bc-4626a0bf67a5",
-    "name" : "g1",
+    "name" : "g3",
     "description" : "desc",
     "groupPhoto" : null,
     "primaryAdminId" : null,
@@ -37,7 +37,7 @@
   },
   "2c792d82-ef76-40cc-a42f-5b2280527aa0" : {
     "groupId" : "2c792d82-ef76-40cc-a42f-5b2280527aa0",
-    "name" : "g1",
+    "name" : "g4",
     "description" : "desc",
     "groupPhoto" : null,
     "primaryAdminId" : null,
@@ -49,7 +49,7 @@
   },
   "c8a5fab8-0877-4c9b-b9a7-bdf9dfeceb28" : {
     "groupId" : "c8a5fab8-0877-4c9b-b9a7-bdf9dfeceb28",
-    "name" : "g1",
+    "name" : "g5",
     "description" : "desc",
     "groupPhoto" : null,
     "primaryAdminId" : null,

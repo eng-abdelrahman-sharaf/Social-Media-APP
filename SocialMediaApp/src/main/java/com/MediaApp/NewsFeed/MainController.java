@@ -1,9 +1,13 @@
 package com.MediaApp.NewsFeed;
 
 import com.MediaApp.ContentManagement.IGroupPost;
+import com.MediaApp.ContentManagement.IMedium;
 import com.MediaApp.ContentManagement.IPost;
+import com.MediaApp.ContentManagement.IStory;
+import com.MediaApp.DataHandlers.GroupPostDataBase;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
+import com.MediaApp.GroupManagement.GroupApp;
 import com.MediaApp.ProfileManagement.ProfileApp;
 import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SuggestedUsers.UserNodeController;
@@ -113,7 +117,7 @@ public class MainController {
         searchEngine = new SearchEngine();
         postsContainer = new  ContentContainerComponent();
         GroupPostsContainer = new  ContentContainerComponent();
-        GroupPostsContainer.setContainerWidth(700);
+        GroupPostsContainer.setContainerWidth(600);
         postsContainer.setContainerWidth(230);
         storyContainer = new  ContentContainerComponent();
         storyContainer.setContainerWidth(230);
@@ -200,7 +204,8 @@ public class MainController {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // newValue is the button you press on it is of typre user info choose the action
-                ProfileApp profileApp = new ProfileApp();
+                GroupApp groupApp = new GroupApp();
+                groupApp.start(StageGetter.getInstance().getStage() , newValue);
 //                profileApp.start(StageGetter.getInstance().getStage() , newValue);
             }
         });
@@ -267,37 +272,57 @@ public class MainController {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(false);
 
+        ArrayList<String> postsIDs = new ArrayList<>();
+        ArrayList<String> storiesIDs = new ArrayList<>();
+
         ArrayList<IUserInfo> friends = new ArrayList<>();
         for(String user: owner.getFriendsIDs()){
-            friends.add(UserRoleDataBase.getInstance(null).readObject(user));
+            IUserInfo friend = UserRoleDataBase.getInstance(null).readObject(user);
+            friends.add(friend);
+            postsIDs.addAll(friend.getPostsIDs());
+            storiesIDs.addAll(friend.getStoriesIDs());
         }
+
 
         ArrayList<IPost> posts = new ArrayList<>();
-        ArrayList<String> postsIDs  = new ArrayList<>();
-        for(IUserInfo friend: friends){
-            postsIDs.addAll(friend.getPostsIDs());
-        }
 
-        for(String postID: owner.getPostsIDs() ){
+        for(String postID: postsIDs ){
             posts.add(PostDataBase.getInstance(null).readObject(postID));
         }
 
-        for(IGroup group: GroupRepository.getInstance(null).getData()){
+        ArrayList<IStory> stories = new ArrayList<>();
 
+        for(String storyID: storiesIDs ){
+            stories.add(StoryDataBase.getInstance(null).readObject(storyID));
         }
 
-        createSuggestedGroups();
+        ArrayList<IMedium> groupPosts = new ArrayList<>();
+        for(String groupID: owner.getJoinedGroups()){
+            System.out.println(groupID);
+            try {
+                IGroup group = GroupRepository.getInstance(null).readObject(groupID);
+                for(String postID : group.getPosts()){
+                    System.out.println("post id = " + postID);
+                    IGroupPost grouppost = GroupPostDataBase.getInstance(null).readObject(postID);
+                    if(grouppost != null)groupPosts.add(grouppost);
+                    System.out.println( "posts====" + GroupPostDataBase.getInstance(null).getData());
+                }
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
+        }
 
-        System.out.println(posts.size());
 //        createSuggested(Suggestedusers,SuggestedFriendsPane,"group");
         createFriendStatus(friends);
         FillPostsPane(posts);
-        FillGroupPostsPane(posts);
+        FillStoriesPane(stories);
+        FillGroupPostsPane(groupPosts);
     }
 
-    private void FillGroupPostsPane(List<IPost> posts) {
+    private void FillGroupPostsPane(List<IMedium> posts) {
         GroupsPostsPanel.setContent(GroupPostsContainer);
-        GroupPostsContainer.setItems(posts.toArray(new IPost[0]));
+        System.out.println(posts);
+        GroupPostsContainer.setItems(posts.toArray(new IMedium[0]));
     }
 
 
@@ -387,6 +412,8 @@ public class MainController {
         PostDataBase.getInstance(null).reload();
         UserRoleDataBase userdb = UserRoleDataBase.getInstance(null);
         userdb.reload();
+        GroupRepository.getInstance(null).reload();
+        GroupPostDataBase.getInstance(null).reload();
         StoryDataBase.getInstance(null).reload();
         List<IUserInfo> users = new ArrayList<>();
         for(Object user : Arrays.stream(userdb.getData()).toArray()){
@@ -441,6 +468,11 @@ public class MainController {
     public void FillPostsPane(List<IPost> posts) {
         postsPanel.setContent(postsContainer);
         postsContainer.setItems(posts.toArray(new IPost[0]));
+    }
+
+    public void FillStoriesPane(List<IStory> stories) {
+        storiesPanel.setContent(storyContainer);
+        storyContainer.setItems(stories.toArray(new IStory[0]));
     }
 
 

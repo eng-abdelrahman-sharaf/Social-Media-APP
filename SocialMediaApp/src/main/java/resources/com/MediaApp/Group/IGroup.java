@@ -16,7 +16,7 @@ public interface IGroup extends IDataObject {
     String getPrimaryAdminId();
     List<String> getAdminIds();
     List<String> getMemberIds();
-    List<IGroupPost> getPosts();
+    List<String> getPosts();
     List<String> getRequestsUserIDs();
 
     // Setters
@@ -28,7 +28,7 @@ public interface IGroup extends IDataObject {
     void setPrimaryAdminId(String primaryAdminId);
     void setAdminIds(List<String> adminIds);
     void setMemberIds(List<String> memberIds);
-    void setPosts(List<IGroupPost> posts);
+    void setPosts(List<String> posts);
     void setRequestsUserIDs(List<String> requestsUserIDs);
 
     // Clone method

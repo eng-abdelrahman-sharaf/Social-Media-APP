@@ -12,6 +12,7 @@ import com.MediaApp.ContentManagement.Content;
 import com.MediaApp.ContentManagement.GroupPostFactory;
 import com.MediaApp.ContentManagement.IGroupPost;
 import com.MediaApp.ContentManagement.IMediumFactory;
+import com.MediaApp.DataHandlers.GroupPostDataBase;
 
 import java.time.Instant;
 
@@ -23,8 +24,9 @@ public class GroupPostServiceImpl implements GroupPostService {
         IGroup group = repository.readObject(groupId);
         if (group != null && (group.getMemberIds().contains(authorId))) {
             IGroupPost post = new GroupPostFactory().create(authorId, content , Instant.now().toString() , groupId);
-            group.getPosts().add(post);
-            repository.save(group);
+            group.getPosts().add(post.getID());
+            GroupRepository.getInstance(null).update(groupId , group);
+            GroupPostDataBase.getInstance(null).addObject(post);
         } else {
             System.out.println(groupId + "," + authorId);
             throw new IllegalArgumentException("User is not a member of the group or group not found.");
@@ -55,7 +57,7 @@ public class GroupPostServiceImpl implements GroupPostService {
     public void deletePost(String groupId, String postId, String userId) {
         IGroup group = repository.readObject(groupId);
         if (group != null) {
-            IGroupPost post = findPost(group, postId);
+            String post = findPost(group, postId).getID();
             if (post != null) {
                 if (group.getAdminIds().contains(userId) || group.getPrimaryAdminId().equals(userId)) {
                     group.getPosts().remove(post);
@@ -72,9 +74,10 @@ public class GroupPostServiceImpl implements GroupPostService {
     }
 
     private IGroupPost findPost(IGroup group, String postId) {
-        return group.getPosts().stream()
-                .filter(post -> post.getID().equals(postId))
+        GroupPostDataBase groupPostDataBase = GroupPostDataBase.getInstance(null);
+        return  groupPostDataBase.readObject(group.getPosts().stream()
+                .filter(post -> post.equals(postId))
                 .findFirst()
-                .orElse(null);
+                .orElse(null));
     }
 }

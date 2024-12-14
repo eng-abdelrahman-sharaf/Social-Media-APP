@@ -3,11 +3,15 @@ package com.MediaApp.NewsFeed;
 import com.MediaApp.ContentManagement.*;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
+import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
 import com.MediaApp.UserAccountManagement.IUserInfo;
 import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import resources.com.MediaApp.Group.GroupPostService;
+import resources.com.MediaApp.Group.GroupPostServiceImpl;
+import resources.com.MediaApp.Group.GroupRepository;
 import resources.com.MediaApp.Group.IGroup;
 
 import java.io.File;
@@ -27,7 +31,7 @@ public class Content_Initializer {
     private Button PostButton;
 
     @FXML
-    private MenuButton groupChooser;
+    private ChoiceBox<String> groupChooser;
 
 
     @FXML
@@ -47,31 +51,41 @@ public class Content_Initializer {
         this.type = type;
     }
 
+    private IGroup chosenGroup;
+
     @FXML
     public void initialize() {
         ImageChooser.setOnAction(event -> chooseImage());
         PostButton.setOnAction(event -> handlePost());
 
+
+        try {
+
         // handle group post creation logic
         groupChooser.getItems().clear();
 
-        System.out.println("gouppy");
 
-//        for(IGroup group)
+        System.out.println(AuthorizedUserGetter.getInstance().getUserInfo().getUserID());
+        System.out.println(AuthorizedUserGetter.getInstance().getUserInfo().getJoinedGroups());
 
-        // Create MenuItems
-        MenuItem option1 = new MenuItem("Option 1");
-        MenuItem option2 = new MenuItem("Option 2");
-        MenuItem option3 = new MenuItem("Option 3");
-
-        // Add action handlers for menu items
-        option1.setOnAction(e -> System.out.println("Option 1 selected"));
-        option2.setOnAction(e -> System.out.println("Option 2 selected"));
-        option3.setOnAction(e -> System.out.println("Option 3 selected"));
+        for(String groupId : AuthorizedUserGetter.getInstance().getUserInfo().getJoinedGroups()){
+            groupChooser.getItems().add(GroupRepository.getInstance(null).readObject(groupId).getName());
+            System.out.println(groupId);
+        }
 
 
-        // Add MenuItems to the MenuButton
-        groupChooser.getItems().addAll(option1, option2, option3);
+        // Add listener to handle item selection
+        groupChooser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Get the index of the selected item
+            chosenGroup = GroupRepository.getInstance(null).readObject(AuthorizedUserGetter.getInstance().getUserInfo().getJoinedGroups().get(groupChooser.getItems().indexOf(newValue)));
+
+            // Output the selected item and its index
+            System.out.println("index = "+groupChooser.getItems().indexOf(newValue));
+        });
+
+        }catch (Exception e){
+
+        }
     }
 
     private void chooseImage() {
@@ -119,7 +133,9 @@ public class Content_Initializer {
                 UserRoleDataBase.getInstance(null).update(currentUser.getID(),currentUser);
             }
             else {
-
+                System.out.println("group");
+                GroupPostService postService = new GroupPostServiceImpl();
+                postService.addPost(chosenGroup.getID() , AuthorizedUserGetter.getInstance().getUserInfo().getUserID() , content);
             }
 
             System.out.println("Post created with caption: " + caption);

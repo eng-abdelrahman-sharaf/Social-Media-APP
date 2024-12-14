@@ -46,6 +46,6 @@ public class UserFinderImpl implements UserFinder {
 
     @Override
     public INamedDataObject findByName(String name) {
-        return findUserByUserName(name);
+        return (INamedDataObject) findUserByUserName(name);
     }
 }
