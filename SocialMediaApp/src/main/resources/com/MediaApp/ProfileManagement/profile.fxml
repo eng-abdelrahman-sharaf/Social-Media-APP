@@ -78,6 +78,11 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <Button fx:id="joinRequestButton" mnemonicParsing="false" onAction="#joinRequest" prefHeight="26.0" prefWidth="126.0" text="Join Request">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                   <AnchorPane prefHeight="5.0" prefWidth="170.0" />
                   <Button fx:id="goBackButton" layoutX="32.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotoNewsFeed" prefHeight="26.0" prefWidth="79.0" text="Go Back">
                      <font>
