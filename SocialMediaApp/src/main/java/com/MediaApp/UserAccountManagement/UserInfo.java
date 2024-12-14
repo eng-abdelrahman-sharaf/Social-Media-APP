@@ -185,6 +185,7 @@ public class UserInfo implements IUserInfo {
     }
 
     public void setJoinedGroups(List<String> joinedGroups) {
+        System.out.println("setting joined groups");
         this.joinedGroups = joinedGroups;
     }
 
@@ -216,7 +217,7 @@ public class UserInfo implements IUserInfo {
         cloned.setPostsIDs(new ArrayList<>(this.postsIDs));
         cloned.setStoriesIDs(new ArrayList<>(this.storiesIDs));
         cloned.setFriendsREquest(new ArrayList<>(this.friendsREquest));
-
+        cloned.setJoinedGroups(new ArrayList<>(this.joinedGroups));
         return cloned;
     }
    
@@ -224,7 +225,7 @@ public class UserInfo implements IUserInfo {
     // display user information
     @Override
     public String toString() {
-        return "\n[" +
+        return "\n{" +
                 "userID: '" + userID + '\'' +
                 ",userName: '" + userName + '\'' +
                 ", friendsIDs=" + friendsIDs +
@@ -239,6 +240,7 @@ public class UserInfo implements IUserInfo {
                 ", coverPhotoPath='" + coverPhotoPath + '\'' +
                 ", storiesIDs=" + storiesIDs +
                 ", friendsREquest=" + friendsREquest +
+                ", joinedGroups=" + joinedGroups +
                 '}';
     }
 

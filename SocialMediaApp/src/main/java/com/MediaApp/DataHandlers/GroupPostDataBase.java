@@ -5,8 +5,6 @@ import com.MediaApp.ContentManagement.IPost;
 
 public class GroupPostDataBase extends DataBase<IGroupPost>{
 
-
-
     private static GroupPostDataBase instance;
 
     private GroupPostDataBase(MapStorageHandler<String, IGroupPost> handler) {

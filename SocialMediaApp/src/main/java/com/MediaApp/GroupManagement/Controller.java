@@ -1,8 +1,12 @@
-package com.MediaApp.ProfileManagement;
+package com.MediaApp.GroupManagement;
 
 
+import com.MediaApp.ContentManagement.IGroupPost;
 import com.MediaApp.ContentManagement.IMedium;
-import com.MediaApp.DataHandlers.*;
+import com.MediaApp.DataHandlers.GroupPostDataBase;
+import com.MediaApp.DataHandlers.IMediumDataBase;
+import com.MediaApp.DataHandlers.PostDataBase;
+import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.NewsFeed.NewsFeedApp;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
@@ -14,7 +18,6 @@ import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -22,7 +25,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import resources.com.MediaApp.Group.GroupRepository;
+import resources.com.MediaApp.Group.IGroup;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -40,43 +44,33 @@ s/Class.java to edit this template
 public class Controller {
 
     @FXML
-    private ImageView avatar;
-
-    @FXML
     private ImageView cover;
 
     @FXML
     private TextArea description;
 
     @FXML
-    private Text email;
+    private Text adminName;
 
     @FXML
     private ScrollPane postspanel;
 
-    @FXML
-    private ScrollPane storiespanel;
 
     @FXML
-    private Text username;
+    private Text name;
 
     private DataValidator dataValidator = new DataValidatorImpl();
 
-    private void fillwithMediums(String [] IDs , IMediumDataBase db , ScrollPane panel){
-//        String [] postsIDs = user.getPostsIDs().toArray(new String[0]);
-        ArrayList<IMedium> mediums = new ArrayList<>();
-        for(String ID : IDs) {
-            mediums.add((IMedium) db.readObject(ID));
-        }
+    private void fillwithMediums(IMedium[] mediums , ScrollPane panel){
         ContentContainerComponent mediumsContent = new ContentContainerComponent();
         mediumsContent.setContainerWidth(460);
-        mediumsContent.setItems(mediums.toArray(new IMedium[0]));
+        mediumsContent.setItems(mediums);
         panel.setContent(mediumsContent);
     }
 
 
 
-    private IUserInfo user;
+    private IGroup group;
 
     @FXML
     private VBox buttonsVBox;
@@ -92,27 +86,32 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        if(user == null)user = AuthorizedUserGetter.getInstance().getUserInfo();
-        if(user != AuthorizedUserGetter.getInstance().getUserInfo()) hideButtons();
+        if(group == null)return;
+        if(!group.getAdminIds().contains(AuthorizedUserGetter.getInstance().getUserInfo().getID())) hideButtons();
         try {
-            cover.setImage(new Image(user.getCoverPhotoPath()));
-        }catch (RuntimeException e){}
-        try {
-            avatar.setImage(new Image(user.getProfilePhotoPath()));
-        }catch (RuntimeException e){}
-        username.setText(user.getUserName());
-        description.setText(user.getBio());
-        email.setText(user.getEmail());
-        fillwithMediums(user.getPostsIDs().toArray(new String[0]), PostDataBase.getInstance(null) , postspanel);
-        fillwithMediums(user.getStoriesIDs().toArray(new String[0]), StoryDataBase.getInstance(null) , storiespanel);
+            cover.setImage(new Image(group.getGroupPhoto()));
+        }catch (RuntimeException e){
+            System.out.println("can't load cover");
+        }
+        name.setText(group.getName());
+        description.setText(group.getDescription());
+        adminName.setText(UserRoleDataBase.getInstance(null).readObject(group.getPrimaryAdminId()).getName());
+
+        ArrayList<IGroupPost> posts = new ArrayList<>();
+
+        for(String postID : group.getPosts()){
+            posts.add(GroupPostDataBase.getInstance(null).readObject(postID));
+        }
+
+        fillwithMediums(posts.toArray(new IMedium[0]), postspanel);
     }
 
     @FXML
     void ChangeBio(ActionEvent event) {
-        String newBio = JOptionPane.showInputDialog("Enter email address");
+        String newBio = JOptionPane.showInputDialog("Enter new Description");
         if(!newBio.equals("")){
-            user.setBio(newBio);
-            UserRoleDataBase.getInstance(null).update(user.getID(), user);
+            group.setDescription(newBio);
+            GroupRepository.getInstance(null).update(group.getID(), group);
             initialize();
         }
     }
@@ -127,36 +126,8 @@ public class Controller {
     void ChangeCover(ActionEvent event) {
         String imagePath = ImageChooser.getImagePathFromUser();
         if (imagePath!=null) {
-            user.setCoverPhotoPath(imagePath);
-            UserRoleDataBase.getInstance(null).update(user.getID(), user);
-            initialize();
-        }
-    }
-
-    @FXML
-    void ChangeEmail(ActionEvent event) {
-        String newemail = JOptionPane.showInputDialog("Enter email address");
-        if(dataValidator.isValidEmail(newemail))user.setEmail(newemail);
-        else JOptionPane.showMessageDialog(null, "Invalid email address");
-        UserRoleDataBase.getInstance(null).update(user.getID(), user);
-        initialize();
-    }
-
-    @FXML
-    void ChangePassword(ActionEvent event) {
-        String newPassword = JOptionPane.showInputDialog("Enter password");
-        if(dataValidator.isStrongPassword(newPassword))user.setHashedPassword(Integer.toHexString(newPassword.hashCode()));
-        else JOptionPane.showMessageDialog(null, "Password should contains at least 1 lowercase, 1 uppercase, 1 digit, and be least of 6 characters");
-        UserRoleDataBase.getInstance(null).update(user.getID(), user);
-        initialize();
-    }
-
-    @FXML
-    void changeProfile(ActionEvent event) {
-        String imagePath = ImageChooser.getImagePathFromUser();
-        if (imagePath!=null) {
-            user.setProfilePhotoPath(imagePath);
-            UserRoleDataBase.getInstance(null).update(user.getID(), user);
+            group.setGroupPhoto(imagePath);
+            GroupRepository.getInstance(null).update(group.getID(), group);
             initialize();
         }
     }
@@ -164,18 +135,18 @@ public class Controller {
     @FXML
     void changeUsername(ActionEvent event) {
         String newUname = JOptionPane.showInputDialog("Enter username");
-        if(dataValidator.isValidName(newUname))user.setUserName(newUname);
-        else JOptionPane.showMessageDialog(null, "username should contain only letters and underscores, and be at least 2 characters long.");
-        UserRoleDataBase.getInstance(null).update(user.getID(), user);
+        if(dataValidator.isValidName(newUname))group.setName(newUname);
+        else JOptionPane.showMessageDialog(null, "group Name should contain only letters and underscores, and be at least 2 characters long.");
+        GroupRepository.getInstance(null).update(group.getID(), group);
         initialize();
     }
 
-    public void setUser(IUserInfo user) {
-        this.user = user;
+    public void setGroup(IGroup group) {
+        this.group = group;
         initialize();
     }
 
-    public IUserInfo getUser() {
-        return user;
+    public IGroup getGroup() {
+        return group;
     }
 }

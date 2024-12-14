@@ -22,10 +22,10 @@ public class SearchEngine {
         if (type.equalsIgnoreCase("users")) {
             MapStorageHandler<String, IUserInfo> userHandler = new JsonMapStorageHandler<>(String.class, UserInfo.class, "user.json");
             UserRoleDataBase.getInstance(userHandler);
-            IDataObject[] users = UserRoleDataBase.getInstance(null).getData();
+            IUserInfo[] users = UserRoleDataBase.getInstance(null).getData();
 
 
-                for (IDataObject user :  users) {
+                for (IUserInfo user :  users) {
                     if (((UserInfo)user).getName().toLowerCase().contains(query.toLowerCase())) {
                         results.add((UserInfo)user);
                     }

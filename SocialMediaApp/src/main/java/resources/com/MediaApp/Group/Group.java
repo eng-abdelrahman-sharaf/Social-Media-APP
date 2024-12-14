@@ -9,6 +9,7 @@ package resources.com.MediaApp.Group;
  * @author ay654
  */
 
+import com.MediaApp.ContentManagement.GroupPost;
 import com.MediaApp.ContentManagement.IGroupPost;
 import com.MediaApp.ContentManagement.IMediumFactory;
 
@@ -22,7 +23,7 @@ public class Group implements IGroup {
     private String primaryAdminId;
     private List<String> adminIds = new ArrayList<>();
     private List<String> memberIds = new ArrayList<>();
-    private List<IGroupPost> posts  = new ArrayList<>();
+    private List<String> posts  = new ArrayList<>();
     private List<String> requestsUserIDs = new ArrayList<>();
 
     private Group(){
@@ -170,9 +171,10 @@ public class Group implements IGroup {
     }
 
     @Override
-    public List<IGroupPost> getPosts() {
+    public List<String> getPosts() {
         return posts;
     }
+
 
     @Override
     public void setAdminIds(List<String> adminIds) {
@@ -200,7 +202,7 @@ public class Group implements IGroup {
     }
 
     @Override
-    public void setPosts(List<IGroupPost> posts) {
+    public void setPosts(List<String> posts) {
         this.posts = posts;
     }
 

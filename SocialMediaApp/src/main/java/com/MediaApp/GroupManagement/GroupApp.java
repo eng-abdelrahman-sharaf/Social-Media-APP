@@ -6,6 +6,7 @@ import com.gui.PageLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import resources.com.MediaApp.Group.IGroup;
 
 /**
  * JavaFX App
@@ -16,15 +17,15 @@ public class GroupApp extends Application {
 
     @Override
     public void start(Stage stage)  {
-        PageLoader loader = new PageLoader("Profile" , ProfileApp.class.getResource("profile.fxml") , stage);
+        PageLoader loader = new PageLoader("group" , GroupApp.class.getResource("group.fxml") , stage);
         loader.load();
     }
 
-    public void start(Stage stage , IUserInfo userInfo) {
-        PageLoader loader = new PageLoader("Profile" , ProfileApp.class.getResource("profile.fxml") , stage);
+    public void start(Stage stage , IGroup Group) {
+        PageLoader loader = new PageLoader("group" , GroupApp.class.getResource("group.fxml") , stage);
         loader.load();
         Controller controller = loader.getFxmlLoader().getController();
-        controller.setUser(userInfo);
+        controller.setGroup(Group);
     }
 
     public  void run() {

@@ -2,6 +2,7 @@ package com.gui.content_mangement_components;
 
 import com.MediaApp.ContentManagement.IContent;
 import com.MediaApp.ContentManagement.IMedium;
+import com.MediaApp.UserAccountManagement.UserRoleDataBase;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -12,6 +13,7 @@ import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ContentComponent extends VBox {
@@ -48,10 +50,15 @@ public class ContentComponent extends VBox {
     public void setMedium(IMedium medium) {
         this.Medium = medium;
         this.text.setText(medium.getContent().getText());
-
+        try {
+            avatar.setImage(new Image(UserRoleDataBase.getInstance(null).readObject(medium.getAuthorID()).getProfilePhotoPath()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         // the link will be like /com/gui/content_mangement_components/cover.jpg
         try {
             this.links = medium.getContent().getAttachments();
+            System.out.println(links);
             for (int i = 0; i < links.length; i++) {
                 try {
                     images.add(i, new ImageView());
@@ -87,7 +94,6 @@ public class ContentComponent extends VBox {
         avatar.setFitWidth(40);
         avatar.setFitHeight(40);
         for(int i = 0 ; i < images.size() ; i++){
-
             try {
                 double imageWidth = images.get(i).getImage().getWidth();
                 double imageHeight = images.get(i).getImage().getHeight();

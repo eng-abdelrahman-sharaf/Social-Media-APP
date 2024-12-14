@@ -1,8 +1,17 @@
 package com.MediaApp.ContentManagement;
 
-class GroupPost extends Medium implements IGroupPost {
+public class GroupPost extends Medium implements IGroupPost {
     private String groupID;
     private String timeStamp;
+    private String type = "com.MediaApp.ContentManagement.GroupPost";
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     @Override
     public String getTimeStamp() {
