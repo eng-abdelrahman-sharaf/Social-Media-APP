@@ -35,6 +35,7 @@ public class Group implements IGroup {
         this.description = builder.description;
         this.groupPhoto = builder.groupPhoto;
         this.primaryAdminId = builder.primaryAdminId;
+        this.requestsUserIDs = builder.requestsUserIDs;
     }
 
     @Override

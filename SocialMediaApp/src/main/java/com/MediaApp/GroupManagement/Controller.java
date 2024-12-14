@@ -32,6 +32,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import resources.com.MediaApp.Group.GroupRepository;
+import resources.com.MediaApp.Group.GroupRequestService;
+import resources.com.MediaApp.Group.GroupRequestServiceImpl;
 import resources.com.MediaApp.Group.IGroup;
 
 import javax.swing.*;
@@ -61,6 +63,9 @@ public class Controller {
     @FXML
     private ScrollPane postspanel;
 
+    @FXML
+    private Button joinRequestButton;
+
 
     @FXML
     private Text name;
@@ -87,13 +92,17 @@ public class Controller {
 
     public void hideButtons (){
         buttonsVBox.getChildren().clear();
+        buttonsVBox.getChildren().add(joinRequestButton);
         buttonsVBox.getChildren().add(goBackButton);
     }
 
     @FXML
     public void initialize() {
         if(group == null)return;
+        group = GroupRepository.getInstance(null).readObject(group.getID());
         if(!group.getAdminIds().contains(AuthorizedUserGetter.getInstance().getUserInfo().getID())) hideButtons();
+        if(group.getMemberIds().contains(AuthorizedUserGetter.getInstance().getUserInfo().getID())) joinRequestButton.setDisable(true);
+        if(group.getRequestsUserIDs().contains(AuthorizedUserGetter.getInstance().getUserInfo().getID())) joinRequestButton.setDisable(true);
         try {
             cover.setImage(new Image(group.getGroupPhoto()));
         }catch (RuntimeException e){
@@ -101,12 +110,13 @@ public class Controller {
         }
         name.setText(group.getName());
         description.setText(group.getDescription());
-        adminName.setText(UserRoleDataBase.getInstance(null).readObject(group.getPrimaryAdminId()).getName());
+        if(group.getPrimaryAdminId()!=null)adminName.setText(UserRoleDataBase.getInstance(null).readObject(group.getPrimaryAdminId()).getName());
 
         ArrayList<IGroupPost> posts = new ArrayList<>();
 
         for(String postID : group.getPosts()){
-            posts.add(GroupPostDataBase.getInstance(null).readObject(postID));
+            IGroupPost post = GroupPostDataBase.getInstance(null).readObject(postID);
+            if(post != null )posts.add(post);
         }
 
         fillwithMediums(posts.toArray(new IMedium[0]), postspanel);
@@ -161,6 +171,13 @@ public class Controller {
         if(dataValidator.isValidName(newUname))group.setName(newUname);
         else JOptionPane.showMessageDialog(null, "group Name should contain only letters and underscores, and be at least 2 characters long.");
         GroupRepository.getInstance(null).update(group.getID(), group);
+        initialize();
+    }
+
+    @FXML
+    void joinRequest(ActionEvent event) {
+        GroupRequestService groupRequestService = new GroupRequestServiceImpl(UserRoleDataBase.getInstance(null));
+        groupRequestService.SendJoinRequest(group.getID(), AuthorizedUserGetter.getInstance().getUserInfo().getID());
         initialize();
     }
 

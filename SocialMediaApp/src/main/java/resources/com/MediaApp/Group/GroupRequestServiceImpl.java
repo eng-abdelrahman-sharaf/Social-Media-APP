@@ -18,7 +18,8 @@ public class GroupRequestServiceImpl implements GroupRequestService {
         IUserInfo userInfo = (IUserInfo) userRoleDataBase.readObject(userID);
         if(group != null && userInfo != null) {
             group.getRequestsUserIDs().add(userID);
-            groupRepository.save(group);
+            System.out.println(group.getRequestsUserIDs());
+            groupRepository.update(group.getID() , group);
         }
         else {
             throw new IllegalArgumentException("User or Group doesn't exist");

@@ -4,6 +4,9 @@ package com.MediaApp.ProfileManagement;
 import com.MediaApp.ContentManagement.IMedium;
 import com.MediaApp.DataHandlers.*;
 import com.MediaApp.NewsFeed.NewsFeedApp;
+import com.MediaApp.RelationsManagement.FriendRequestsManager;
+import com.MediaApp.RelationsManagement.FriendsManager;
+import com.MediaApp.RelationsManagement.IFriendRequestsManager;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
@@ -23,6 +26,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import resources.com.MediaApp.Group.GroupRequestService;
+import resources.com.MediaApp.Group.GroupRequestServiceImpl;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -85,15 +90,22 @@ public class Controller {
     private Button goBackButton;
 
 
+    @FXML
+    private Button joinRequestButton;
+
     public void hideButtons (){
         buttonsVBox.getChildren().clear();
+        buttonsVBox.getChildren().add(joinRequestButton);
         buttonsVBox.getChildren().add(goBackButton);
     }
 
     @FXML
     public void initialize() {
-        if(user == null)user = AuthorizedUserGetter.getInstance().getUserInfo();
-        if(user != AuthorizedUserGetter.getInstance().getUserInfo()) hideButtons();
+        IUserInfo autherized = AuthorizedUserGetter.getInstance().getUserInfo();
+        if(user == null)user = autherized;
+        if(user.getID().equals(autherized.getID())) hideButtons();
+        if(user.getFriendsIDs().contains(autherized.getID())) joinRequestButton.setDisable(true);
+        if(user.getFriendsREquest().contains(autherized.getID())) joinRequestButton.setDisable(true);
         try {
             cover.setImage(new Image(user.getCoverPhotoPath()));
         }catch (RuntimeException e){}
@@ -174,6 +186,14 @@ public class Controller {
         this.user = user;
         initialize();
     }
+
+    @FXML
+    void joinRequest(ActionEvent event) {
+        IFriendRequestsManager fm = new FriendRequestsManager();
+        fm.sendFriendRequest(AuthorizedUserGetter.getInstance().getUserInfo() , user);
+        initialize();
+    }
+
 
     public IUserInfo getUser() {
         return user;

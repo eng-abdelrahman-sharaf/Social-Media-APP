@@ -32,7 +32,7 @@
     "adminIds" : [ ],
     "memberIds" : [ ],
     "posts" : [ ],
-    "requestsUserIDs" : [ ],
+    "requestsUserIDs" : [ "gogo" ],
     "id" : "6e6f6454-92fa-49d9-88bc-4626a0bf67a5"
   },
   "2c792d82-ef76-40cc-a42f-5b2280527aa0" : {
@@ -44,7 +44,7 @@
     "adminIds" : [ ],
     "memberIds" : [ ],
     "posts" : [ ],
-    "requestsUserIDs" : [ ],
+    "requestsUserIDs" : [ "gogo" ],
     "id" : "2c792d82-ef76-40cc-a42f-5b2280527aa0"
   },
   "c8a5fab8-0877-4c9b-b9a7-bdf9dfeceb28" : {
@@ -54,7 +54,7 @@
     "groupPhoto" : null,
     "primaryAdminId" : null,
     "adminIds" : [ ],
-    "memberIds" : [ ],
+    "memberIds" : [ "gogo" ],
     "posts" : [ ],
     "requestsUserIDs" : [ ],
     "id" : "c8a5fab8-0877-4c9b-b9a7-bdf9dfeceb28"
