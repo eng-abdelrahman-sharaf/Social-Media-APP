@@ -8,6 +8,8 @@ import com.MediaApp.DataHandlers.IMediumDataBase;
 import com.MediaApp.DataHandlers.PostDataBase;
 import com.MediaApp.DataHandlers.StoryDataBase;
 import com.MediaApp.NewsFeed.NewsFeedApp;
+import com.MediaApp.RequestsPage.GroupRequestsController;
+import com.MediaApp.RequestsPage.RequestsPageController;
 import com.MediaApp.SignPage.DataValidator;
 import com.MediaApp.SignPage.DataValidatorImpl;
 import com.MediaApp.UserAccountManagement.AuthorizedUserGetter;
@@ -18,6 +20,9 @@ import com.gui.content_mangement_components.ContentContainerComponent;
 import com.gui.content_mangement_components.StageGetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -25,6 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import resources.com.MediaApp.Group.GroupRepository;
 import resources.com.MediaApp.Group.IGroup;
 
@@ -129,6 +135,23 @@ public class Controller {
             group.setGroupPhoto(imagePath);
             GroupRepository.getInstance(null).update(group.getID(), group);
             initialize();
+        }
+    }
+
+    @FXML
+    void showRequests(ActionEvent event) {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RequestsPage/GroupRequests.fxml"));
+
+        try {
+            Parent root = loader.load();
+            GroupRequestsController controller = loader.getController();
+
+            controller.setRequests(this.group.getID());
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

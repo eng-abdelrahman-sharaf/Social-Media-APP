@@ -105,8 +105,8 @@ public class MainController {
     public void initialize() {
         CreatePostButton.setOnAction(event -> CreatePost());
         CreateStoryButton.setOnAction(event -> CreateStory());
-//        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
-        ViewRequestsButton.setVisible(false);
+        ViewRequestsButton.setOnAction(event -> ViewRequest());// here
+//        ViewRequestsButton.setVisible(false);
         GoupPost.setOnAction(event -> {
             CreateGroupPost();
         });
@@ -426,6 +426,7 @@ public class MainController {
             posts.add((IPost) post);
         }
 
+        this.Owner = userdb.readObject(Owner.getID());
         load(this.Owner);
     }
 
@@ -497,7 +498,7 @@ public class MainController {
             Parent root = loader.load();
             RequestsPageController controller = loader.getController();
 
-            controller.setRequests(this.Owner);
+            controller.setRequests(this.Owner.getUserID());
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
