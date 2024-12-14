@@ -12,7 +12,7 @@ public class AuthorizedUserGetter {
     }
 
     public IUserInfo getUserInfo() {
-        return userInfo;
+        return UserRoleDataBase.getInstance(null).readObject(userInfo.getUserID());
     }
 
     public void setUserInfo(IUserInfo userInfo) {

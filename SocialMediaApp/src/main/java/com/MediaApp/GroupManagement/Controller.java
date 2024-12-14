@@ -106,7 +106,8 @@ public class Controller {
         ArrayList<IGroupPost> posts = new ArrayList<>();
 
         for(String postID : group.getPosts()){
-            posts.add(GroupPostDataBase.getInstance(null).readObject(postID));
+            IGroupPost post = GroupPostDataBase.getInstance(null).readObject(postID);
+            if(post != null )posts.add(post);
         }
 
         fillwithMediums(posts.toArray(new IMedium[0]), postspanel);
