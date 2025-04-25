@@ -13,7 +13,7 @@
     "profilePhotoPath" : "file:/C:/Users/ADMIN/Pictures/Screenshots/Screenshot%202024-12-08%20140814.png",
     "coverPhotoPath" : "",
     "storiesIDs" : [ "c31cd4bc-f659-4a58-89f6-e583e99f8d43", "66bb17c0-6253-4df6-852e-bf15eee07841", "d97543a3-5c70-474c-a6a3-b76f004e3d25", "9f149043-cc4a-45aa-ae2e-9e4cb8ece267" ],
-    "friendsREquest" : [ ],
+    "friendsREquest" : [ "gogo" ],
     "joinedGroups" : [ "e9a16ad4-8867-489b-b448-cef40a863809" ],
     "name" : "Amr",
     "id" : "gogo"
@@ -70,7 +70,7 @@
     "profilePhotoPath" : null,
     "coverPhotoPath" : null,
     "storiesIDs" : [ ],
-    "friendsREquest" : [ ],
+    "friendsREquest" : [ "gogo" ],
     "joinedGroups" : [ "e9a16ad4-8867-489b-b448-cef40a863809" ],
     "name" : "testuname",
     "id" : "test"
@@ -185,7 +185,7 @@
     "coverPhotoPath" : "file:/C:/Users/ADMIN/Pictures/Screenshots/Screenshot%202024-12-13%20235632.png",
     "storiesIDs" : [ ],
     "friendsREquest" : [ "gogo", "nogea", "fe61f0ba-3dde-4aa1-8303-a4399c818b03", "magdi", "9d9c2b47-2ee3-4a91-b0de-8829a01f3bb4", "d681de1c-b912-4ba8-bb75-369d0fcf8d02", "26041798-fe04-4e63-8689-7334581536ca", "62c8192f-c07a-4734-81c9-437b77e80645", "ali" ],
-    "joinedGroups" : [ ],
+    "joinedGroups" : [ "e9a16ad4-8867-489b-b448-cef40a863809", "e9a16ad4-8867-489b-b448-cef40a863809" ],
     "name" : "abdo",
     "id" : "62c8192f-c07a-4734-81c9-437b77e80645"
   },

@@ -4,7 +4,7 @@
     "userName" : "Omar",
     "friendsIDs" : [ ],
     "blockedAccountsIDs" : [ ],
-    "postsIDs" : [ ],
+    "postsIDs" : [ "3ea6374d-00d4-4c67-b6b3-c9e9a0551e7c" ],
     "bio" : null,
     "hashedPassword" : "hashedPassword2",
     "status" : null,
