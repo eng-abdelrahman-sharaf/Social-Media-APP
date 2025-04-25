@@ -1,55 +1,108 @@
-# Social-Media-APP
-## Feature workflow
-- Follow the pdf requirments
-- Validate all input fields
-- Handle possible errors and notify the user
-- Follow SOLID Principles
-- Make sure no repetition occured
-- check you followed the json format
+# Connect Hub
 
-## To learn
-- basic git commands commit, add , pull, push, checkout, branch
-- how to make a pull request
-- how to review a pull request
-- SOLID principles
-- different diagrams
+**Connect Hub** is a Java-based social media application built with JavaFX for a modern UI and JSON for lightweight data persistence. It replicates key features of real-world platforms, offering users the ability to connect, share content, and interact within groups.
 
+## 🛠️ Installation
 
-## Important Notes
-- Create branches for tasks (e.g., feature-login, feature-profile-update).
-- After ending the feature make a pull request
-- Work on a seperate file in order to minimize conflicts as much as possible
-- Submit pull requests for review before merging changes.
-- Each pull request should be reviewed by at least one team member.
+### Requirements
 
-## User JSON format
-```json
-{
-"userID": "user123",
-"friendsIDs": ["user456", "user789", "user101"],
-"postsIDs": ["post001", "post002"],
-"BIO": "Just another tech enthusiast exploring the world!",
-"hashedPassword": "5f4dcc3b5aa765d61d8327deb882cf99", 
-"status": "Active",
-"email": "user123@example.com",
-"dateOfBirth": "1990-05-15",
-"profilePhotoPath": "/images/profile123.jpg",
-"coverPhotoPath": "/images/cover123.jpg",
-"storiesIDs": ["story001", "story002"]
-}
-```
+-   Java 11 or later
+-   Maven
 
+### Steps to Install & Run
 
-## Content (whose children are Post or Story) JSON format
+1. **Clone the repository:**
 
-```json
-{
-  "contentID": "story001",
-  "authorId": "user123",
-  "content": {
-    "text": "Had a great day coding with friends! #TechLife",
-    "imagePaths": ["/images/story001_1.jpg", "/images/story001_2.jpg"],
-  },
-  "timestamp": "2024-12-01T10:30:00Z"
-}
-```
+    ```bash
+    git clone https://github.com/eng-abdelrahman-sharaf/Social-Media-APP
+    cd SocialMediaApp
+
+    ```
+
+2. **Build the project:**
+
+    ```bash
+    mvn clean install
+    ```
+
+3. **Run the application:**
+
+    ```bash
+    mvn clean javafx:run
+    ```
+
+## Features
+
+-   **User Management**
+
+    -   Sign up, log in, and log out
+    -   Edit profile info, bio, and images
+    -   Search users by name
+
+-   **Content Sharing**
+
+    -   Create/view text and image posts
+    -   Share 24-hour stories
+    -   Post in specific groups
+
+-   **Social Features**
+    -   Friend requests and blocking system
+    -   View notifications for interactions
+    -   Create and manage groups
+    -   Join/request group membership
+
+## Tech Stack
+
+-   **Frontend:** JavaFX (FXML-based UI)
+-   **Backend:** Pure Java
+-   **Data Storage:** JSON files (no database required)
+
+## Architecture & Design
+
+-   Follows clean architecture with separation of UI, logic, and data layers
+-   Custom UI components and smooth navigation using `PageLoader` and FXML
+-   Utilizes design patterns:
+    -   **Singleton** for shared instances (e.g., logged-in user)
+    -   **Factory** for dynamic component creation
+    -   **Strategy** for validation and search behaviors
+    -   **DAO** for abstracting data persistence
+
+## Project Structure
+
+    📦 src/
+    └── 📁 main/
+        └── 📁 java/
+            └── 📁 com/
+                └── 📁 MediaApp/
+                    ├── 📁 authentication/         # Login/Signup controllers
+                    ├── 📁 ContentManagement/      # Post & Story models and logic
+                    ├── 📁 DataHandlers/           # JSON-based data persistence
+                    ├── 📁 GroupManagement/        # Group creation and interaction
+                    ├── 📁 ProfileManagement/      # Profile editing & image updates
+                    ├── 📁 RelationsManagement/    # Friends & blocking system
+                    ├── 📁 RequestsPage/           # Friend & group requests
+                    ├── 📁 SignPage/               # Auth services
+                    ├── 📁 UserAccountManagement/  # User data models and roles
+                    └── 📁 utils/                  # Helpers & shared utilities
+                └── 📁 gui/
+                    ├── 📁 content_management_components/  # UI widgets for posts/stories
+                    └── 📄 PageLoader.java                # Screen navigation logic
+        └── 📁 resources/
+            ├── 📄 *.fxml                  # UI layouts
+            └── 📁 images/                # Profile & cover images
+
+## 💾 Data Persistence
+
+All app data is stored locally using custom JSON handlers. Files are automatically generated in the project root:
+
+-   `users.json` – Stores user accounts and profile data
+-   `posts.json` – Stores user posts and stories
+-   `groups.json` – Stores group information and memberships
+
+This lightweight approach simplifies setup and makes the app easy to run without external databases.
+
+## 📌 Summary
+
+Connect Hub is a Java-based social media platform built with JavaFX and JSON. It replicates essential features like authentication, content sharing, user profiles, and social interaction through friends and groups. Designed with modularity in mind, the app follows clean architecture principles and applies key design patterns to ensure scalability and maintainability.
+
+---

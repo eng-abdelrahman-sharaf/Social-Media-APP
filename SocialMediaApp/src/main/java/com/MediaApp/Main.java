@@ -56,7 +56,7 @@ public class Main {
         // sign in with abdo Aa1234
         AuthorizedUserGetter.getInstance().setUserInfo(UserRoleDataBase.getInstance(null).getData()[0]);
 
-//        System.out.println(AuthorizedUserGetter.getInstance().getUserInfo().getJoinedGroups());
+        System.out.println(AuthorizedUserGetter.getInstance().getUserInfo().getJoinedGroups());
 
 //        new StartupController().run();
 

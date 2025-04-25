@@ -1,12 +1,12 @@
 {
   "e9a16ad4-8867-489b-b448-cef40a863809" : {
     "groupId" : "e9a16ad4-8867-489b-b448-cef40a863809",
-    "name" : "legendsGroup",
+    "name" : "hello",
     "description" : "No way guys",
     "groupPhoto" : "file:/C:/Users/ADMIN/Pictures/Screenshots/Screenshot%202024-11-25%20235323.png",
     "primaryAdminId" : "gogo",
     "adminIds" : [ "gogo" ],
-    "memberIds" : [ "gogo", "ali" ],
+    "memberIds" : [ "gogo", "ali", "62c8192f-c07a-4734-81c9-437b77e80645" ],
     "posts" : [ "e6006799-059c-4b11-b974-5e93385d0335", "7f8df97f-772e-482d-ac31-3d7394615425", "024ed2d3-684d-45c6-9b46-7e1f4f320244" ],
     "requestsUserIDs" : [ ],
     "id" : "e9a16ad4-8867-489b-b448-cef40a863809"
